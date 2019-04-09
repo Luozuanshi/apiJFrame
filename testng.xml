@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="false" preserve-order="true">
 	<test name="lemon api auto testing">
 		<classes>
-			<class name="com.lemon.api.auto.testCase.All_Test_Case" />
+			<class name="com.domoyun.testCase.All_Test_Case" />
 		</classes>
 	</test>
 	
