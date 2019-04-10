@@ -27,7 +27,7 @@ public class Base {
 	@AfterSuite
 	public void afterSuite() throws InterruptedException{
 		Thread.sleep(3000);
-		ExcelUtils.batchWrite("/api1.xlsx","target/classes/api1.xlsx",2);
+		ExcelUtils.batchWrite("/apibatch.xlsx","target/classes/result.xlsx",2);
 		System.out.println("数据写出");
 	}
 

@@ -116,7 +116,7 @@ public class All_Test_Case extends Base{
 	@DataProvider
 	public Object[][] datas(){
 		
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/api1.xlsx",2, ApiDetail.class);
+		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx",2, ApiDetail.class);
 		int size = objectList.size();
 		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
@@ -161,7 +161,7 @@ public class All_Test_Case extends Base{
 //		DataValidateUtils.afterValidate(caseId,10,afterCheckSQL);
 
 		//6:断言：实际的响应结果等于期望的响应结果
-		Thread.sleep(10);
+//		Thread.sleep(10);
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
 		System.out.println(caseId+"执行完成");
 		} 

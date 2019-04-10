@@ -16,13 +16,13 @@ public class ApiUtils {
 
 	static {
 		//重新把apiinfo信息封装成map
-		List<ApiInfo> objectList = (List<ApiInfo>) ExcelUtils.readExcel("/api1.xlsx", 1, ApiInfo.class);
+		List<ApiInfo> objectList = (List<ApiInfo>) ExcelUtils.readExcel("/apibatch.xlsx", 1, ApiInfo.class);
 		for (ApiInfo apiInfo : objectList) {
 			apiInfoMap.put(apiInfo.getApiId(), apiInfo);
 		}
 		
 		//重新把把apiDetail信息封装成map
-		List<ApiDetail> apiDetailList = (List<ApiDetail>) ExcelUtils.readExcel("/api1.xlsx", 2,ApiDetail.class);
+		List<ApiDetail> apiDetailList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", 2,ApiDetail.class);
 		for (ApiDetail apiDetail : apiDetailList) {
 			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
 		}

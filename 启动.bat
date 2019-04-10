@@ -1,1 +1,1 @@
-mvn test
+call mvn test
