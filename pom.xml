@@ -18,7 +18,7 @@
 			<artifactId>testng</artifactId>
 			<version>6.8.8</version>
 		</dependency>
-
+         <!-- testng 依赖库 防止元素信息找不到-->
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>

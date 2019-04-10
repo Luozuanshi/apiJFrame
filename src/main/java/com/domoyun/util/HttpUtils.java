@@ -1,5 +1,6 @@
 package com.domoyun.util;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,20 +10,18 @@ import java.util.Set;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.testng.Assert;
-
-import com.domoyun.pojo.ApiInfo;
-import com.domoyun.pojo.ExcelObject;
-import com.domoyun.testCase.post;
 
 public class HttpUtils {
 
@@ -220,11 +219,55 @@ public class HttpUtils {
 	public static String request(String apiId, String url, String json) {
 		String result = "";
 		String method = ApiUtils.getRequestMethodByApiId(apiId);
-		System.out.println(method);
+//		System.out.println(method);
 		 if ("post".equalsIgnoreCase(method)) {
-			result = post.HttpPostWithJson(url, json);
+			result = HttpPostWithJson(url, json);
 		} 
 		return result;
+	}
+	
+	/**
+	 * json格式post请求
+	 * @param url
+	 * @param json String类型的json格式数据
+	 * @return String类型json格式数据
+	 */
+	public static String HttpPostWithJson(String url, String json) {
+		String returnValue = "这是默认返回值，接口调用失败";
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		ResponseHandler<String> responseHandler = new BasicResponseHandler();
+		try{
+			//第一步：创建HttpClient对象
+		 httpClient = HttpClients.createDefault();
+		 	
+		 	//第二步：创建httpPost对象
+	        HttpPost httpPost = new HttpPost(url);
+	        
+	        //第三步：给httpPost设置JSON格式的参数
+	        StringEntity requestEntity = new StringEntity(json,"utf-8");
+	        
+	        httpPost.addHeader("Authorization", "Basic Nzc3Nzc6LlFrPilaMnZ+Kg==");
+	        requestEntity.setContentEncoding("UTF-8");    	        
+	        httpPost.setHeader("Content-type", "application/json");
+	        httpPost.setEntity(requestEntity);
+	       
+	       //第四步：发送HttpPost请求，获取返回值
+	       returnValue = httpClient.execute(httpPost,responseHandler); //调接口获取返回值时，必须用此方法
+	      
+		}
+		 catch(Exception e)
+		{
+			 e.printStackTrace();
+		}
+		finally {
+	       try {
+			httpClient.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    }
+		 //第五步：处理返回值
+	     return returnValue;
 	}
 
 }

@@ -65,15 +65,15 @@ public class ParameterUtils {
 	}
 	
 	/**
-	 * 通过反射调用FunctionUtils中间的方法，得到处理字符串的值
-	 * 替换方法参数
+	 * 	通过反射调用FunctionUtils中间的方法，得到处理字符串的值
+	 *	 替换方法参数
 	 * @param str
 	 * @return
 	 */
 	public static String getFunctionOptStr(String str){
 		//__getMobliePhone()  __md5(123456) __getRegName(aa,bb,cc)
 		//正则表达式： __(\w*?)\(((\w*,?)*)\)
-		String regex = "__(\\w*?)\\(((\\w*,?)*)\\)";
+		String regex = "__(\\w*?)\\(((\\w*,?)*)\\)"; 
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(str);
 		//获得FunctionUtils字节码对象

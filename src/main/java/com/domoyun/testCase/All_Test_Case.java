@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import com.alibaba.fastjson.JSON;
 import com.domoyun.base.Base;
 import com.domoyun.pojo.ApiDetail;
+import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
 import com.domoyun.util.ApiUtils;
 import com.domoyun.util.ExcelUtils;
@@ -135,28 +136,33 @@ public class All_Test_Case extends Base{
 
 	@Test(dataProvider="datas")
 	public void test_case(String caseId,String apiId,String requestData,String expectedReponseData,
-			String preCheckSQL,String afterCheckSQL) throws ClientProtocolException, IOException {
+			String preCheckSQL,String afterCheckSQL) throws ClientProtocolException, IOException, InterruptedException {
 		//0:前置验证
 //		DataValidateUtils.preValidate(caseId,8,preCheckSQL);
 		//1：准备url
 		String url = ApiUtils.getUrlByApiId(apiId);
-		System.out.println(url);
+//		System.out.println(url);
 		//2：准备参数
-		Map<String, Object> paramsMap = (Map<String, Object>) JSON.parse(requestData);
-		
-		  Set<String> keySet = paramsMap.keySet(); for (String key : keySet) {
-		  System.out.println(key+":"+paramsMap.get(key));
-		  }
+		/*
+		 * Map<String, Object> paramsMap = (Map<String, Object>)
+		 * JSON.parse(requestData);
+		 * 
+		 * Set<String> keySet = paramsMap.keySet(); for (String key : keySet) {
+		 * System.out.println(key+":"+paramsMap.get(key)); }
+		 */
 		  
 		//3：发包,得到响应结果
 		String actualResult = HttpUtils.request(apiId,url,requestData);
 		System.out.println(actualResult);
 		
 		//4：要写的数据的收集
-//		ExcelUtils.addCellData(new CellData(caseId, 6, actualResult));
+		ExcelUtils.addCellData(new CellData(caseId, 6, actualResult));
 		//5:后置验证
 //		DataValidateUtils.afterValidate(caseId,10,afterCheckSQL);
+
 		//6:断言：实际的响应结果等于期望的响应结果
+		Thread.sleep(10);
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
+		System.out.println(caseId+"执行完成");
 		} 
 }
