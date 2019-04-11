@@ -162,7 +162,7 @@ public class All_Test_Case extends Base{
 		  assertstString = "66"; }
 		
 		//4：要写的数据的收集
-		int[] cell={6,7};
+		int[] cell={6,7,8};
 		ExcelUtils.addCellData(new CellData(caseId, cell, actualResult,assertstString));
 		
 		//5:后置验证

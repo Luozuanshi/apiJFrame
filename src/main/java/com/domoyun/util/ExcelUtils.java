@@ -1,7 +1,5 @@
 package com.domoyun.util;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,25 +10,20 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
-import org.apache.poi.hssf.usermodel.HSSFPatriarch;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
-
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 /**
  * sheet程序是从0开始的 项目名称：apiFrame 类名称：ExcelUtils
@@ -101,7 +94,7 @@ public class ExcelUtils {
 				// 设置列的类型
 				cell.setCellType(CellType.STRING);
 				// 获得该列的值
-				String columnName = cell.getStringCellValue();
+				String columnName =cell.getStringCellValue();
 				// 放到容器中去
 				columnNameArray[k] = columnName;
 			}
@@ -121,7 +114,7 @@ public class ExcelUtils {
 					// 设置列的类型
 					cell.setCellType(CellType.STRING);
 					// 获得该列的值
-					String cellValue = cell.getStringCellValue();
+					String cellValue = StringUtils.replace(cell.getStringCellValue());
 					// 给apiinfo的各个属性进行设值
 					// 获得此列的表头
 					String columnName = columnNameArray[j];
@@ -406,15 +399,20 @@ public class ExcelUtils {
 				
 				int rowNum = ApiUtils.getRowNumByCaseId(cellData.getCaseId());
 				Row row = sheet.getRow(rowNum - 1);
-				Cell cellToWrite = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				cellToWrite.setCellType(CellType.STRING);
-				cellToWrite.setCellValue(cellData.getAssertresult());
-				Cell cellToWrite1 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				cellToWrite1.setCellType(CellType.STRING);
-				cellToWrite1.setCellValue(cellData.getResult());
 				
+				Cell cellToWrite6 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+				cellToWrite6.setCellType(CellType.STRING);
+				cellToWrite6.setCellValue(cellData.getResult());
+				
+				Cell cellToWrite7 = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+				cellToWrite7.setCellType(CellType.STRING);
+				cellToWrite7.setCellValue(cellData.getAssertresult());
 
 				
+				Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+				cellToWrite8.setCellType(CellType.FORMULA);
+				cellToWrite8.setCellFormula("HYPERLINK(\"" + "D:\\Users\\Jarvan\\Pictures\\Camera Roll\\941498c7300d458c8db53a2664ce49f6.jpg"+ "\",\"" + "image"+ "\")");
+
 				
 				
 				/*

@@ -1,4 +1,8 @@
 package com.domoyun.util;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *	 项目名称：apiFrame
  *	类名称：StringUtils
@@ -18,6 +22,21 @@ public class StringUtils {
 
 		return (str== null) || ("".equals(str.replace(" ", "")));
 	}
+	/**
+	 * 	去除空格回车制表符
+	 * @param str
+	 * @return
+	 */
+	public static String replace(String str) {
+	    String destination = "";
+	    if (str!=null) {
+	        Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+	        Matcher m = p.matcher(str);
+	        destination = m.replaceAll("");
+	    }
+	    return destination;
+	}
+	
 	
 	
 	public static void main(String[] args) {

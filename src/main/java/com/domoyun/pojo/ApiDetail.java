@@ -23,6 +23,8 @@ public class ApiDetail extends ExcelObject{
 	//断言结果
 	private String assertResult;
 	
+	private String base64img;
+	
 //	PreCheckSQL(前置验证SQL)
 	private String preCheckSQL;
 //	PreCheckResult(前置验证结果)
@@ -81,6 +83,14 @@ public class ApiDetail extends ExcelObject{
 		this.assertResult = assertResult;
 	}
 
+	public String getBase64img() {
+		return base64img;
+	}
+
+	public void setBase64img(String base64img) {
+		this.base64img = base64img;
+	}
+
 	public String getPreCheckSQL() {
 		return preCheckSQL;
 	}
@@ -121,15 +131,16 @@ public class ApiDetail extends ExcelObject{
 		this.actualReponseData = actualReponseData;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "ApiDetail [caseId=" + caseId + ", apiId=" + apiId + ", isExcute=" + isExcute + ", requestData="
 				+ requestData + ", expectedReponseData=" + expectedReponseData + ", actualReponseData="
-				+ actualReponseData + ", assertResult=" + assertResult + ", preCheckSQL=" + preCheckSQL
-				+ ", preCheckResult=" + preCheckResult + ", afterCheckSQL=" + afterCheckSQL + ", afterCheckResult="
-				+ afterCheckResult + "]\n";
+				+ actualReponseData + ", assertResult=" + assertResult + ", base64img=" + base64img + ", preCheckSQL="
+				+ preCheckSQL + ", preCheckResult=" + preCheckResult + ", afterCheckSQL=" + afterCheckSQL
+				+ ", afterCheckResult=" + afterCheckResult + "]\n";
 	}
-
-
 
 }
