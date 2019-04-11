@@ -10,14 +10,16 @@ package com.domoyun.pojo;
 public class CellData {
 
 	private String caseId;
-	private int cellNum;
+	private int[] cellNum;
 	private String result;
+	private String assertresult;
 
-	public CellData(String caseId, int cellNum, String result) {
+	public CellData(String caseId, int[] cellNum, String result, String assertresult) {
 		super();
 		this.caseId = caseId;
 		this.cellNum = cellNum;
 		this.result = result;
+		this.assertresult = assertresult;
 	}
 
 	public String getCaseId() {
@@ -28,11 +30,11 @@ public class CellData {
 		this.caseId = caseId;
 	}
 
-	public int getCellNum() {
+	public int[] getCellNum() {
 		return cellNum;
 	}
 
-	public void setCellNum(int cellNum) {
+	public void setCellNum(int[] cellNum) {
 		this.cellNum = cellNum;
 	}
 
@@ -43,10 +45,19 @@ public class CellData {
 	public void setResult(String result) {
 		this.result = result;
 	}
+	
+	public String getAssertresult() {
+		return assertresult;
+	}
+
+	public void setAssertresult(String assertresult) {
+		this.assertresult = assertresult;
+	}
 
 	@Override
 	public String toString() {
-		return "CellData [caseId=" + caseId + ", cellNum=" + cellNum + ", result=" + result + "]";
+		return "CellData [caseId=" + caseId + ", cellNum=" + cellNum + ", result=" + result + ", assertresult="
+				+ assertresult + "]";
 	}
 
 }

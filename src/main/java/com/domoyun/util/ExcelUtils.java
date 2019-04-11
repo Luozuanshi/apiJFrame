@@ -46,7 +46,7 @@ public class ExcelUtils {
 	private static List<CellData> cellDatasToWriteList = new ArrayList<>();
 
 	/**
-	 * 添加要回写的数据
+	 *	 添加要回写的数据
 	 * 
 	 * @param cellData
 	 */
@@ -380,12 +380,12 @@ public class ExcelUtils {
 	}
 
 	/**
-	 * 批量回写
+	 *	 批量回写
 	 * 
 	 * @param string
 	 * @param i
 	 */
-	public static void batchWrite(String sourceExcelPath, String targetExcelPath, int sheetNum) {
+	public static void batchWrite(String sourceExcelPath, String targetExcelPath,int sheetNum) {
 		InputStream inp = null;
 		Workbook workbook = null;
 		OutputStream outputStream = null;
@@ -401,16 +401,22 @@ public class ExcelUtils {
 
 			// 拿出所有要回写的数据
 			List<CellData> cellDataToWriteList = ExcelUtils.getCellDatasToWriteList();
+			
 			for (CellData cellData : cellDataToWriteList) {
-				// 得到行号
+				
 				int rowNum = ApiUtils.getRowNumByCaseId(cellData.getCaseId());
-				// 得到对应的行
 				Row row = sheet.getRow(rowNum - 1);
-				// 拿到要写数据的列
-				Cell cellToWrite = row.getCell(cellData.getCellNum() - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+				Cell cellToWrite = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 				cellToWrite.setCellType(CellType.STRING);
-				cellToWrite.setCellValue(cellData.getResult());
+				cellToWrite.setCellValue(cellData.getAssertresult());
+				Cell cellToWrite1 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+				cellToWrite1.setCellType(CellType.STRING);
+				cellToWrite1.setCellValue(cellData.getResult());
+				
 
+				
+				
+				
 				/*
 				 * HSSFPatriarch patriarch = (HSSFPatriarch) sheet.createDrawingPatriarch();
 				 * HSSFClientAnchor anchor = new HSSFClientAnchor(0, 0, 255, 255,(short) 1, 1,
@@ -473,5 +479,6 @@ public class ExcelUtils {
 			}
 		}
 	}
-
+	
+	
 }

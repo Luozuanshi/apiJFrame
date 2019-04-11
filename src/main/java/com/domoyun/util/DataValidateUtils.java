@@ -60,7 +60,7 @@ public class DataValidateUtils {
 //		System.out.println(validateResultToWrite);	
 		
 		//收集到回写数据池中间
-		ExcelUtils.addCellData(new CellData(caseId, cellNum, validateResultToWrite));
+//		ExcelUtils.addCellData(new CellData(caseId, cellNum, validateResultToWrite,""));
 //		System.out.println("------------------------------------------");
 	}
 
@@ -109,7 +109,7 @@ public class DataValidateUtils {
 //		System.out.println(validateResultToWrite);	
 		
 		//收集到回写数据池中间
-		ExcelUtils.addCellData(new CellData(caseId, cellNum, validateResultToWrite));
+//		ExcelUtils.addCellData(new CellData(caseId, cellNum, validateResultToWrite,""));
 		System.out.println("------------------------------------------");
 	}
 	

@@ -257,7 +257,7 @@ public class HttpUtils {
 		}
 		 catch(Exception e)
 		{
-			 e.printStackTrace();
+			// e.printStackTrace();
 		}
 		finally {
 	       try {

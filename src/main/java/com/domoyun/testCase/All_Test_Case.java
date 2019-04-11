@@ -134,14 +134,13 @@ public class All_Test_Case extends Base{
 		return datas;
 	}
 
-	@Test(dataProvider="datas")
+	@Test(dataProvider="datas")//dataProvider="datas"
 	public void test_case(String caseId,String apiId,String requestData,String expectedReponseData,
 			String preCheckSQL,String afterCheckSQL) throws ClientProtocolException, IOException, InterruptedException {
-		//0:前置验证
+		//0:前置验证*证
 //		DataValidateUtils.preValidate(caseId,8,preCheckSQL);
 		//1：准备url
 		String url = ApiUtils.getUrlByApiId(apiId);
-//		System.out.println(url);
 		//2：准备参数
 		/*
 		 * Map<String, Object> paramsMap = (Map<String, Object>)
@@ -150,19 +149,27 @@ public class All_Test_Case extends Base{
 		 * Set<String> keySet = paramsMap.keySet(); for (String key : keySet) {
 		 * System.out.println(key+":"+paramsMap.get(key)); }
 		 */
-		  
+		 
 		//3：发包,得到响应结果
 		String actualResult = HttpUtils.request(apiId,url,requestData);
-		System.out.println(actualResult);
+//		System.out.println(actualResult);
+		String assertstString =null;
+		
+		  if (!(actualResult.isEmpty())) { 
+			  assertstString = String.valueOf(actualResult.contains(expectedReponseData)); 
+		  }
+		  else {
+		  assertstString = "66"; }
 		
 		//4：要写的数据的收集
-		ExcelUtils.addCellData(new CellData(caseId, 6, actualResult));
+		int[] cell={6,7};
+		ExcelUtils.addCellData(new CellData(caseId, cell, actualResult,assertstString));
+		
 		//5:后置验证
 //		DataValidateUtils.afterValidate(caseId,10,afterCheckSQL);
 
-		//6:断言：实际的响应结果等于期望的响应结果
-//		Thread.sleep(10);
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
-		System.out.println(caseId+"执行完成");
 		} 
+	
 }
+	

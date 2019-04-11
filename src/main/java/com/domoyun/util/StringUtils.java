@@ -15,8 +15,10 @@ public class StringUtils {
 	 * @return
 	 */
 	public static boolean isEmpty(String str){
+
 		return (str== null) || ("".equals(str.replace(" ", "")));
 	}
+	
 	
 	public static void main(String[] args) {
 		String str1 = null;

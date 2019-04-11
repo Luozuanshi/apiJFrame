@@ -20,6 +20,8 @@ public class ApiDetail extends ExcelObject{
 	private String expectedReponseData;
 	//ActualReponseData(实际响应数据)
 	private String actualReponseData;
+	//断言结果
+	private String assertResult;
 	
 //	PreCheckSQL(前置验证SQL)
 	private String preCheckSQL;
@@ -71,7 +73,13 @@ public class ApiDetail extends ExcelObject{
 		this.expectedReponseData = expectedReponseData;
 	}
 	
-	
+	public String getAssertResult() {
+		return assertResult;
+	}
+
+	public void setAssertResult(String assertResult) {
+		this.assertResult = assertResult;
+	}
 
 	public String getPreCheckSQL() {
 		return preCheckSQL;
@@ -117,10 +125,11 @@ public class ApiDetail extends ExcelObject{
 	public String toString() {
 		return "ApiDetail [caseId=" + caseId + ", apiId=" + apiId + ", isExcute=" + isExcute + ", requestData="
 				+ requestData + ", expectedReponseData=" + expectedReponseData + ", actualReponseData="
-				+ actualReponseData + ", preCheckSQL=" + preCheckSQL + ", preCheckResult=" + preCheckResult
-				+ ", afterCheckSQL=" + afterCheckSQL + ", afterCheckResult=" + afterCheckResult + ", getRowNum()="
-				+ getRowNum() + "]+\n";
+				+ actualReponseData + ", assertResult=" + assertResult + ", preCheckSQL=" + preCheckSQL
+				+ ", preCheckResult=" + preCheckResult + ", afterCheckSQL=" + afterCheckSQL + ", afterCheckResult="
+				+ afterCheckResult + "]\n";
 	}
+
 
 
 }
