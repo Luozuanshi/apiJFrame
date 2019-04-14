@@ -1,6 +1,8 @@
 package com.domoyun.base;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import com.domoyun.util.ExcelUtils;
@@ -16,6 +18,7 @@ import com.domoyun.util.ParameterUtils;
  */
 public class Base {
 	
+	
 	@BeforeSuite
 	public void BeforeSuite(){
 		//数据准备
@@ -25,11 +28,21 @@ public class Base {
 	}
 	
 	@AfterSuite
-	public void afterSuite() throws InterruptedException{
-		Thread.sleep(3000);
-		
-		ExcelUtils.batchWrite("/apibatch.xlsx","target/classes/result.xlsx",2);
+	public static void afterSuite() {
+			
+		ExcelUtils.batchWrite("/apibatch.xlsx","target/classes/result.xlsx");
 		System.out.println("数据写出");
+		
+		
 	}
+	
+
+	
+//	@AfterClass
+//	public void AfterClass() {
+//		ExcelUtils.batchWrite("/apibatch.xlsx","target/classes/result.xlsx",ExcelUtils.sheetName);
+//		System.out.println("数据写出");
+//	}
+
 
 }

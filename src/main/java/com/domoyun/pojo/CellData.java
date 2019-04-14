@@ -1,5 +1,7 @@
 package com.domoyun.pojo;
 
+import java.util.Arrays;
+
 /**
  * 要写回excel数据
  * @author pangluo
@@ -8,7 +10,6 @@ package com.domoyun.pojo;
  * @email
  */
 public class CellData {
-
 	private String caseId;
 	private int[] cellNum;
 	private String result;
@@ -56,8 +57,10 @@ public class CellData {
 
 	@Override
 	public String toString() {
-		return "CellData [caseId=" + caseId + ", cellNum=" + cellNum + ", result=" + result + ", assertresult="
-				+ assertresult + "]";
+		return "CellData [caseId=" + caseId + ", cellNum=" + Arrays.toString(cellNum) + ", result=" + result
+				+ ", assertresult=" + assertresult + "]\n";
 	}
 
+
+	
 }

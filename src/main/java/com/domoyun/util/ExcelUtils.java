@@ -8,7 +8,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -37,23 +39,39 @@ public class ExcelUtils {
 	 * 要写的cell数据池
 	 */
 	private static List<CellData> cellDatasToWriteList = new ArrayList<>();
-
+	private static Map<String,List<CellData>>  cellDatasToWriteMap = new HashMap<String, List<CellData>>();
 	/**
 	 *	 添加要回写的数据
 	 * 
 	 * @param cellData
 	 */
-	public static void addCellData(CellData cellData) {
+	public static void addCellData(String sheetName,int index,CellData cellData) {
 		cellDatasToWriteList.add(cellData);
 	}
 
+	public static List<CellData> getCellData() {
+		List<CellData> tempCellDatas = new ArrayList<>();
+		for(int i=0;i<cellDatasToWriteList.size();i++){
+			CellData example = cellDatasToWriteList.get(i);//获取每一个Example对象
+			tempCellDatas.add(example);
+	    }
+		return tempCellDatas;
+	}
 	/**
 	 * 获得所有要写的celldata数据
 	 * 
 	 * @return
 	 */
-	public static List<CellData> getCellDatasToWriteList() {
-		return cellDatasToWriteList;
+	public static List<CellData> getCellDatasToWriteList(String sheetName) {
+		return cellDatasToWriteMap.get(sheetName);
+	}
+	
+	public static void putmap(String sheetName) {
+		cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
+		ExcelUtils.clearlist();
+	}
+	public static void clearlist() {
+		cellDatasToWriteList.clear();
 	}
 
 	/**
@@ -64,7 +82,7 @@ public class ExcelUtils {
 	 * @param clazz     pojo类的字节码对象
 	 * @return
 	 */
-	public static List<? extends ExcelObject> readExcel(String excelPath, int sheetNum,
+	public static List<? extends ExcelObject> readExcel(String excelPath, String sheetName,
 			Class<? extends ExcelObject> clazz) {
 		// 容器创建出来
 		List<ExcelObject> objList = new ArrayList<>();
@@ -74,7 +92,7 @@ public class ExcelUtils {
 			// 获得工作簿对象
 			Workbook workbook = WorkbookFactory.create(inp);
 			// 获得第一个sheet
-			Sheet sheet = workbook.getSheetAt(sheetNum - 1);
+			Sheet sheet = workbook.getSheet(sheetName);
 			// 遍历--》思路应该怎么样？？
 			// 通过遍历拿到所有的行--》通过遍历拿到每一行的列
 			// 获得最后的行号(行的索引，从0开始)
@@ -125,7 +143,7 @@ public class ExcelUtils {
 
 					// 原始字符串的参数的替换
 					String commonStr = ParameterUtils.getCommonStr(cellValue);
-
+ 
 					// 反射调用该方法
 //					setterMethod.invoke(obj, cellValue);
 					setterMethod.invoke(obj, commonStr);
@@ -282,7 +300,7 @@ public class ExcelUtils {
 
 //		 readExcel3("/api.xlsx", 2);
 
-		List<ApiDetail> objList = (List<ApiDetail>) readExcel("/api.xlsx", 2, ApiDetail.class);
+		List<ApiDetail> objList = (List<ApiDetail>) readExcel("/api.xlsx", "request_data", ApiDetail.class);
 		for (Object obj : objList) {
 			System.out.println(obj);
 		}
@@ -378,7 +396,7 @@ public class ExcelUtils {
 	 * @param string
 	 * @param i
 	 */
-	public static void batchWrite(String sourceExcelPath, String targetExcelPath,int sheetNum) {
+	public static void batchWrite(String sourceExcelPath, String targetExcelPath) {
 		InputStream inp = null;
 		Workbook workbook = null;
 		OutputStream outputStream = null;
@@ -388,32 +406,38 @@ public class ExcelUtils {
 			// 获得工作簿对象
 			workbook = WorkbookFactory.create(inp);
 			// 获得对应编号的sheet
-			Sheet sheet = workbook.getSheetAt(sheetNum - 1);
-			// 获得最大的行号
-			int lastRowNum = sheet.getLastRowNum();
+			System.out.println(cellDatasToWriteMap.keySet());
+				for (String sheeName : cellDatasToWriteMap.keySet()) {
+//					System.out.println(sheeName+cellDatasToWriteMap.get(sheeName));
+					Sheet sheet = workbook.getSheet(sheeName);
+					// 获得最大的行号
+					int lastRowNum = sheet.getLastRowNum();
 
-			// 拿出所有要回写的数据
-			List<CellData> cellDataToWriteList = ExcelUtils.getCellDatasToWriteList();
-			
-			for (CellData cellData : cellDataToWriteList) {
-				
-				int rowNum = ApiUtils.getRowNumByCaseId(cellData.getCaseId());
-				Row row = sheet.getRow(rowNum - 1);
-				
-				Cell cellToWrite6 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				cellToWrite6.setCellType(CellType.STRING);
-				cellToWrite6.setCellValue(cellData.getResult());
-				
-				Cell cellToWrite7 = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				cellToWrite7.setCellType(CellType.STRING);
-				cellToWrite7.setCellValue(cellData.getAssertresult());
+					// 拿出所有要回写的数据
+					List<CellData> cellDataToWriteMapCellDatas = cellDatasToWriteMap.get(sheeName);
+//					System.out.println(cellDataToWriteList);
+					for (CellData cellData : cellDataToWriteMapCellDatas) {
+						int rowNum = ApiUtils.getRowNumByCaseId(cellData);
+						
+//						System.out.println(rowNum);
+						Row row = sheet.getRow(rowNum );
+						
+						Cell cellToWrite6 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+						cellToWrite6.setCellType(CellType.STRING);
+						cellToWrite6.setCellValue(cellData.getResult());
+						
+						Cell cellToWrite7 = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+						cellToWrite7.setCellType(CellType.STRING);
+						cellToWrite7.setCellValue(cellData.getAssertresult());
 
+						
+						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+						cellToWrite8.setCellType(CellType.FORMULA);
+						cellToWrite8.setCellFormula("HYPERLINK(\"" + "D:\\Users\\Jarvan\\Pictures\\Camera Roll\\941498c7300d458c8db53a2664ce49f6.jpg"+ "\",\"" + "image"+ "\")");
+						
+					}
 				
-				Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				cellToWrite8.setCellType(CellType.FORMULA);
-				cellToWrite8.setCellFormula("HYPERLINK(\"" + "D:\\Users\\Jarvan\\Pictures\\Camera Roll\\941498c7300d458c8db53a2664ce49f6.jpg"+ "\",\"" + "image"+ "\")");
-
-				
+				}
 				
 				/*
 				 * HSSFPatriarch patriarch = (HSSFPatriarch) sheet.createDrawingPatriarch();
@@ -432,7 +456,6 @@ public class ExcelUtils {
 				 * HSSFWorkbook.PICTURE_TYPE_JPEG); // 创建图片 patriarch.createPicture(anchor,
 				 * puctureIndex);
 				 */
-			}
 
 			// 第一种方式：遍历每一行
 			/*
@@ -476,7 +499,10 @@ public class ExcelUtils {
 				}
 			}
 		}
+		
 	}
+	
+	
 	
 	
 }

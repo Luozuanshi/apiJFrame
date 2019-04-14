@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -116,9 +118,9 @@ public class All_Test_Case extends Base{
 	@DataProvider
 	public Object[][] datas(){
 		
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx",2, ApiDetail.class);
+		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","request_data", ApiDetail.class);
 		int size = objectList.size();
-		System.out.println(objectList);
+//		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
 		Object[][] datas = new Object[size][6];
 		
@@ -131,6 +133,7 @@ public class All_Test_Case extends Base{
 			datas[i][4] = apiDetail.getPreCheckSQL();
 			datas[i][5] = apiDetail.getAfterCheckSQL();
 		}
+//		ExcelUtils.cellDatasToWriteList.clear();
 		return datas;
 	}
 
@@ -141,6 +144,7 @@ public class All_Test_Case extends Base{
 //		DataValidateUtils.preValidate(caseId,8,preCheckSQL);
 		//1：准备url
 		String url = ApiUtils.getUrlByApiId(apiId);
+//		System.out.println(caseId);
 		//2：准备参数
 		/*
 		 * Map<String, Object> paramsMap = (Map<String, Object>)
@@ -163,13 +167,20 @@ public class All_Test_Case extends Base{
 		
 		//4：要写的数据的收集
 		int[] cell={6,7,8};
-		ExcelUtils.addCellData(new CellData(caseId, cell, actualResult,assertstString));
+		
+		ExcelUtils.addCellData("request_data",2,new CellData(caseId, cell, actualResult,assertstString));
 		
 		//5:后置验证
 //		DataValidateUtils.afterValidate(caseId,10,afterCheckSQL);
 
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
 		} 
+	
+	@AfterClass
+	public static void AfterClass() {
+		System.out.println("request_data收集");
+		ExcelUtils.putmap("request_data");
+	}
 	
 }
 	

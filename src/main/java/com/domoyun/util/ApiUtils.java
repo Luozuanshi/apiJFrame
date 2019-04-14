@@ -6,8 +6,17 @@ import java.util.Map;
 
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.ApiInfo;
+import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
-
+/**
+ * 	表关联
+ *	 项目名称：apiFrame
+ *	类名称：ApiUtils
+ * @author Test
+ * @version 1.0
+ * 	创建时间2019年4月12日下午3:23:21
+ * 	类描述：
+ */
 public class ApiUtils {
 
 	static Map<String, ApiInfo> apiInfoMap = new HashMap<String, ApiInfo>();
@@ -16,13 +25,18 @@ public class ApiUtils {
 
 	static {
 		//重新把apiinfo信息封装成map
-		List<ApiInfo> objectList = (List<ApiInfo>) ExcelUtils.readExcel("/apibatch.xlsx", 1, ApiInfo.class);
+		List<ApiInfo> objectList = (List<ApiInfo>) ExcelUtils.readExcel("/apibatch.xlsx", "api_info", ApiInfo.class);
 		for (ApiInfo apiInfo : objectList) {
 			apiInfoMap.put(apiInfo.getApiId(), apiInfo);
 		}
 		
 		//重新把把apiDetail信息封装成map
-		List<ApiDetail> apiDetailList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", 2,ApiDetail.class);
+		List<ApiDetail> apiDetailList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", "request_data",ApiDetail.class);
+		for (ApiDetail apiDetail : apiDetailList) {
+			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
+		}
+		
+		List<ApiDetail> getCountryList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", "getCountry",ApiDetail.class);
 		for (ApiDetail apiDetail : apiDetailList) {
 			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
 		}
@@ -48,6 +62,10 @@ public class ApiUtils {
 		return apiInfoMap.get(apiId).getType();
 	}
 	
+	public static int getRequestMethodByApiId(ApiDetail obj){
+		return Integer.valueOf(obj.getApiId());
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(apiDetailMap.get("10086").getRowNum());
 	}
@@ -59,6 +77,10 @@ public class ApiUtils {
 	 */
 	public static int getRowNumByCaseId(String caseId){
 		return apiDetailMap.get(caseId).getRowNum();
+	}
+
+	public static int getRowNumByCaseId(CellData obj){
+		return Integer.valueOf(obj.getCaseId());
 	}
 
 }
