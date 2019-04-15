@@ -14,11 +14,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.alibaba.fastjson.JSON;
+import com.domoyun.base.ApiUtils;
 import com.domoyun.base.Base;
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
-import com.domoyun.util.ApiUtils;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.HttpUtils;
 /**
@@ -32,7 +32,7 @@ public class All_Test_Case3 extends Base{
 	@DataProvider
 	public Object[][] datas(){
 		
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","c", ApiDetail.class);
+		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","getRegionForReceiving", ApiDetail.class);
 		int size = objectList.size();
 		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
@@ -47,7 +47,6 @@ public class All_Test_Case3 extends Base{
 			datas[i][4] = apiDetail.getPreCheckSQL();
 			datas[i][5] = apiDetail.getAfterCheckSQL();
 		}
-//		ExcelUtils.cellDatasToWriteList.clear();
 		return datas;
 	}
 
@@ -56,8 +55,6 @@ public class All_Test_Case3 extends Base{
 			String preCheckSQL,String afterCheckSQL) throws ClientProtocolException, IOException, InterruptedException {
 		//1：准备url
 		String url = ApiUtils.getUrlByApiId(apiId);
-		//2：准备参数
-//		 System.out.println(caseId);
 		//3：发包,得到响应结果
 		String actualResult = HttpUtils.request(apiId,url,requestData);
 //		System.out.println(actualResult);
@@ -66,17 +63,17 @@ public class All_Test_Case3 extends Base{
 			  assertstString = String.valueOf(actualResult.contains(expectedReponseData)); 
 		  }
 		  else {
-		  assertstString = "66"; }
+		  assertstString = "响应结果为空"; }
 		
 		//4：要写的数据的收集
 		int[] cell={6,7,8};
-		ExcelUtils.addCellData("c",4,new CellData(caseId, cell, actualResult,assertstString));
+		ExcelUtils.addCellData("getRegionForReceiving",4,new CellData(caseId, cell, actualResult,assertstString));
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
 		} 
 	@AfterClass
 	public static void AfterClass() {
-		System.out.println("c收集");
-		ExcelUtils.putmap("c");
+		System.out.println("getRegionForReceiving收集");
+		ExcelUtils.putmap("getRegionForReceiving");
 	}
 	
 

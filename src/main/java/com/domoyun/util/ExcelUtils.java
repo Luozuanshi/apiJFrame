@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -23,9 +24,13 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import com.domoyun.base.ApiUtils;
+import com.domoyun.base.Base;
+import com.domoyun.util.*;
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
+
 
 /**
  * sheet程序是从0开始的 项目名称：apiFrame 类名称：ExcelUtils
@@ -34,49 +39,62 @@ import com.domoyun.pojo.ExcelObject;
  * @version 1.0 创建时间2019年4月10日下午2:55:25 类描述：
  */
 public class ExcelUtils {
-
+	final static LoggerControler log = LoggerControler.getLogger(ExcelUtils.class);
 	/**
 	 * 要写的cell数据池
+	 * cellDatasToWriteList临时中转数据用的对象集合-list<CellData>
+	 * cellDatasToWriteMap以键值对的形式存储各个sheet对象集合list<CellData>
 	 */
 	private static List<CellData> cellDatasToWriteList = new ArrayList<>();
 	private static Map<String,List<CellData>>  cellDatasToWriteMap = new HashMap<String, List<CellData>>();
+	
 	/**
-	 *	 添加要回写的数据
-	 * 
+	 * 添加要回写的数据
 	 * @param cellData
 	 */
 	public static void addCellData(String sheetName,int index,CellData cellData) {
 		cellDatasToWriteList.add(cellData);
 	}
 
+	/**
+	 * 取出所有收集的数据
+	 * @return
+	 */
 	public static List<CellData> getCellData() {
 		List<CellData> tempCellDatas = new ArrayList<>();
 		for(int i=0;i<cellDatasToWriteList.size();i++){
-			CellData example = cellDatasToWriteList.get(i);//获取每一个Example对象
+			CellData example = cellDatasToWriteList.get(i);
 			tempCellDatas.add(example);
 	    }
 		return tempCellDatas;
 	}
+	
 	/**
-	 * 获得所有要写的celldata数据
-	 * 
+	 * 获得不同sheetName要写的celldata数据
 	 * @return
 	 */
 	public static List<CellData> getCellDatasToWriteList(String sheetName) {
 		return cellDatasToWriteMap.get(sheetName);
 	}
 	
+	/**
+	 * 通过getCellData()取出所有收集的对象集合数据，put进cellDatasToWriteMap
+	 * @param sheetName
+	 */
 	public static void putmap(String sheetName) {
 		cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
 		ExcelUtils.clearlist();
 	}
+	
+	/**
+	 * 清除cellDatasToWriteList（临时中转数据用的对象集合-list<CellData>）
+	 */
 	public static void clearlist() {
 		cellDatasToWriteList.clear();
 	}
 
 	/**
 	 * 读取excel
-	 * 
 	 * @param excelPath 路径
 	 * @param sheetNum  sheet的编号
 	 * @param clazz     pojo类的字节码对象
@@ -321,74 +339,6 @@ public class ExcelUtils {
 	 * @param cellNum
 	 * @param result
 	 */
-	@Deprecated
-	public static void writeExcel(String excelPath, int sheetNum, String caseId, int cellNum, String result) {
-		InputStream inp = null;
-		Workbook workbook = null;
-		OutputStream outputStream = null;
-		try {
-
-//			inp = ExcelUtils.class.getResourceAsStream(excelPath);
-			inp = new FileInputStream(new File(excelPath));
-			// 获得工作簿对象
-			workbook = WorkbookFactory.create(inp);
-			// 获得对应编号的sheet
-			Sheet sheet = workbook.getSheetAt(sheetNum - 1);
-			// 获得最大的行号
-			int lastRowNum = sheet.getLastRowNum();
-
-			// 得到行号
-			int rowNum = ApiUtils.getRowNumByCaseId(caseId);
-			// 得到对应的行
-			Row row = sheet.getRow(rowNum - 1);
-			// 拿到要写数据的列
-			Cell cellToWrite = row.getCell(cellNum - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-			cellToWrite.setCellType(CellType.STRING);
-			cellToWrite.setCellValue(result);
-
-			// 第一种方式：遍历每一行
-			/*
-			 * for(int i=1;i<=lastRowNum;i++){ //拿到当前的行 Row row = sheet.getRow(i);
-			 * //拿到当前行的第一列 Cell cell = row.getCell(0,
-			 * MissingCellPolicy.CREATE_NULL_AS_BLANK); cell.setCellType(CellType.STRING);
-			 * //获得当前列的数据 String firstCellValue = cell.getStringCellValue();
-			 * //判断第一列的数据是不是caseId //如果caseId等于第一列数据--》就是这一行 if
-			 * (caseId.equals(firstCellValue)) { Cell cellToWrite = row.getCell(cellNum - 1,
-			 * MissingCellPolicy.CREATE_NULL_AS_BLANK);
-			 * cellToWrite.setCellType(CellType.STRING); cellToWrite.setCellValue(result);
-			 * //已经匹配上了，跳出循环 break; } }
-			 */
-
-			outputStream = new FileOutputStream(new File(excelPath));
-			workbook.write(outputStream);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (outputStream != null) {
-				try {
-					outputStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-			if (workbook != null) {
-				try {
-					workbook.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-			if (inp != null) {
-				try {
-					inp.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
 
 	/**
 	 *	 批量回写
@@ -406,7 +356,7 @@ public class ExcelUtils {
 			// 获得工作簿对象
 			workbook = WorkbookFactory.create(inp);
 			// 获得对应编号的sheet
-			System.out.println(cellDatasToWriteMap.keySet());
+			log.info(cellDatasToWriteMap.keySet().toString());
 				for (String sheeName : cellDatasToWriteMap.keySet()) {
 //					System.out.println(sheeName+cellDatasToWriteMap.get(sheeName));
 					Sheet sheet = workbook.getSheet(sheeName);

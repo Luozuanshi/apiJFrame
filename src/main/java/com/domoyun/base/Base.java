@@ -1,11 +1,10 @@
 package com.domoyun.base;
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import com.domoyun.util.ExcelUtils;
+import com.domoyun.util.LoggerControler;
 import com.domoyun.util.ParameterUtils;
 /**
  * 	
@@ -17,23 +16,21 @@ import com.domoyun.util.ParameterUtils;
  * 	类描述：参数化数据准备,套件运行之后数据回写
  */
 public class Base {
-	
-	
+	final static LoggerControler log = LoggerControler.getLogger(Base.class);
 	@BeforeSuite
 	public void BeforeSuite(){
-		//数据准备
-		//查询出一个最大的手机号，然后+1
-		ParameterUtils.addGlobalData("mobilephone", "13666666668");
-		System.out.println("数据准备");
+		
+		//静态数据准备
+		ParameterUtils.addGlobalData("mobilephone", "13111111111");
+		log.info("数据准备");
+		
 	}
 	
 	@AfterSuite
 	public static void afterSuite() {
 			
 		ExcelUtils.batchWrite("/apibatch.xlsx","target/classes/result.xlsx");
-		System.out.println("数据写出");
-		
-		
+		log.info("数据写出");
 	}
 	
 

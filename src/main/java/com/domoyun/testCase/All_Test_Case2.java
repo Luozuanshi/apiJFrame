@@ -14,11 +14,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.alibaba.fastjson.JSON;
+import com.domoyun.base.ApiUtils;
 import com.domoyun.base.Base;
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
-import com.domoyun.util.ApiUtils;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.HttpUtils;
 /**
@@ -32,7 +32,7 @@ public class All_Test_Case2 extends Base{
 	@DataProvider
 	public Object[][] datas(){
 		
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","getCountry", ApiDetail.class);
+		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","getRegion", ApiDetail.class);
 		int size = objectList.size();
 //		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
@@ -47,7 +47,6 @@ public class All_Test_Case2 extends Base{
 			datas[i][4] = apiDetail.getPreCheckSQL();
 			datas[i][5] = apiDetail.getAfterCheckSQL();
 		}
-//		ExcelUtils.cellDatasToWriteList.clear();
 		return datas;
 	}
 
@@ -66,17 +65,17 @@ public class All_Test_Case2 extends Base{
 			  assertstString = String.valueOf(actualResult.contains(expectedReponseData)); 
 		  }
 		  else {
-		  assertstString = "66"; }
+		  assertstString = "响应结果为空"; }
 		
 		//4：要写的数据的收集
 		int[] cell={6,7,8};
-		ExcelUtils.addCellData("getCountry",3,new CellData(caseId, cell, actualResult,assertstString));
+		ExcelUtils.addCellData("getRegion",3,new CellData(caseId, cell, actualResult,assertstString));
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
 		} 
 	@AfterClass
 	public static void AfterClass() {
-		System.out.println("getCountry收集");
-		ExcelUtils.putmap("getCountry");
+		System.out.println("getRegion收集");
+		ExcelUtils.putmap("getRegion");
 	}
 	
 
