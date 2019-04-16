@@ -1,7 +1,6 @@
 package com.domoyun.util;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,9 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -24,9 +21,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import com.domoyun.base.ApiUtils;
-import com.domoyun.base.Base;
-import com.domoyun.util.*;
+import com.domoyun.base.Configure;
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
@@ -39,7 +34,6 @@ import com.domoyun.pojo.ExcelObject;
  * @version 1.0 创建时间2019年4月10日下午2:55:25 类描述：
  */
 public class ExcelUtils {
-	final static LoggerControler log = LoggerControler.getLogger(ExcelUtils.class);
 	/**
 	 * 要写的cell数据池
 	 * cellDatasToWriteList临时中转数据用的对象集合-list<CellData>
@@ -49,10 +43,10 @@ public class ExcelUtils {
 	private static Map<String,List<CellData>>  cellDatasToWriteMap = new HashMap<String, List<CellData>>();
 	
 	/**
-	 * 添加要回写的数据
+	 * 	添加要回写的数据
 	 * @param cellData
 	 */
-	public static void addCellData(String sheetName,int index,CellData cellData) {
+	public static void addCellData(CellData cellData) {
 		cellDatasToWriteList.add(cellData);
 	}
 
@@ -356,7 +350,7 @@ public class ExcelUtils {
 			// 获得工作簿对象
 			workbook = WorkbookFactory.create(inp);
 			// 获得对应编号的sheet
-			log.info(cellDatasToWriteMap.keySet().toString());
+			System.out.println(cellDatasToWriteMap.keySet().toString());
 				for (String sheeName : cellDatasToWriteMap.keySet()) {
 //					System.out.println(sheeName+cellDatasToWriteMap.get(sheeName));
 					Sheet sheet = workbook.getSheet(sheeName);
@@ -367,7 +361,7 @@ public class ExcelUtils {
 					List<CellData> cellDataToWriteMapCellDatas = cellDatasToWriteMap.get(sheeName);
 //					System.out.println(cellDataToWriteList);
 					for (CellData cellData : cellDataToWriteMapCellDatas) {
-						int rowNum = ApiUtils.getRowNumByCaseId(cellData);
+						int rowNum = Configure.getRowNumByCaseId(cellData);
 						
 //						System.out.println(rowNum);
 						Row row = sheet.getRow(rowNum );

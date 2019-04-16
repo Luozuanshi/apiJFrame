@@ -5,7 +5,13 @@ import sun.misc.BASE64Encoder;
 import java.io.*;
 
 /**
- * Created by cgy on 2016/12/21.
+ * 	Base64解密成图片,图片解密成Base64
+ *	 项目名称：apiFrame
+ *	类名称：Base64
+ * @author Test
+ * @version 1.0
+ * 	创建时间2019年4月16日下午2:09:16
+ * 	类描述：
  */
 public class Base64 {
     /**

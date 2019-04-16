@@ -1,8 +1,8 @@
 package com.domoyun.pojo;
 /**
  * 
-   * 项目名称：apiFrame
-   *类名称：KeyInfo
+ * 	项目名称：apiFrame
+ *	类名称：KeyInfo
  * @author Test
  * @version 1.0
    * 创建时间2019年4月9日上午10:47:45

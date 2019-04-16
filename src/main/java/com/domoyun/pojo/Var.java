@@ -1,7 +1,7 @@
 package com.domoyun.pojo;
 
 /**
- * 参数化--》接口关联
+ * 	参数化--》接口关联
  * @author pangluo
  * @date 2018年12月10日
  * @desc 

@@ -2,21 +2,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="false" preserve-order="true">
 
-	<test name="getRegionForReceiving">
+<!-- 	<test name="getRegionForReceiving">
 		<classes>
 			<class name="com.domoyun.testCase.All_Test_Case3"/> 
 		</classes>
 	</test>
-	<test name="getRegion">
+	 <test name="getRegion">
 		<classes>
 			<class name="com.domoyun.testCase.All_Test_Case2"/> 
 		</classes>
-	</test>
+	</test> -->
 		<test name="getCountry">
 		<classes>
-			<class name="com.domoyun.testCase.All_Test_Case" />
+			<class name="com.domoyun.testCase.MainStart" />
 		</classes>
-	</test>
+	</test> 
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
 	</listeners>

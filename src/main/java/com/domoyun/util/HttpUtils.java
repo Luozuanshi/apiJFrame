@@ -23,7 +23,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.domoyun.base.ApiUtils;
+import com.domoyun.base.Configure;
 
 public class HttpUtils {
 
@@ -183,13 +183,9 @@ public class HttpUtils {
 			}*/
 
 		//		System.out.println(apiInfoMap.get("6").getUrl());
-
-		String loginUrl = "http://test.tms.com/V4/api/LabelPrintService/PrintLabel?type=json";
-		Map<String, String> paramsMap = new HashMap<>();
-		paramsMap.put("Version", "0.0.0.3");
-		String loginResult = post(loginUrl, paramsMap);
-		System.out.println(loginResult);
-
+		String xmlparmete="<paramsJson>{\"product_sku\":\"API_sku_AutoTest001\",\"reference_no\":\"\",\"product_title\":\"意大利怀表\",\"product_weight\":\"0.35\",\"product_length\":\"29.70\",\"product_width\":\"21.00\",\"product_height\":\"4\",\"contain_battery\":\"0\",\"product_declared_value\":\"10.5\",\"product_declared_name\":\"MenTshirt\",\"cat_lang\":\"en\",\"cat_id_level0\":\"400001\",\"cat_id_level1\":\"500013\",\"cat_id_level2\":\"600788\",\"verify\":\"0\",\"hs_code\":\"code123\",\"warning_qty\":\"10\"}</paramsJson>";
+		System.out.println(HttpPostWithXml("http://test-oms.eminxing.com:50080/default/svc/web-service", xmlparmete)); 
+		
 		//		
 		//		String url = "http://120.79.150.210:8080/futureloan/mvc/api/financelog/getFinanceLogList?memberId=9";
 		//		String result = get(url, null);
@@ -204,7 +200,7 @@ public class HttpUtils {
 	 */
 	public static String request(String apiId, String url, Map<String, String> paramsMap) {
 		String result = "";
-		String method = ApiUtils.getRequestMethodByApiId(apiId);
+		String method = Configure.getRequestMethodByApiId(apiId);
 		System.out.println(method);
 		if ("get".equalsIgnoreCase(method)) {
 			result = get(url, paramsMap);
@@ -217,13 +213,20 @@ public class HttpUtils {
 		}
 		return result;
 	}
-	
-	public static String request(String apiId, String url, String json) {
+	/**
+	 * 发包（分发各种请求）
+	 * @param url
+	 * @param paramsMap
+	 * @return
+	 */
+	public static String request(String apiId, String url, String requestData) {
 		String result = "";
-		String method = ApiUtils.getRequestMethodByApiId(apiId);
-//		System.out.println(method);
-		 if ("post".equalsIgnoreCase(method)) {
-			result = HttpPostWithJson(url, json);
+		String method = Configure.getRequestMethodByApiId(apiId);
+		System.out.println(method);
+		 if ("postJson".equalsIgnoreCase(method)) {
+			result = HttpPostWithJson(url, requestData);
+		}else if ("postXml".equalsIgnoreCase(method)) {
+			result = HttpPostWithXml(url, requestData);
 		} 
 		return result;
 	}
@@ -235,7 +238,7 @@ public class HttpUtils {
 	 * @return String类型json格式数据
 	 */
 	public static String HttpPostWithJson(String url, String json) {
-		String returnValue = "这是默认返回值，接口调用失败";
+		String returnValue = "请求数据格式Json,这是默认返回值，接口调用失败";
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		ResponseHandler<String> responseHandler = new BasicResponseHandler();
 		try{
@@ -268,8 +271,56 @@ public class HttpUtils {
 			e.printStackTrace();
 		}
 	    }
-		 //第五步：处理返回值
+		 //第五步：返回值
 	     return returnValue;
 	}
-
+	
+	/**
+	 * xml格式post请求
+	 * @param url
+	 * @param xml String类型的xml格式数据
+	 * @return String类型xml格式数据
+	 */
+	public static String HttpPostWithXml(String url, String xml) {
+		String returnValue = "请求数据格式Xml,这是默认返回值，接口调用失败";
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		CloseableHttpResponse response = null;
+		
+		String xmlparmete=
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                        "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns1=\"http://www.example.org/Ec/\">\n" +
+                        "\t<SOAP-ENV:Body>\n" +
+                        "\t\t<ns1:callService>\n"+
+                        ParameterUtils.getFunctionOptStr(ParameterUtils.getCommonStr(xml))+
+                        "\t\t\t<appToken>"+"e3b35ad93c4d3d831728ff1217d02b90"+"</appToken>\n" +
+                        "\t\t\t<appKey>"+ "b39989ad17963d61d1c18267d3fc1605"+"</appKey>\n" +
+                        "\t\t\t<service>"+"createProduct"+"</service>\n" +
+                        "\t\t</ns1:callService>\n" +
+                        "\t</SOAP-ENV:Body>\n" +
+                        "</SOAP-ENV:Envelope>";
+		System.out.println(xmlparmete);
+        try {
+        	//创建HttpClient对象
+        	 httpClient = HttpClients.createDefault();
+        	//创建HttpPost对象
+             HttpPost httpPost = new HttpPost(url);
+            //设置setEntity
+            if (xml != null && xml.trim().length() > 0) {
+                StringEntity stringEntity = new StringEntity(xmlparmete, "UTF-8");
+                stringEntity.setContentType("text/xml");
+                httpPost.setEntity(stringEntity);
+            //发送HttpPost请求，获取返回值
+                response = httpClient.execute(httpPost);
+               HttpEntity entity =  response.getEntity();
+               returnValue =EntityUtils.toString(entity); 
+            }else {
+                System.out.println("xml请求正文为空");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+	
+	
 }

@@ -1,7 +1,7 @@
 package com.domoyun.pojo;
 
 /**
- * api的基本信息--》描述测试用例中间的第一个sheet中的一行
+ *	描述第一张Sheet
  * @author pangluo
  * @date 2018年11月30日
  * @desc 
