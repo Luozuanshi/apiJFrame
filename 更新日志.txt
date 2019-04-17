@@ -22,10 +22,17 @@ apiFrame
 2019年4月16日
 添加HttpPostWithXml方法，支持xml数据格式请求。
 
-抽取出dataprovider类，测试类优化消除线性代码
+抽取出dataprovider类，测试类优化，减少线性代码
+
+2019年4月17日
+增加FastJson类
+处理LabelImage字段返回的一长串Base64响应报文
+替换为固定文本,并写出为图片保存在本地
+新增字段测试标题
 
 
 
 
 
-                                        powerby:胖罗
+
+                                        power by:胖罗

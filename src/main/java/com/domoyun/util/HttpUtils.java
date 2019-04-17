@@ -184,7 +184,7 @@ public class HttpUtils {
 
 		//		System.out.println(apiInfoMap.get("6").getUrl());
 		String xmlparmete="<paramsJson>{\"product_sku\":\"API_sku_AutoTest001\",\"reference_no\":\"\",\"product_title\":\"意大利怀表\",\"product_weight\":\"0.35\",\"product_length\":\"29.70\",\"product_width\":\"21.00\",\"product_height\":\"4\",\"contain_battery\":\"0\",\"product_declared_value\":\"10.5\",\"product_declared_name\":\"MenTshirt\",\"cat_lang\":\"en\",\"cat_id_level0\":\"400001\",\"cat_id_level1\":\"500013\",\"cat_id_level2\":\"600788\",\"verify\":\"0\",\"hs_code\":\"code123\",\"warning_qty\":\"10\"}</paramsJson>";
-		System.out.println(HttpPostWithXml("http://test-oms.eminxing.com:50080/default/svc/web-service", xmlparmete)); 
+		System.out.println(HttpPostWithXml("http://test-oms.eminxing.com:50080/default/svc/web-service", xmlparmete,"getCountry") ); 
 		
 		//		
 		//		String url = "http://120.79.150.210:8080/futureloan/mvc/api/financelog/getFinanceLogList?memberId=9";
@@ -219,14 +219,14 @@ public class HttpUtils {
 	 * @param paramsMap
 	 * @return
 	 */
-	public static String request(String apiId, String url, String requestData) {
+	public static String request(String apiId, String url, String requestData,String sheetname) {
 		String result = "";
 		String method = Configure.getRequestMethodByApiId(apiId);
-		System.out.println(method);
+//		System.out.println(method);
 		 if ("postJson".equalsIgnoreCase(method)) {
 			result = HttpPostWithJson(url, requestData);
 		}else if ("postXml".equalsIgnoreCase(method)) {
-			result = HttpPostWithXml(url, requestData);
+			result = HttpPostWithXml(url, requestData,sheetname);
 		} 
 		return result;
 	}
@@ -281,7 +281,7 @@ public class HttpUtils {
 	 * @param xml String类型的xml格式数据
 	 * @return String类型xml格式数据
 	 */
-	public static String HttpPostWithXml(String url, String xml) {
+	public static String HttpPostWithXml(String url, String xml,String sheetname) {
 		String returnValue = "请求数据格式Xml,这是默认返回值，接口调用失败";
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		CloseableHttpResponse response = null;
@@ -292,13 +292,13 @@ public class HttpUtils {
                         "\t<SOAP-ENV:Body>\n" +
                         "\t\t<ns1:callService>\n"+
                         ParameterUtils.getFunctionOptStr(ParameterUtils.getCommonStr(xml))+
-                        "\t\t\t<appToken>"+"e3b35ad93c4d3d831728ff1217d02b90"+"</appToken>\n" +
-                        "\t\t\t<appKey>"+ "b39989ad17963d61d1c18267d3fc1605"+"</appKey>\n" +
-                        "\t\t\t<service>"+"createProduct"+"</service>\n" +
+                        "\t\t\t<appToken>"+ParameterUtils.getGlobalData("appToken")+"</appToken>\n" +
+                        "\t\t\t<appKey>"+ParameterUtils.getGlobalData("appKey") +"</appKey>\n" +
+                        "\t\t\t<service>"+sheetname+"</service>\n" +
                         "\t\t</ns1:callService>\n" +
                         "\t</SOAP-ENV:Body>\n" +
                         "</SOAP-ENV:Envelope>";
-		System.out.println(xmlparmete);
+//		System.out.println(xmlparmete);
         try {
         	//创建HttpClient对象
         	 httpClient = HttpClients.createDefault();

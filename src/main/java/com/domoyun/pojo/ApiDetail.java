@@ -14,6 +14,8 @@ public class ApiDetail extends ExcelObject{
 	private String apiId;
 	//	IsExcute(是否执行)
 	private String isExcute;
+	//	UseCaseTitle(用例标题)
+	private String useCaseTitle;
 	//	RequestData(接口请求参数)
 	private String requestData;
 	//	ExpectedReponseData(期望响应数据)
@@ -57,6 +59,14 @@ public class ApiDetail extends ExcelObject{
 
 	public void setIsExcute(String isExcute) {
 		this.isExcute = isExcute;
+	}
+	
+	public String getUseCaseTitle() {
+		return useCaseTitle;
+	}
+
+	public void setUseCaseTitle(String useCaseTitle) {
+		this.useCaseTitle = useCaseTitle;
 	}
 
 	public String getRequestData() {
@@ -136,11 +146,11 @@ public class ApiDetail extends ExcelObject{
 	 */
 	@Override
 	public String toString() {
-		return "ApiDetail [caseId=" + caseId + ", apiId=" + apiId + ", isExcute=" + isExcute + ", requestData="
-				+ requestData + ", expectedReponseData=" + expectedReponseData + ", actualReponseData="
-				+ actualReponseData + ", assertResult=" + assertResult + ", base64img=" + base64img + ", preCheckSQL="
-				+ preCheckSQL + ", preCheckResult=" + preCheckResult + ", afterCheckSQL=" + afterCheckSQL
-				+ ", afterCheckResult=" + afterCheckResult + "]\n";
+		return "ApiDetail [caseId=" + caseId + ", apiId=" + apiId + ", isExcute=" + isExcute + ", useCaseTitle="
+				+ useCaseTitle + ", requestData=" + requestData + ", expectedReponseData=" + expectedReponseData
+				+ ", actualReponseData=" + actualReponseData + ", assertResult=" + assertResult + ", base64img="
+				+ base64img + ", preCheckSQL=" + preCheckSQL + ", preCheckResult=" + preCheckResult + ", afterCheckSQL="
+				+ afterCheckSQL + ", afterCheckResult=" + afterCheckResult + "]";
 	}
-
+	
 }

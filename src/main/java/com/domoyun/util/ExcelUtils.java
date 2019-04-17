@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -87,6 +89,37 @@ public class ExcelUtils {
 		cellDatasToWriteList.clear();
 	}
 
+	//单元格读取
+    public String readExcelCell(int rowIndex, int cellIndex){
+    	rowIndex-=1;
+    	cellIndex-=1;
+    	InputStream inp = ExcelUtils.class.getResourceAsStream("/apibatch.xlsx");
+		// 获得工作簿对象
+		Workbook workbook =null;
+		try {
+			workbook = WorkbookFactory.create(inp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 获得第一个sheet
+		Sheet sheet = workbook.getSheetAt(0);
+		
+    	Row row = sheet.getRow(rowIndex);
+        if (row == null) {
+            System.out.println("第"+rowIndex+"行不存在");
+            return  null;
+        }
+        Cell cell = row.getCell(cellIndex);
+        if (cell == null) {
+        	System.out.println("第"+cellIndex+"列不存在");
+            return  null;
+        }
+        cell.setCellType(CellType.STRING);
+        String cellvalue = cell.getStringCellValue();
+        return cellvalue;
+    }
+	
+	
 	/**
 	 * 读取excel
 	 * @param excelPath 路径
@@ -170,75 +203,7 @@ public class ExcelUtils {
 		return objList;
 	}
 
-	@Deprecated // 过期了
-	public static List<ApiDetail> readExcel3(String excelPath, int sheetNum) {
 
-		// 得到ApiInfo的字节码对象
-		Class clazz = ApiDetail.class;
-
-		List<ApiDetail> apiInfoList = new ArrayList<>();
-
-		try {
-			InputStream inp = ExcelUtils.class.getResourceAsStream(excelPath);
-			// 获得工作簿对象
-			Workbook workbook = WorkbookFactory.create(inp);
-			// 获得第一个sheet
-			Sheet sheet = workbook.getSheetAt(sheetNum - 1);
-			// 遍历--》思路应该怎么样？？
-			// 通过遍历拿到所有的行--》通过遍历拿到每一行的列
-			// 获得最后的行号(行的索引，从0开始)
-			int lastRowNum = sheet.getLastRowNum();
-			// 获得最大的列号
-			Row firstRow = sheet.getRow(0);
-			// 获得最大的列数
-			int lastCellNum = firstRow.getLastCellNum();
-
-			// 创建一个数组，保存表头
-			String[] columnNameArray = new String[lastCellNum];
-
-			// 获得表头--遍历第一行的每一列
-			for (int k = 0; k < lastCellNum; k++) {
-				// 获得当前行的每一列
-				Cell cell = firstRow.getCell(k, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				// 设置列的类型
-				cell.setCellType(CellType.STRING);
-				// 获得该列的值
-				String columnName = cell.getStringCellValue();
-				// 放到容器中去
-				columnNameArray[k] = columnName;
-			}
-
-			// 遍历每一行(i相当于行号,第一行不要)
-			for (int i = 1; i <= lastRowNum; i++) {
-				ApiDetail apiDetail = new ApiDetail();
-				// 获得索引对应的行
-				Row row = sheet.getRow(i);
-				// 遍历每一列（j相当于列号）
-				for (int j = 0; j < lastCellNum; j++) {
-					// 获得当前行的每一列
-					Cell cell = row.getCell(j, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-					// 设置列的类型
-					cell.setCellType(CellType.STRING);
-					// 获得该列的值
-					String cellValue = cell.getStringCellValue();
-					// 给apiinfo的各个属性进行设值
-					// 获得此列的表头
-					String columnName = columnNameArray[j];
-					// 得到setter方法的名称
-					String setterMethodName = "set" + columnName.substring(0, columnName.indexOf("("));
-					// 得到setter方法
-					Method setterMethod = clazz.getMethod(setterMethodName, String.class);
-					// 反射调用该方法
-					setterMethod.invoke(apiDetail, cellValue);
-				}
-				System.out.println(apiDetail);
-				apiInfoList.add(apiDetail);
-			}
-		} catch (Exception e) {
-
-		}
-		return apiInfoList;
-	}
 
 	/**
 	 * 
@@ -292,6 +257,13 @@ public class ExcelUtils {
 		return datas;
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	// example :一定要在工具类写一个main方法--》方便调试和后期的维护
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
 		/*
@@ -300,6 +272,9 @@ public class ExcelUtils {
 		 * System.out.print("["+cellValue + "]    "); } System.out.println(); }
 		 */
 
+		ExcelUtils reader = new ExcelUtils();
+		System.out.println(reader.readExcelCell(2, 6)); 
+		
 		/*
 		 * String jsonStr =
 		 * "{\"mobilephone\":\"13517315669\",\"pwd\":\"123456\",\"regname\":\"柠檬班\"}";
@@ -312,10 +287,10 @@ public class ExcelUtils {
 
 //		 readExcel3("/api.xlsx", 2);
 
-		List<ApiDetail> objList = (List<ApiDetail>) readExcel("/api.xlsx", "request_data", ApiDetail.class);
-		for (Object obj : objList) {
-			System.out.println(obj);
-		}
+//		List<ApiDetail> objList = (List<ApiDetail>) readExcel("/api.xlsx", "request_data", ApiDetail.class);
+//		for (Object obj : objList) {
+//			System.out.println(obj);
+//		}
 
 		// 测试写回
 //		writeExcel("/api.xlsx", 2, "1", 5, "");

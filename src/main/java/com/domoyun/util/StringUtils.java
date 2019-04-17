@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
  *	类名称：StringUtils
  * @author Test
  * @version 1.0
- * 	创建时间2019年4月9日下午1:16:40
  * 	类描述：字符操作类
  */
 public class StringUtils {

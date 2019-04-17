@@ -19,7 +19,10 @@ public class Base {
 	public void BeforeSuite(){
 		
 		//静态数据准备
-		ParameterUtils.addGlobalData("mobilephone", "13111111111");
+		ExcelUtils reader = new ExcelUtils();
+
+		ParameterUtils.addGlobalData("appToken", reader.readExcelCell(3, 6));
+		ParameterUtils.addGlobalData("appKey", reader.readExcelCell(4, 6));
 	}
 	
 	@AfterSuite
