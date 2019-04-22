@@ -23,7 +23,7 @@ public class FastJson {
 	 */
 	public static void main(String[] args) {
 		String xmlString ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + 
-				"<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns1=\"http://www.example.org/Ec/\">\r\n" + 
+				"<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xxxx.org/soap/envelope/\" xmlns:ns1=\"http://www.example.org/Ec/\">\r\n" + 
 				"	<SOAP-ENV:Body>\r\n" + 
 				"		<ns1:callService>\r\n" + 
 				"<paramsJson>{\"product_sku\":\"API_sku_AutoTest001\",\"reference_no\":\"\",\"product_title\":\"意大利怀表\",\"product_weight\":\"0.35\",\"product_length\":\"29.70\",\"product_width\":\"21.00\",\"product_height\":\"4\",\"contain_battery\":\"0\",\"product_declared_value\":\"10.5\",\"product_declared_name\":\"MenTshirt\",\"cat_lang\":\"en\",\"cat_id_level0\":\"400001\",\"cat_id_level1\":\"500013\",\"cat_id_level2\":\"600788\",\"verify\":\"0\",\"hs_code\":\"code123\",\"warning_qty\":\"10\"}</paramsJson>			<appToken>e3b35ad93c4d3d831728ff1217d02b90</appToken>\r\n" + 

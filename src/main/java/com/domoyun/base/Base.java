@@ -22,7 +22,9 @@ public class Base {
 		ExcelUtils reader = new ExcelUtils();
 
 		ParameterUtils.addGlobalData("appToken", reader.readExcelCell(3, 6));
+		System.out.println(ParameterUtils.getGlobalData("appToken"));
 		ParameterUtils.addGlobalData("appKey", reader.readExcelCell(4, 6));
+		System.out.println(ParameterUtils.getGlobalData("appKey"));
 	}
 	
 	@AfterSuite

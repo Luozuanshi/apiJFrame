@@ -27,7 +27,7 @@ public class DataProviderClass {
 		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","getCountry", ApiDetail.class);
 		int size = objectList.size();
 		System.out.println(size);
-		
+		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
 		Object[][] datas = new Object[size][8];
 		
@@ -50,7 +50,7 @@ public class DataProviderClass {
 		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("/apibatch.xlsx","getRegion", ApiDetail.class);
 		int size = objectList.size();
 		System.out.println(size);
-		
+		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
 		Object[][] datas = new Object[size][8];
 		
