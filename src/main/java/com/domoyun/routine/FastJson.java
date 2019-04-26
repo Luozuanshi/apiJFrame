@@ -3,6 +3,10 @@
  */
 package com.domoyun.routine;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 import org.apache.commons.codec.digest.Md5Crypt;
 
 import com.alibaba.fastjson.JSON;
@@ -36,16 +40,17 @@ public class FastJson {
 				"<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns1=\"http://www.example.org/Ec/\"><SOAP-ENV:Body><ns1:callServiceResponse><response>{\"ask\":\"Failure\",\"message\":\"创建商品失败，ProductSKU已存在！\",\"Error\":{\"errMessage\":\"创建商品失败，ProductSKU已存在！，\",\"errCode\":0},\"product_sku\":\"API_sku_AutoTest001\"}</response></ns1:callServiceResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>\r\n" + 
 				"";
 		
-		System.out.println(base64Output(xmlString));
+//		System.out.println(base64Output(xmlString));
+		
+		System.out.println(System.getProperty("user.dir")+"\\"+System.currentTimeMillis()+".jpg");
 	}
 	
-	public static String base64Output(String actualResult) {
+	public static String base64Output(String actualResult,String useCaseTitle) {
 		
 		JSONObject obj;
 		try {
 			obj = JSON.parseObject(actualResult);
 		} catch (Exception e) {
-			//响应报文转换成Java Object,转换失败返回响应报文
 //			e.printStackTrace();
 			return actualResult;
 		}
@@ -58,7 +63,7 @@ public class FastJson {
 		String LabelImage =obj1.getString("LabelImage"); 
 
 		//base64写出图片
-		Base64.generateImage(LabelImage, "D:\\Users\\Jarvan\\Desktop\\66.jpg");
+		Base64.generateImage(LabelImage, System.getProperty("user.dir")+"\\"+useCaseTitle+".jpg");
 		//响应结果替换base64值
 		return actualResult.toString().replace(LabelImage, "值为Base64，具体信息请查看日志");
 	}

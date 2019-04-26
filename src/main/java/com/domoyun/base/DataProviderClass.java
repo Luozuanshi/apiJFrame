@@ -29,7 +29,7 @@ public class DataProviderClass {
 		System.out.println(size);
 		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
-		Object[][] datas = new Object[size][8];
+		Object[][] datas = new Object[size][9];
 		
 		for(int i=0;i<size;i++){
 			ApiDetail apiDetail = (ApiDetail) objectList.get(i);
@@ -41,6 +41,7 @@ public class DataProviderClass {
 			datas[i][5] = apiDetail.getAfterCheckSQL();
 			datas[i][6] = m.getName();
 			datas[i][7] = size;
+			datas[i][8]=apiDetail.getUseCaseTitle();
 		}
 		return datas;
 	}

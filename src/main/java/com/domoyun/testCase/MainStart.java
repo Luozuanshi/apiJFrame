@@ -13,6 +13,7 @@ import com.domoyun.base.Base;
 import com.domoyun.base.Configure;
 import com.domoyun.base.DataProviderClass;
 import com.domoyun.pojo.CellData;
+import com.domoyun.routine.Base64;
 import com.domoyun.routine.FastJson;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.HttpUtils;
@@ -30,7 +31,7 @@ public class MainStart extends Base{
 	
 	@Test(dataProvider="getCountry",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
 	public void getCountry(String caseId,String apiId,String requestData,String expectedReponseData,
-			String preCheckSQL,String afterCheckSQL,String sheetname,int sheetNumMaxsize) throws ClientProtocolException, IOException, InterruptedException {
+			String preCheckSQL,String afterCheckSQL,String sheetname,int sheetNumMaxsize,String useCaseTitle) throws ClientProtocolException, IOException, InterruptedException {
 		//1：准备url
 		String url = Configure.getUrlByApiId(apiId);
 		//2：发包,得到响应结果
@@ -44,7 +45,9 @@ public class MainStart extends Base{
 		  }
 		  else {
 		  assertstString = "响应结果为空"; }
-		  actualResult =  FastJson.base64Output(actualResult); 
+		  actualResult =  FastJson.base64Output(actualResult,useCaseTitle); 
+
+		  
 		//4：要写的数据的收集
 		  int[] cell={7,8,9};
 		ExcelUtils.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString));
@@ -57,7 +60,7 @@ public class MainStart extends Base{
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
 
 	} 
-	@Test(dataProvider="getRegion",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
+//	@Test(dataProvider="getRegion",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
 	public void getRegion(String caseId,String apiId,String requestData,String expectedReponseData,
 			String preCheckSQL,String afterCheckSQL,String sheetname,int sheetNumMaxsize) throws ClientProtocolException, IOException, InterruptedException {
 		//1：准备url
@@ -73,7 +76,7 @@ public class MainStart extends Base{
 		  }
 		  else {
 		  assertstString = "响应结果为空"; }
-		  actualResult =  FastJson.base64Output(actualResult); 
+		  actualResult =  FastJson.base64Output(actualResult,""); 
 		//4：要写的数据的收集
 		int[] cell={7,8,9};
 		ExcelUtils.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString));
@@ -86,7 +89,7 @@ public class MainStart extends Base{
 		Assert.assertTrue(actualResult.contains(expectedReponseData));
 
 	} 
-	@Test(dataProvider="getRegionForReceiving",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
+//	@Test(dataProvider="getRegionForReceiving",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
 	public void getRegionForReceiving(String caseId,String apiId,String requestData,String expectedReponseData,
 			String preCheckSQL,String afterCheckSQL,String sheetname,int sheetNumMaxsize) throws ClientProtocolException, IOException, InterruptedException {
 		//1：准备url
@@ -102,7 +105,9 @@ public class MainStart extends Base{
 		  }
 		  else {
 		  assertstString = "响应结果为空"; }
-		  actualResult =  FastJson.base64Output(actualResult); 
+		  actualResult =  FastJson.base64Output(actualResult,""); 
+		  
+		  
 		//4：要写的数据的收集
 		int[] cell={7,8,9};
 		ExcelUtils.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString));

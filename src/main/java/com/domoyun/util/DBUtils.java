@@ -7,10 +7,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -208,24 +207,39 @@ public class DBUtils {
 	public static void main(String[] args) throws Exception {
 
 		//1：插入：
-		//String sql = "insert into member(regname,pwd,mobilephone,leaveAmount) values(?,?,?,?);";
-		//DBUtil.execute(sql, "Jack","654321","13777777777",100.00);
+//		String sql1 = "insert into member(regname,pwd,mobilephone,leaveAmount) values(?,?,?,?);";
+//		DBUtils.execute(sql1, "Jack","654321","13777777777",100.00);
 
 		//2:修改
-//		String sql = "update member set leaveAmount=? where id=?;";
-//		DBUtil.execute(sql, 10.0, 1);
+//		String sql2 = "update member set leaveAmount=? where id=?;";
+//		DBUtils.execute(sql2, 10.0, 1);
 		
 		//3：删除
-//		String sql = "delete from member where id=? and regname=?";
-//		DBUtil.execute(sql, 1);
+//		String sql3 = "delete from member where id=? and regname=?";
+//		DBUtils.execute(sql3, 1);
 		
 		//4:查询
-//		String sql = "select id,mobilephone,regTime from member where id<?;";
-		String sql = "select id as id,mobilephone as mobilephone,regTime as regtime from member where id<?;";
-		List<LinkedHashMap<String, String>> dataList = select(sql,70);
-		for (LinkedHashMap<String, String> map : dataList) {
-			System.out.println(map);
+		String sql4 = "select id,mobilephone,regTime from member where id<?;";
+		String sql5 ="select id as id,mobilephone as mobilephone,regTime as regtime from member where id<?;";
+		sql5 ="SELECT * from goodcang_settlement_center_test.bil_shipperbill_income_101_201812;";
+		
+		String sql6 ="INSERT INTO `goodcang_settlement_center_test`.`bil_income`(`id`, `sheet`, `arrival_date`, `customer_id`, `og_id`, `bs_id`, `fk_code`, `unit_code`, `ic_amount`, `currency_code`, `ic_createdate`, `st_id_creator`, `charge_node`, `serve_hawbcode`, `refer_hawbcode`, `shipper_hawbcode`, `destination_countrycode`, `product_code`) VALUES (?, '201904', '2019-04-15 01:53:57', 5, 6, 10267843, 'E1', 'KG', 4.50, 'USD', '2019-04-15 01:54:06', 0, 1, '786642341392', 'TestID11KH6000N1', 'YDCN1904150001044', 'US', 'PK0013');";
+		List<LinkedHashMap<String, String>> dataList = select(sql5);
+
+		long startTime =  System.currentTimeMillis();
+		for (int i = 2910334; i < 2920334; i++) {
+			execute(sql6,i );
+			System.out.println("执行");
 		}
+		long endTime =  System.currentTimeMillis();
+		long usedTime = (endTime-startTime)/1000;
+		System.out.println(usedTime);
+//		for (LinkedHashMap<String, String> map : dataList) {
+//			System.out.println(map);
+//		}
+		
+		
+		
 		
 	}
 

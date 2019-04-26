@@ -1,1 +1,2 @@
 call mvn test
+pause

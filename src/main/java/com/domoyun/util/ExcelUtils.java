@@ -49,7 +49,9 @@ public class ExcelUtils {
 	 * @param cellData
 	 */
 	public static void addCellData(CellData cellData) {
-		cellDatasToWriteList.add(cellData);
+		synchronized (ExcelUtils.class) {
+			cellDatasToWriteList.add(cellData);
+		}
 	}
 
 	/**
@@ -78,8 +80,11 @@ public class ExcelUtils {
 	 * @param sheetName
 	 */
 	public static void putmap(String sheetName) {
-		cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
-		ExcelUtils.clearlist();
+		
+		synchronized (ExcelUtils.class) {
+			cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
+			ExcelUtils.clearlist();
+		}
 	}
 	
 	/**
