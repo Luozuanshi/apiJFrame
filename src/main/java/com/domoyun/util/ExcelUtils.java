@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -23,8 +21,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import com.domoyun.base.Configure;
-import com.domoyun.pojo.ApiDetail;
+import com.domoyun.dataprovider.Configure;
 import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.ExcelObject;
 
@@ -133,11 +130,13 @@ public class ExcelUtils {
 		List<ExcelObject> objList = new ArrayList<>();
 
 		try {
-			InputStream inp = ExcelUtils.class.getResourceAsStream(excelPath);
+			InputStream inp = ExcelUtils.class.getResourceAsStream(("/"+excelPath));
 			// 获得工作簿对象
 			Workbook workbook = WorkbookFactory.create(inp);
+			
 			// 获得第一个sheet
 			Sheet sheet = workbook.getSheet(sheetName);
+			
 			// 遍历--》思路应该怎么样？？
 			// 通过遍历拿到所有的行--》通过遍历拿到每一行的列
 			// 获得最后的行号(行的索引，从0开始)
@@ -161,7 +160,7 @@ public class ExcelUtils {
 				// 放到容器中去
 				columnNameArray[k] = columnName;
 			}
-
+			
 			// 遍历每一行(i相当于行索引,第一行不要)
 			for (int i = 1; i <= lastRowNum; i++) {
 				// 通过字节码对象实例化一个对象：
@@ -172,6 +171,7 @@ public class ExcelUtils {
 				Row row = sheet.getRow(i);
 				// 遍历每一列（j相当于列号）
 				for (int j = 0; j < lastCellNum; j++) {
+					
 					// 获得当前行的每一列
 					Cell cell = row.getCell(j, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 					// 设置列的类型
@@ -185,16 +185,26 @@ public class ExcelUtils {
 					String setterMethodName = "set" + columnName.substring(0, columnName.indexOf("("));
 					// 得到setter方法
 					Method setterMethod = clazz.getMethod(setterMethodName, String.class);
-
+					
 					// 原始字符串的参数的替换
 					String commonStr = ParameterUtils.getCommonStr(cellValue);
  
 					// 反射调用该方法
+					
 //					setterMethod.invoke(obj, cellValue);
 					setterMethod.invoke(obj, commonStr);
+					
+					// 获得第一个sheet
+					
+					
 				}
 //				System.out.println(apiInfo);
 				// 添加到容器
+				obj.setSheetName(sheet.getSheetName());
+				obj.setFileName(sheetName);
+				obj.setFilePath(ExcelUtils.class.getResource("/"+excelPath).toString());
+				obj.setMaxRowNum(lastRowNum);
+				obj.setMaxCellNum(lastCellNum);
 				objList.add(obj);
 			}
 		} catch (Exception e) {
@@ -321,7 +331,7 @@ public class ExcelUtils {
 		OutputStream outputStream = null;
 		try {
 
-			inp = ExcelUtils.class.getResourceAsStream(sourceExcelPath);
+			inp = ExcelUtils.class.getResourceAsStream("/"+sourceExcelPath);
 			// 获得工作簿对象
 			workbook = WorkbookFactory.create(inp);
 			// 获得对应编号的sheet

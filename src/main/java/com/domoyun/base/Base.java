@@ -30,7 +30,7 @@ public class Base {
 	@AfterSuite
 	public static void afterSuite() {
 		//一次性数据回写	
-		ExcelUtils.batchWrite("/apibatch.xlsx","target/classes/result.xlsx");
+		ExcelUtils.batchWrite("apibatch.xlsx","target/classes/result.xlsx");
 	}
 	
 }

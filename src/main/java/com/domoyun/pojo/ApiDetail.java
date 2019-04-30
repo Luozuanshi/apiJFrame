@@ -150,7 +150,11 @@ public class ApiDetail extends ExcelObject{
 				+ useCaseTitle + ", requestData=" + requestData + ", expectedReponseData=" + expectedReponseData
 				+ ", actualReponseData=" + actualReponseData + ", assertResult=" + assertResult + ", base64img="
 				+ base64img + ", preCheckSQL=" + preCheckSQL + ", preCheckResult=" + preCheckResult + ", afterCheckSQL="
-				+ afterCheckSQL + ", afterCheckResult=" + afterCheckResult + "]\n";
+				+ afterCheckSQL + ", afterCheckResult=" + afterCheckResult + ", getSheetName()=" + getSheetName()
+				+ ", getRowNum()=" + getRowNum() + ", getCellNum()=" + getCellNum() + ", getFileName()=" + getFileName()
+				+ ", getFilePath()=" + getFilePath() + ", getMaxRowNum()=" + getMaxRowNum() + ", getMaxCellNum()="
+				+ getMaxCellNum() + "]\n";
 	}
+
 	
 }

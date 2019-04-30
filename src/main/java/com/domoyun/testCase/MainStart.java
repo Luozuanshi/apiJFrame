@@ -1,7 +1,6 @@
 package com.domoyun.testCase;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.client.ClientProtocolException;
@@ -9,8 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.domoyun.base.Base;
-import com.domoyun.base.Configure;
-import com.domoyun.base.DataProviderClass;
+import com.domoyun.dataprovider.Configure;
+import com.domoyun.dataprovider.DataProviderClass;
 import com.domoyun.pojo.CellData;
 import com.domoyun.routine.FastJson;
 import com.domoyun.util.ExcelUtils;
