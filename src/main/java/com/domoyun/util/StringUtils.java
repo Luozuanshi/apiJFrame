@@ -27,9 +27,10 @@ public class StringUtils {
 	 * @return
 	 */
 	public static String replace(String str) {
-	    String destination = "";
+		str = str.replaceAll("\\s{2,}", "");
+		String destination = "";
 	    if (str!=null) {
-	        Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+	        Pattern p = Pattern.compile("\t|\r|\n");//\s*
 	        Matcher m = p.matcher(str);
 	        destination = m.replaceAll("");
 	    }

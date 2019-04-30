@@ -251,7 +251,7 @@ public class HttpUtils {
 	        //第三步：给httpPost设置JSON格式的参数
 	        StringEntity requestEntity = new StringEntity(json,"utf-8");
 	        
-	        httpPost.addHeader("Authorization", "Basic Nzc3Nzc6LlFrPilaMnZ+Kg==");
+	        httpPost.addHeader("Authorization", "Basic cGFuZ2x1bzpjNHlWJEAkZE5R");
 	        requestEntity.setContentEncoding("UTF-8");    	        
 	        httpPost.setHeader("Content-type", "application/json");
 	        httpPost.setEntity(requestEntity);
@@ -262,7 +262,7 @@ public class HttpUtils {
 		}
 		 catch(Exception e)
 		{
-			// e.printStackTrace();
+//			 e.printStackTrace();
 		}
 		finally {
 	       try {

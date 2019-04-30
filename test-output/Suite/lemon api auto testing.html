@@ -1,0 +1,1270 @@
+<html>
+<head>
+<title>TestNG:  lemon api auto testing</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>lemon api auto testing</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>101/18/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sat Apr 13 16:02:57 CST 2019</td>
+</tr>
+<tr><td>Total time:</td><td>9 seconds (9199 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 1, 1, {"Data":{"BatchNumber":"T5093-EKD1808071096","ProductCode":"F-E(2DAY)ddd","WarehouseCode":"CA","ReferenceNumber":"","LabelType":1},"Version":"0.0.0.3","RequestTime":"2017-09-21T08:00:38.0852597Z","RequestId":null}, T5093-EKD1808071096, [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"0"}]}], [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"1"}]},{"no":"2","sql":"selectLeaveAmount,Typefrommemberwheremobilephone='13666666668'","expectedResult":[{"LeaveAmount":"0.00","Type":"1"}]}]</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1898325501", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1898325501'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 2, 1, {"Data":{"BoxNum":2,"BatchNumber":"T5093-EKD1808071096","ShippingMarks":[{"ShippingMarkNumber":"T5093-EKD1808071096-0001","ReferenceBoxNumber":"ZDYXMH723897"},{"ShippingMarkNumber":"T5093-EKD1808071096-0002","ReferenceBoxNumber":""}]},"Version":"0.0.0.3","RequestTime":"2018-08-05T09:14:43.2154393Z","RequestId":"3287ff3e-03ef-42d9-8cea-3b661b1fba3c1"}, T5093-EKD1808071096, [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"0"}]}], [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"1"}]},{"no":"2","sql":"selectLeaveAmount,Typefrommemberwheremobilephone='13666666668'","expectedResult":[{"LeaveAmount":"0.00","Type":"1"}]}]</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1000966072", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1000966072'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 3, 1, {"Data":{"ShippingMarkNumber":"T5093-EKD1808071096-0001","BindingPackageByNumberList":[{"OrderId":"TestXM368966","Number":"61299992140437040988"},{"OrderId":"TestXM428608","Number":"61299992140437040995"},{"OrderId":"TestXM236871","Number":"61299992140437041008"}]},"Version":"0.0.0.3","RequestTime":"2017-08-07T07:36:15.0296866Z","RequestId":null}, ResponseResult":1, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace384515747", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace384515747'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 4, 1, {"Data":{"ShippingMarkNumber":"T5093-EKD1808071096-0001","BindingPackageByNumberList":[{"OrderId":"TestXM236871","Number":"61299992140437041008"}]},"Version":"0.0.0.3","RequestTime":"2017-08-07T09:26:06.4938141Z","RequestId":null}, ResponseResult":1, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2095064787", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2095064787'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 5, 1, {"Data":"T5093-EKD1808071096","Version":"0.0.0.3","RequestTime":"2017-08-07T09:43:47.3784621Z","RequestId":null}, ResponseResult":1, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1040776996", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1040776996'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 6, 1, {"Data":{"BatchNumber":"T5093-EKD1808071096","ShippingMarkLabel":2,"ShowMadeInChina":true,"ShowReference":true},"Version":"0.0.0.3","RequestTime":"2018-05-23T01:06:55.7600511Z","RequestId":null}, ShippingMarkNumber":"T5093-EKD1808071096-0001, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace724608044", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace724608044'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 58, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 失败, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace878668275", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace878668275'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.GeneratedMethodAccessor14.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 59, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 车用, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1574749319", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1574749319'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.GeneratedMethodAccessor14.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 60, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, {"SignatureOption":""}}}, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2119992687", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2119992687'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case.test_case(All_Test_Case.java:173)
+	at sun.reflect.GeneratedMethodAccessor14.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 1, 1, {"Data":{"BatchNumber":"T5093-EKD1808071096","ProductCode":"F-E(2DAY)ddd","WarehouseCode":"CA","ReferenceNumber":"","LabelType":1},"Version":"0.0.0.3","RequestTime":"2017-09-21T08:00:38.0852597Z","RequestId":null}, T5093-EKD1808071096, [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"0"}]}], [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"1"}]},{"no":"2","sql":"selectLeaveAmount,Typefrommemberwheremobilephone='13666666668'","expectedResult":[{"LeaveAmount":"0.00","Type":"1"}]}]</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace565839681", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace565839681'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 2, 1, {"Data":{"BoxNum":2,"BatchNumber":"T5093-EKD1808071096","ShippingMarks":[{"ShippingMarkNumber":"T5093-EKD1808071096-0001","ReferenceBoxNumber":"ZDYXMH723897"},{"ShippingMarkNumber":"T5093-EKD1808071096-0002","ReferenceBoxNumber":""}]},"Version":"0.0.0.3","RequestTime":"2018-08-05T09:14:43.2154393Z","RequestId":"3287ff3e-03ef-42d9-8cea-3b661b1fba3c1"}, T5093-EKD1808071096, [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"0"}]}], [{"no":"1","sql":"selectcount(*)astotalNumfrommemberwheremobilephone='13666666668'","expectedResult":[{"totalNum":"1"}]},{"no":"2","sql":"selectLeaveAmount,Typefrommemberwheremobilephone='13666666668'","expectedResult":[{"LeaveAmount":"0.00","Type":"1"}]}]</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1824872646", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1824872646'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 3, 1, {"Data":{"ShippingMarkNumber":"T5093-EKD1808071096-0001","BindingPackageByNumberList":[{"OrderId":"TestXM368966","Number":"61299992140437040988"},{"OrderId":"TestXM428608","Number":"61299992140437040995"},{"OrderId":"TestXM236871","Number":"61299992140437041008"}]},"Version":"0.0.0.3","RequestTime":"2017-08-07T07:36:15.0296866Z","RequestId":null}, ResponseResult":1, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1814827909", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1814827909'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 4, 1, {"Data":{"ShippingMarkNumber":"T5093-EKD1808071096-0001","BindingPackageByNumberList":[{"OrderId":"TestXM236871","Number":"61299992140437041008"}]},"Version":"0.0.0.3","RequestTime":"2017-08-07T09:26:06.4938141Z","RequestId":null}, ResponseResult":1, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1426435610", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1426435610'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 5, 1, {"Data":"T5093-EKD1808071096","Version":"0.0.0.3","RequestTime":"2017-08-07T09:43:47.3784621Z","RequestId":null}, ResponseResult":1, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace56861999", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace56861999'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 6, 1, {"Data":{"BatchNumber":"T5093-EKD1808071096","ShippingMarkLabel":2,"ShowMadeInChina":true,"ShowReference":true},"Version":"0.0.0.3","RequestTime":"2018-05-23T01:06:55.7600511Z","RequestId":null}, ShippingMarkNumber":"T5093-EKD1808071096-0001, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1262607708", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1262607708'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 57, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 失败, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1242688388", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1242688388'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 58, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 车用, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace94919826", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace94919826'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 59, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, {"SignatureOption":""}}}, , </td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace633079302", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace633079302'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.domoyun.testCase.All_Test_Case2.test_case(All_Test_Case2.java:72)
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:348)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:343)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 7, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 8, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 9, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 10, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 11, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 12, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 13, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 14, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 15, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 16, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 17, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 18, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 19, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 20, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 21, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 22, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 23, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 24, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 25, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 26, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 27, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 28, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 29, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 30, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 31, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 32, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 33, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 34, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 35, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 36, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 37, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 38, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 39, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 40, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 41, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 42, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 43, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 44, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 45, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 46, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 47, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 48, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 49, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 50, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 51, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 52, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 53, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 54, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 55, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 56, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case<br>Parameters: 57, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case@2c9f9fb0</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 7, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 8, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 9, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 10, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 11, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 12, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 13, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 14, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 15, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 16, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 17, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 18, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 19, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 20, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 21, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 22, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 23, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 24, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 25, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 26, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 27, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 28, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 29, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 30, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 31, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 32, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 33, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 34, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 35, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 36, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 37, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 38, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 39, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 40, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 41, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 42, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 43, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 44, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 45, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 46, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 47, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 48, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 49, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 50, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 51, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 52, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 53, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 54, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 55, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+<tr>
+<td title='com.domoyun.testCase.All_Test_Case2.test_case()'><b>test_case</b><br>Test class: com.domoyun.testCase.All_Test_Case2<br>Parameters: 56, 1, {"Version":"0.0.0.3","Data":{"OrderID":"TestFedex6069QW","ParcelInformation":{"Weight":"70","WeightUnit":1,"Length":"30","Width":"20","Height":"10","SizeUnit":1,"ExistDangeroursGoods":false,"ProductInformations":[{"Description":"phonecase","Quantity":1,"Weight":"1.000","WeightUnit":4,"Value":"0.0","Sku":"","Remark":"","ProductUrl":"","HSCode":"testcode"}]},"RecipientAddress":{"FirstName":"Shelley","LastName":"Bond","Company":null,"StreetAddress":"3817HarrisonStreet","StreetAddress2":"Address2","StreetAddress3":null,"City":"SanFrancisco","State":"CA","ZIPCode":"94122","Country":"US","PhoneNumber":"+1.4155669802","IsResidential":true},"ChannelName":"FEDEX","Token":"99999999999999999999999999999999","ServiceTypeCode":"FEDEX_GROUND","WarehouseCode":"CA","LabelMarkText":null,"RedundancyField":{"SignatureOption":""}}}, 0.0.0.3, , </td>
+<td></td>
+<td>0</td>
+<td>com.domoyun.testCase.All_Test_Case2@69d9c55</td></tr>
+</table><p>
+</body>
+</html>

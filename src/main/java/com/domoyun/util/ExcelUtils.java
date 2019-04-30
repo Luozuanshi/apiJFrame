@@ -49,9 +49,7 @@ public class ExcelUtils {
 	 * @param cellData
 	 */
 	public static void addCellData(CellData cellData) {
-		synchronized (ExcelUtils.class) {
 			cellDatasToWriteList.add(cellData);
-		}
 	}
 
 	/**
@@ -80,11 +78,8 @@ public class ExcelUtils {
 	 * @param sheetName
 	 */
 	public static void putmap(String sheetName) {
-		
-		synchronized (ExcelUtils.class) {
 			cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
 			ExcelUtils.clearlist();
-		}
 	}
 	
 	/**
@@ -357,7 +352,7 @@ public class ExcelUtils {
 						
 						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 						cellToWrite8.setCellType(CellType.FORMULA);
-						cellToWrite8.setCellFormula("HYPERLINK(\"" + "D:\\Users\\Jarvan\\Pictures\\Camera Roll\\941498c7300d458c8db53a2664ce49f6.jpg"+ "\",\"" + "image"+ "\")");
+						cellToWrite8.setCellFormula("HYPERLINK(\"" +cellData.getFilepath()+ "\",\"" + cellData.getFileName() + "\")");
 						
 					}
 				

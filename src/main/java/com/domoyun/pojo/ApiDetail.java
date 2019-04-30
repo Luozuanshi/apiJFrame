@@ -150,7 +150,7 @@ public class ApiDetail extends ExcelObject{
 				+ useCaseTitle + ", requestData=" + requestData + ", expectedReponseData=" + expectedReponseData
 				+ ", actualReponseData=" + actualReponseData + ", assertResult=" + assertResult + ", base64img="
 				+ base64img + ", preCheckSQL=" + preCheckSQL + ", preCheckResult=" + preCheckResult + ", afterCheckSQL="
-				+ afterCheckSQL + ", afterCheckResult=" + afterCheckResult + "]";
+				+ afterCheckSQL + ", afterCheckResult=" + afterCheckResult + "]\n";
 	}
 	
 }

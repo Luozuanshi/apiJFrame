@@ -15,14 +15,18 @@ public class CellData {
 	private int[] cellNum;
 	private String result;
 	private String assertresult;
+	private String filepath;
+	private String fileName;
 
-	public CellData(String sheetName,String caseId, int[] cellNum, String result, String assertresult) {
+	public CellData(String sheetName,String caseId, int[] cellNum, String result, String assertresult,String filePath,String filename) {
 		super();
 		this.sheetName = sheetName;
 		this.caseId = caseId;
 		this.cellNum = cellNum;
 		this.result = result;
 		this.assertresult = assertresult;
+		this.filepath = filePath;
+		this.fileName =filename;
 	}
 
 	public String getSheetName() {
@@ -64,14 +68,28 @@ public class CellData {
 	public void setAssertresult(String assertresult) {
 		this.assertresult = assertresult;
 	}
+	
+	public String getFilepath() {
+		return filepath;
+	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public String toString() {
 		return "CellData [sheetName=" + sheetName + ", caseId=" + caseId + ", cellNum=" + Arrays.toString(cellNum)
-				+ ", result=" + result + ", assertresult=" + assertresult + "]";
+				+ ", result=" + result + ", assertresult=" + assertresult + ", filepath=" + filepath + ", fileName="
+				+ fileName + "]";
 	}
-
+	
 }

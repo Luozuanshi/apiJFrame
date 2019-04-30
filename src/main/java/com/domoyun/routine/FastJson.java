@@ -6,6 +6,8 @@ package com.domoyun.routine;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.codec.digest.Md5Crypt;
 
@@ -45,27 +47,33 @@ public class FastJson {
 		System.out.println(System.getProperty("user.dir")+"\\"+System.currentTimeMillis()+".jpg");
 	}
 	
-	public static String base64Output(String actualResult,String useCaseTitle) {
-		
+	public static Map<String, String> base64Output(String actualResult,String useCaseTitle,String sheetname) {
+		Map<String, String> hashMap = new HashMap<String, String>();
+		hashMap.put("filepath",System.getProperty("user.dir")+"\\"+sheetname+"\\"+useCaseTitle+".pdf");
+		hashMap.put("filename",useCaseTitle+".jpg");
 		JSONObject obj;
 		try {
 			obj = JSON.parseObject(actualResult);
 		} catch (Exception e) {
 //			e.printStackTrace();
-			return actualResult;
+			hashMap.put("actualResult", actualResult);
+			return hashMap;
 		}
 		//取出Data JsonObj
 		JSONObject obj1 =JSON.parseObject(obj.getString("Data")) ;
 		if (obj1 ==null) {
-			return actualResult;
+			hashMap.put("actualResult", actualResult);
+			return hashMap;
 		}
 		//取出LabelImage value
 		String LabelImage =obj1.getString("LabelImage"); 
 
 		//base64写出图片
-		Base64.generateImage(LabelImage, System.getProperty("user.dir")+"\\"+useCaseTitle+".jpg");
+		Base64.generateImage(LabelImage, System.getProperty("user.dir")+"\\"+sheetname+"\\"+useCaseTitle+".pdf");
 		//响应结果替换base64值
-		return actualResult.toString().replace(LabelImage, "值为Base64，具体信息请查看日志");
+		String c = actualResult.toString().replace(LabelImage, "值为Base64，具体信息请查看日志");
+		hashMap.put("actualResult", c);
+		return hashMap;
 	}
 
 }
