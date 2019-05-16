@@ -46,6 +46,7 @@ public class MainStart extends Base{
 		  String filepath = actualResultMap.get("filepath");
 		  String filename = actualResultMap.get("filename");
 		  
+		  
 		//4：要写的数据的收集
 		int[] cell={7,8,9};
 		ExcelUtils.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));

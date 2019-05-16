@@ -1,6 +1,11 @@
 package com.domoyun.pojo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import com.domoyun.InterfaceAbstract.WriteCollection;
+import com.domoyun.util.ExcelUtils;
 
 /**
  * 	要写回excel数据描述
@@ -9,7 +14,7 @@ import java.util.Arrays;
  * @desc 
  * @email
  */
-public class CellData {
+public class CellData implements WriteCollection{
 	private String sheetName;
 	private String caseId;
 	private int[] cellNum;
@@ -18,6 +23,37 @@ public class CellData {
 	private String filepath;
 	private String fileName;
 
+	@Override
+	public void addCellData(CellData cellData) {
+		cellDatasToWriteList.add(cellData);	
+	}
+
+	@Override
+	public List<CellData> getCellData() {
+		List<CellData> tempCellDatas = new ArrayList<>();
+		for(int i=0;i<cellDatasToWriteList.size();i++){
+			CellData example = cellDatasToWriteList.get(i);
+			tempCellDatas.add(example);
+	    }
+		return tempCellDatas;
+	}
+
+	@Override
+	public List<CellData> getCellDatasToWriteList(String sheetName) {
+		return cellDatasToWriteMap.get(sheetName);
+	}
+
+	@Override
+	public void putmap(String sheetName) {
+		cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
+		ExcelUtils.clearlist();
+	}
+
+	@Override
+	public void clearlist() {
+		cellDatasToWriteList.clear();
+	};
+	
 	public CellData(String sheetName,String caseId, int[] cellNum, String result, String assertresult,String filePath,String filename) {
 		super();
 		this.sheetName = sheetName;

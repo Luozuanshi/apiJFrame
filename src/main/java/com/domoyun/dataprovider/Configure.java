@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.ApiInfo;
 import com.domoyun.pojo.CellData;
-import com.domoyun.pojo.ExcelObject;
+import com.domoyun.pojo.InterfaceT.ApiDetail;
 import com.domoyun.util.ExcelUtils;
 /**
  * 	 配置信息Sheet 表关联

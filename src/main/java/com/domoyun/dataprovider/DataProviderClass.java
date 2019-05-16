@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.testng.annotations.DataProvider;
 
-import com.domoyun.pojo.ApiDetail;
-import com.domoyun.pojo.ExcelObject;
+import com.domoyun.InterfaceAbstract.ExcelObject;
+import com.domoyun.pojo.InterfaceT.ApiDetail;
 import com.domoyun.util.ExcelUtils;
 
 /**

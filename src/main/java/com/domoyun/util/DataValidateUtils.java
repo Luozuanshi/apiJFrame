@@ -7,7 +7,6 @@ import java.util.List;
 import org.testng.Assert;
 
 import com.alibaba.fastjson.JSONObject;
-import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.SqlChecker;
 import com.domoyun.pojo.ValidateResult;
 
