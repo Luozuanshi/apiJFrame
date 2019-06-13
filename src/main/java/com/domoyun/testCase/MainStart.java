@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.domoyun.base.Base;
+import com.domoyun.base.WriteCollection;
 import com.domoyun.dataprovider.Configure;
 import com.domoyun.dataprovider.DataProviderClass;
 import com.domoyun.pojo.CellData;
@@ -49,8 +50,8 @@ public class MainStart extends Base{
 		  
 		//4：要写的数据的收集
 		int[] cell={7,8,9};
-		ExcelUtils.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));
-		
+		CellData cellData =new CellData();
+		cellData.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));
 		/*
 		 * url =
 		 * "http://192.168.109.224:8000/V4/Api/LabelPrintService/CancelLabel?type=json";
@@ -64,7 +65,7 @@ public class MainStart extends Base{
 		
 		//5.数据写出 全局静态变量 cellDatasToWriteMap
 		if (sheetNumMaxsize ==Integer.parseInt(caseId)) {
-			ExcelUtils.putmap(sheetname);
+			cellData.putmap(sheetname);
 		}
 		//6.用例断言
 		Assert.assertTrue(actualResult.contains(expectedReponseData));

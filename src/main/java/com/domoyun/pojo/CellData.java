@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.domoyun.InterfaceAbstract.WriteCollection;
+import com.domoyun.base.WriteCollection;
 import com.domoyun.util.ExcelUtils;
 
 /**
@@ -65,6 +65,10 @@ public class CellData implements WriteCollection{
 		this.fileName =filename;
 	}
 
+	public CellData(){
+		
+	}
+	
 	public String getSheetName() {
 		return sheetName;
 	}

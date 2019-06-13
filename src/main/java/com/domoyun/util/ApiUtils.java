@@ -31,15 +31,15 @@ public class ApiUtils {
 		}
 		
 		//重新把把apiDetail信息封装成map
-		List<ApiDetail> apiDetailList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", "request_data",ApiDetail.class);
-		for (ApiDetail apiDetail : apiDetailList) {
-			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
-		}
+//		List<ApiDetail> apiDetailList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", "request_data",ApiDetail.class);
+//		for (ApiDetail apiDetail : apiDetailList) {
+//			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
+//		}
 		
-		List<ApiDetail> getCountryList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", "getCountry",ApiDetail.class);
-		for (ApiDetail apiDetail : apiDetailList) {
-			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
-		}
+//		List<ApiDetail> getCountryList = (List<ApiDetail>) ExcelUtils.readExcel("/apibatch.xlsx", "getCountry",ApiDetail.class);
+//		for (ApiDetail apiDetail : apiDetailList) {
+//			apiDetailMap.put(apiDetail.getCaseId(), apiDetail);
+//		}
 
 	}
 
