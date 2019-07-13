@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class ParameterUtils {
 	
 	//全局数据池
-	public static Map<String, String> globalDataMap = new HashMap<>();
+	private static Map<String, String> globalDataMap = new HashMap<>();
 	
 	/**
 	 *	 添加数据到全局数据池中间
@@ -104,7 +104,6 @@ public class ParameterUtils {
 					e.printStackTrace();
 				}
 			}
-			
 			str = str.replace(totalStr, result);
 		}
 		return str;
@@ -115,7 +114,8 @@ public class ParameterUtils {
 		
 		globalDataMap.put("mobliephone", "1355555555");
 		String str = "{\"mobilephone\":\"${mobliephone}\",\"pwd\":\"__md5(123456)\",\"regname\":\"__getRegName(aa,bb,cc,dd)\"}";
-//		System.out.println(getCommonStr(str));
+		System.out.println(str);
+		System.out.println(getCommonStr(str));
 		str = getFunctionOptStr(getCommonStr(str));
 		System.out.println(str);
 	}

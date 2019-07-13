@@ -55,42 +55,6 @@ public interface WriteCollection {
 	
 }
 
-class savaAndWriteData implements WriteCollection{
-
-	@Override
-	public void addCellData(CellData cellData) {
-		cellDatasToWriteList.add(cellData);
-	}
-
-	@Override
-	public List<CellData> getCellData() {
-		List<CellData> tempCellDatas = new ArrayList<>();
-		for(int i=0;i<cellDatasToWriteList.size();i++){
-			CellData example = cellDatasToWriteList.get(i);
-			tempCellDatas.add(example);
-	    }
-		return tempCellDatas;
-	}
-
-	@Override
-	public List<CellData> getCellDatasToWriteList(String sheetName) {
-		return cellDatasToWriteMap.get(sheetName);
-	}
-
-	@Override
-	public void putmap(String sheetName) {
-		cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
-		ExcelUtils.clearlist();
-	}
-
-	@Override
-	public void clearlist() {
-		cellDatasToWriteList.clear();
-	}
-	
-	
-}
-
 
 
 interface ApplePredicate{

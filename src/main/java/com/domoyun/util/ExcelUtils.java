@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
+import com.domoyun.base.WriteCollection;
 import com.domoyun.dataprovider.Configure;
 import com.domoyun.pojo.CellData;
 
@@ -33,58 +34,8 @@ import com.domoyun.pojo.CellData;
  * @version 1.0 创建时间2019年4月10日下午2:55:25 类描述：
  */
 public class ExcelUtils {
-	/**
-	 * 要写的cell数据池
-	 * cellDatasToWriteList临时中转数据用的对象集合-list<CellData>
-	 * cellDatasToWriteMap以键值对的形式存储各个sheet对象集合list<CellData>
-	 */
-	private static List<CellData> cellDatasToWriteList = new ArrayList<>();
-	private static Map<String,List<CellData>>  cellDatasToWriteMap = new HashMap<String, List<CellData>>();
-	
-	/**
-	 * 	添加要回写的数据
-	 * @param cellData
-	 */
-	public static void addCellData(CellData cellData) {
-			cellDatasToWriteList.add(cellData);
-	}
 
-	/**
-	 * 取出所有收集的数据
-	 * @return
-	 */
-	public static List<CellData> getCellData() {
-		List<CellData> tempCellDatas = new ArrayList<>();
-		for(int i=0;i<cellDatasToWriteList.size();i++){
-			CellData example = cellDatasToWriteList.get(i);
-			tempCellDatas.add(example);
-	    }
-		return tempCellDatas;
-	}
-	
-	/**
-	 * 获得不同sheetName要写的celldata数据
-	 * @return
-	 */
-	public static List<CellData> getCellDatasToWriteList(String sheetName) {
-		return cellDatasToWriteMap.get(sheetName);
-	}
-	
-	/**
-	 * 通过getCellData()取出所有收集的对象集合数据，put进cellDatasToWriteMap
-	 * @param sheetName
-	 */
-	public static void putmap(String sheetName) {
-			cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
-			ExcelUtils.clearlist();
-	}
-	
-	/**
-	 * 清除cellDatasToWriteList（临时中转数据用的对象集合-list<CellData>）
-	 */
-	public static void clearlist() {
-		cellDatasToWriteList.clear();
-	}
+
 
 	//单元格读取
     public String readExcelCell(int rowIndex, int cellIndex){
@@ -335,15 +286,15 @@ public class ExcelUtils {
 			// 获得工作簿对象
 			workbook = WorkbookFactory.create(inp);
 			// 获得对应编号的sheet
-			System.out.println(cellDatasToWriteMap.keySet().toString());
-				for (String sheeName : cellDatasToWriteMap.keySet()) {
+			System.out.println(WriteCollection.cellDatasToWriteMap.toString());
+				for (String sheeName : WriteCollection.cellDatasToWriteMap.keySet()) {
 //					System.out.println(sheeName+cellDatasToWriteMap.get(sheeName));
 					Sheet sheet = workbook.getSheet(sheeName);
 					// 获得最大的行号
 					int lastRowNum = sheet.getLastRowNum();
 
 					// 拿出所有要回写的数据
-					List<CellData> cellDataToWriteMapCellDatas = cellDatasToWriteMap.get(sheeName);
+					List<CellData> cellDataToWriteMapCellDatas = WriteCollection.cellDatasToWriteMap.get(sheeName);
 //					System.out.println(cellDataToWriteList);
 					for (CellData cellData : cellDataToWriteMapCellDatas) {
 						int rowNum = Configure.getRowNumByCaseId(cellData);

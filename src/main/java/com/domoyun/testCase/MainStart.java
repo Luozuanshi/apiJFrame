@@ -24,6 +24,8 @@ import com.domoyun.util.HttpUtils;
  * @email
  */
 public class MainStart extends Base{
+	//数据收集器
+	WriteCollection WriteCollecter =new CellData();
 	
 	@Test(dataProvider="getCountry",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
 	public void getCountry(String caseId,String apiId,String requestData,String expectedReponseData,
@@ -50,8 +52,8 @@ public class MainStart extends Base{
 		  
 		//4：要写的数据的收集
 		int[] cell={7,8,9};
-		CellData cellData =new CellData();
-		cellData.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));
+		
+		WriteCollecter.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));
 		/*
 		 * url =
 		 * "http://192.168.109.224:8000/V4/Api/LabelPrintService/CancelLabel?type=json";
@@ -65,7 +67,7 @@ public class MainStart extends Base{
 		
 		//5.数据写出 全局静态变量 cellDatasToWriteMap
 		if (sheetNumMaxsize ==Integer.parseInt(caseId)) {
-			cellData.putmap(sheetname);
+			WriteCollecter.putmap(sheetname);
 		}
 		//6.用例断言
 		Assert.assertTrue(actualResult.contains(expectedReponseData));

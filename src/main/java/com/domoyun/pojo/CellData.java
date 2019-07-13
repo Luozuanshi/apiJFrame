@@ -45,8 +45,8 @@ public class CellData implements WriteCollection{
 
 	@Override
 	public void putmap(String sheetName) {
-		cellDatasToWriteMap.put(sheetName, ExcelUtils.getCellData());
-		ExcelUtils.clearlist();
+		cellDatasToWriteMap.put(sheetName, getCellData());
+		clearlist();
 	}
 
 	@Override
