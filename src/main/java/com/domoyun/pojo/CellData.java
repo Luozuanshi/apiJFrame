@@ -22,7 +22,11 @@ public class CellData implements WriteCollection{
 	private String assertresult;
 	private String filepath;
 	private String fileName;
-
+	private String OrderID;
+	private String TrackingNumber;
+	private String WayBillNumber;
+	private String ChannelName;
+	private String WarehouseCode;
 	@Override
 	public void addCellData(CellData cellData) {
 		cellDatasToWriteList.add(cellData);	
@@ -36,6 +40,40 @@ public class CellData implements WriteCollection{
 			tempCellDatas.add(example);
 	    }
 		return tempCellDatas;
+	}
+
+	
+	
+	/**
+	 * @param sheetName
+	 * @param caseId
+	 * @param cellNum
+	 * @param result
+	 * @param assertresult
+	 * @param filepath
+	 * @param fileName
+	 * @param orderID
+	 * @param trackingNumber
+	 * @param wayBillNumber
+	 * @param channelName
+	 * @param warehouseCode
+	 */
+	public CellData(String sheetName, String caseId, int[] cellNum, String result, String assertresult, String filepath,
+			String fileName, String orderID, String trackingNumber, String wayBillNumber, String channelName,
+			String warehouseCode) {
+		super();
+		this.sheetName = sheetName;
+		this.caseId = caseId;
+		this.cellNum = cellNum;
+		this.result = result;
+		this.assertresult = assertresult;
+		this.filepath = filepath;
+		this.fileName = fileName;
+		this.OrderID = orderID;
+		this.TrackingNumber = trackingNumber;
+		this.WayBillNumber = wayBillNumber;
+		this.ChannelName = channelName;
+		this.WarehouseCode = warehouseCode;
 	}
 
 	@Override
@@ -54,15 +92,44 @@ public class CellData implements WriteCollection{
 		cellDatasToWriteList.clear();
 	};
 	
-	public CellData(String sheetName,String caseId, int[] cellNum, String result, String assertresult,String filePath,String filename) {
-		super();
-		this.sheetName = sheetName;
-		this.caseId = caseId;
-		this.cellNum = cellNum;
-		this.result = result;
-		this.assertresult = assertresult;
-		this.filepath = filePath;
-		this.fileName =filename;
+	public String getOrderID() {
+		return OrderID;
+	}
+
+	public void setOrderID(String orderID) {
+		OrderID = orderID;
+	}
+
+	public String getTrackingNumber() {
+		return TrackingNumber;
+	}
+
+	public void setTrackingNumber(String trackingNumber) {
+		TrackingNumber = trackingNumber;
+	}
+
+	public String getWayBillNumber() {
+		return WayBillNumber;
+	}
+
+	public void setWayBillNumber(String wayBillNumber) {
+		WayBillNumber = wayBillNumber;
+	}
+
+	public String getChannelName() {
+		return ChannelName;
+	}
+
+	public void setChannelName(String channelName) {
+		ChannelName = channelName;
+	}
+
+	public String getWarehouseCode() {
+		return WarehouseCode;
+	}
+
+	public void setWarehouseCode(String warehouseCode) {
+		WarehouseCode = warehouseCode;
 	}
 
 	public CellData(){
@@ -129,7 +196,8 @@ public class CellData implements WriteCollection{
 	public String toString() {
 		return "CellData [sheetName=" + sheetName + ", caseId=" + caseId + ", cellNum=" + Arrays.toString(cellNum)
 				+ ", result=" + result + ", assertresult=" + assertresult + ", filepath=" + filepath + ", fileName="
-				+ fileName + "]";
+				+ fileName + ", OrderID=" + OrderID + ", TrackingNumber=" + TrackingNumber + ", WayBillNumber="
+				+ WayBillNumber + ", ChannelName=" + ChannelName + ", WarehouseCode=" + WarehouseCode + "]\n";
 	}
 	
 }

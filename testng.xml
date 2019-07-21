@@ -12,12 +12,12 @@
 			<class name="com.domoyun.testCase.All_Test_Case2"/> 
 		</classes>
 	</test> -->
-		<test name="getCountry">
+		<test name="MainStart2">
 		<classes>
 			<class name="com.domoyun.testCase.MainStart" />
 		</classes>
 	</test> 
-	<listeners>
+ 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
-	</listeners>
+	</listeners> 
 </suite>

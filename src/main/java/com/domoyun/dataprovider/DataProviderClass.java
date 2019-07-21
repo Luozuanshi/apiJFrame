@@ -9,8 +9,12 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
+import com.domoyun.hibernate.LabelrequestRecord.LabelRequestRecord;
+import com.domoyun.hibernate.LabelrequestRecord.SelectSQL;
 import com.domoyun.pojo.InterfaceT.ApiDetail;
+import com.domoyun.routine.dingdingtalk;
 import com.domoyun.util.ExcelUtils;
+
 
 /**
  *	 项目名称：apiFrame
@@ -69,26 +73,36 @@ public class DataProviderClass {
 		return datas;
 	}
 	
-	@DataProvider(name="getRegionForReceiving")
-	public static Object[][] getRegionForReceiving(Method m){
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","getRegionForReceiving", ApiDetail.class);
+	@DataProvider(name="CancelLale")
+	public static Object[][] CancelLale(Method m){
+		List<LabelRequestRecord> objectList = SelectSQL.demo9();
+		System.out.println(objectList);
 		int size = objectList.size();
 		System.out.println(size);
+		if (size==0) {
+			
+			dingdingtalk.dingdingtalk("当天取消单", "# **当天测试单** @所有人\r\n\n\n" + 
+					"- 预报订单数量: `"+size+"` \r\n" + 
+					
+					"![测试](http://img03.sogoucdn.com/app/a/100520021/4064a5d087583c058a69f9635e02b6b8)");
+		}
 		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
-		Object[][] datas = new Object[size][8];
+		Object[][] datas = new Object[size][7];
 		
 		for(int i=0;i<size;i++){
-			ApiDetail apiDetail = (ApiDetail) objectList.get(i);
-			datas[i][0] = apiDetail.getCaseId();
-			datas[i][1] = apiDetail.getApiId();
-			datas[i][2] = apiDetail.getRequestData();
-			datas[i][3] = apiDetail.getExpectedReponseData();
-			datas[i][4] = apiDetail.getPreCheckSQL();
-			datas[i][5] = apiDetail.getAfterCheckSQL();
-			datas[i][6] = m.getName();
-			datas[i][7] = size;
+			LabelRequestRecord LabelRequestRecord = (LabelRequestRecord) objectList.get(i);
+			datas[i][0] = LabelRequestRecord.getOrderID();
+			datas[i][1] = LabelRequestRecord.getTrackingNumber();
+			datas[i][2] = LabelRequestRecord.getWayBillNumber();
+			datas[i][3] = LabelRequestRecord.getChannelName();
+			datas[i][4] = LabelRequestRecord.getWarehouseCode();
+			datas[i][5] = m.getName();
+			datas[i][6] = size;
 		}
 		return datas;
+		
+	
+		
 	}
 }

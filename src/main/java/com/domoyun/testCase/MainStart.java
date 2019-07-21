@@ -13,8 +13,10 @@ import com.domoyun.dataprovider.Configure;
 import com.domoyun.dataprovider.DataProviderClass;
 import com.domoyun.pojo.CellData;
 import com.domoyun.routine.FastJson;
+import com.domoyun.routine.dingdingtalk;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.HttpUtils;
+
 
 /**
  * 	测试类	
@@ -26,51 +28,33 @@ import com.domoyun.util.HttpUtils;
 public class MainStart extends Base{
 	//数据收集器
 	WriteCollection WriteCollecter =new CellData();
-	
-	@Test(dataProvider="getCountry",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
-	public void getCountry(String caseId,String apiId,String requestData,String expectedReponseData,
-			String preCheckSQL,String afterCheckSQL,String sheetname,int sheetNumMaxsize,String useCaseTitle) throws ClientProtocolException, IOException, InterruptedException {
+	int ExcuteCount =0;
+	@Test(dataProvider="CancelLale",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
+	public void CancelLale(String OrderID,String TrackingNumber,
+			String WayBillNumber,String ChannelName,String WarehouseCode,String sheetname,int sheetNumMaxsize) throws ClientProtocolException, IOException, InterruptedException {
 		//1：准备url
-		String url = Configure.getUrlByApiId(apiId);
 		//2：发包,得到响应结果
-		String actualResult = HttpUtils.request(apiId,url,requestData,sheetname);
 //		System.out.println(actualResult);
 		//3.请求数据断言
-		String assertstString =null;
 		
-		  if (!(actualResult.isEmpty())) { 
-			  assertstString = (actualResult.contains(expectedReponseData)?"通过":"不通过"); 
-		  }
-		  else {
-		  assertstString = "响应结果为空"; }
 		  
-		  Map<String, String> actualResultMap =  FastJson.base64Output(actualResult,useCaseTitle,sheetname); 
-		  actualResult = actualResultMap.get("actualResult");
-		  String filepath = actualResultMap.get("filepath");
-		  String filename = actualResultMap.get("filename");
 		  
 		  
 		//4：要写的数据的收集
-		int[] cell={7,8,9};
+		int[] cell={3,4,5,6};
 		
-		WriteCollecter.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));
-		/*
-		 * url =
-		 * "http://192.168.109.224:8000/V4/Api/LabelPrintService/CancelLabel?type=json";
-		 * requestData ="{\r\n" + "  \"Data\": {\r\n" +
-		 * "    \"orderID\": \"TestHKRM171068\", \r\n" +
-		 * "    \"trackingNumber\": \"IDP222217605GB\"\r\n" + "  }, \r\n" +
-		 * "  \"RequestId\": \"请自己生成一个GUID\", \r\n" +
-		 * "  \"RequestTime\": \"当前的UTC0时间\", \r\n" + "  \"Version\": \"0.0.0.3\"\r\n" +
-		 * "}\r\n" + ""; actualResult = HttpUtils.HttpPostWithJson(url, requestData);
-		 */
-		
+		WriteCollecter.addCellData(new CellData("", "", cell, "", "", "", "", OrderID, TrackingNumber, WayBillNumber, ChannelName, WayBillNumber));
+	
+		++ExcuteCount;
 		//5.数据写出 全局静态变量 cellDatasToWriteMap
-		if (sheetNumMaxsize ==Integer.parseInt(caseId)) {
-			WriteCollecter.putmap(sheetname);
+		
+		if (sheetNumMaxsize==ExcuteCount) {
+			WriteCollecter.putmap("CancelLable");
+			dingdingtalk.dingdingtalk("当天取消单", "# **当天测试单** @所有人\r\n\n\n" + 
+					"- 预报订单数量: `"+sheetNumMaxsize+"` \r\n" + 
+					
+					"![测试](http://img03.sogoucdn.com/app/a/100520021/4064a5d087583c058a69f9635e02b6b8)");
 		}
-		//6.用例断言
-		Assert.assertTrue(actualResult.contains(expectedReponseData));
 	} 
 	
 }

@@ -25,6 +25,7 @@ import com.domoyun.InterfaceAbstract.ExcelObject;
 import com.domoyun.base.WriteCollection;
 import com.domoyun.dataprovider.Configure;
 import com.domoyun.pojo.CellData;
+import com.domoyun.routine.dingdingtalk;
 
 
 /**
@@ -258,7 +259,7 @@ public class ExcelUtils {
 	}
 
 	/**
-	 * 写回数据到excel 性能问题： 1：如果写1000次数据，就要io操作1000次
+	  *   写回数据到excel 性能问题： 1：如果写1000次数据，就要io操作1000次
 	 * --》只读写一次可以ok了（把所有的要写的相关信息先收集起来，所有测试用例执行完毕之后再写） 往第1行第1列写入aaa 往第1行第2列写入bbb
 	 * 往第2行第1列写入ccc 往第2行第5列写入ddd 往第3行第10列写入eee 2：如果caseId对应的行比较靠后，前面遍历次数会非常多（已解决）
 	 * --》告诉我一个caseId，就能拿到对应的行（rowNum）
@@ -296,26 +297,58 @@ public class ExcelUtils {
 					// 拿出所有要回写的数据
 					List<CellData> cellDataToWriteMapCellDatas = WriteCollection.cellDatasToWriteMap.get(sheeName);
 //					System.out.println(cellDataToWriteList);
-					for (CellData cellData : cellDataToWriteMapCellDatas) {
-						int rowNum = Configure.getRowNumByCaseId(cellData);
+					int MaxDataLength = cellDataToWriteMapCellDatas.size();
+					for (int i = 0; i < MaxDataLength; i++) {
+						Row row = sheet.getRow(i+1);
+						for (int j = i; j == i; j++) {
+							
+								Cell WarehouseCode  = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+								WarehouseCode.setCellType(CellType.STRING);
+								WarehouseCode.setCellValue(cellDataToWriteMapCellDatas.get(i).getWarehouseCode());
+								
+								Cell WayBillNumber = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+								WayBillNumber.setCellType(CellType.STRING);
+								WayBillNumber.setCellValue(cellDataToWriteMapCellDatas.get(i).getChannelName());
+								
+								Cell OrderID = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+								OrderID.setCellType(CellType.STRING);
+								OrderID.setCellValue(cellDataToWriteMapCellDatas.get(i).getOrderID());
+								
+								Cell ChannelName = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[3] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+								ChannelName.setCellType(CellType.STRING);
+								ChannelName.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
+								
+						}
 						
-//						System.out.println(rowNum);
-						Row row = sheet.getRow(rowNum );
-						
-						Cell cellToWrite6 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-						cellToWrite6.setCellType(CellType.STRING);
-						cellToWrite6.setCellValue(cellData.getResult());
-						
-						Cell cellToWrite7 = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-						cellToWrite7.setCellType(CellType.STRING);
-						cellToWrite7.setCellValue(cellData.getAssertresult());
 
-						
-						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-						cellToWrite8.setCellType(CellType.FORMULA);
-						cellToWrite8.setCellFormula("HYPERLINK(\"" +cellData.getFilepath()+ "\",\"" + cellData.getFileName() + "\")");
-						
 					}
+					
+					
+//					for (CellData cellData : cellDataToWriteMapCellDatas) {
+//						int rowNum = Configure.getRowNumByCaseId(cellData);
+//						
+//						System.out.println(rowNum);
+						
+//						Cell cellToWrite6 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+//						cellToWrite6.setCellType(CellType.STRING);
+//						cellToWrite6.setCellValue(cellData.getResult());
+//						
+//						Cell cellToWrite7 = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+//						cellToWrite7.setCellType(CellType.STRING);
+//						cellToWrite7.setCellValue(cellData.getAssertresult());
+//
+//						
+//						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+//						cellToWrite8.setCellType(CellType.FORMULA);
+//						cellToWrite8.setCellFormula("HYPERLINK(\"" +cellData.getFilepath()+ "\",\"" + cellData.getFileName() + "\")");
+						
+						
+						
+//						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+//						cellToWrite8.setCellType(CellType.FORMULA);
+//						cellToWrite8.setCellFormula("HYPERLINK(\"" +cellData.getFilepath()+ "\",\"" + cellData.getFileName() + "\")");
+						
+//					}
 				
 				}
 				
@@ -350,6 +383,7 @@ public class ExcelUtils {
 			 * //已经匹配上了，跳出循环 break; } }
 			 */
 
+				
 			outputStream = new FileOutputStream(new File(targetExcelPath));
 			workbook.write(outputStream);
 		} catch (Exception e) {
