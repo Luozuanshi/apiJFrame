@@ -34,9 +34,9 @@
 		<property name="c3p0.idle_test_period">3000</property>
 		
  		<!-- 设置事务隔离级别 -->
-		<!-- <property name="hibernate.connection.isolation">4</property> -->
+		 <property name="hibernate.connection.isolation">4</property> 
 		<!-- 配置当前线程绑定的Session -->
-<!-- 		<property name="hibernate.current_session_context_class">thread</property>  -->
+		<property name="hibernate.current_session_context_class">thread</property>  
 		
 		<!-- 引入映射 -->
 		<mapping resource="com/domoyun/hibernate/LabelrequestRecord/LabelRequestRecord.hbm.xml"/>

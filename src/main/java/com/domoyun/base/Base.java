@@ -3,6 +3,7 @@ package com.domoyun.base;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import com.domoyun.InterfaceAbstract.WriteCollection;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.ParameterUtils;
 /**

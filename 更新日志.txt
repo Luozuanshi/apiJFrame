@@ -3,7 +3,7 @@ apiFrame
 1.接口调通支持批量请求，响应，数据回写
 
 2019年4月10日
-1.新建bat使脚本脱离eclipse运行，测试1000条接口并发。
+1.使用maven-surefire-plugin插件使脚本脱离eclipse运行使用maven命令运行。
 2.调试实例base64转图片&图片插入表格。
 3.新增表字段assertresult，用于断言用例是否通过
 
@@ -21,16 +21,21 @@ apiFrame
 
 2019年4月16日
 添加HttpPostWithXml方法，支持xml数据格式请求。
-
-抽取出dataprovider类，测试类优化，减少线性代码
+新建dataprovider类，代码结构优化，减少线性代码
 
 2019年4月17日
-增加FastJson类
+引入FastJson类
 处理LabelImage字段返回的一长串Base64响应报文
 替换为固定文本,并写出为图片保存在本地
 新增字段测试标题
 
+2019年7月12日下午12:35:28 引入hibernate ORM数据库框架
+ 
+2019年7月22日下午5:37:10 引入钉钉SDK
 
+2019年8月2日10:28:40 重新设计WriteCollection接口,实现其子类PrintLabelBean,CancelLabelBean
+
+2019年8月2日10:24:44  引入Extentreport测试报告
 
 
 

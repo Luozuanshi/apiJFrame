@@ -1,102 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="1" failed="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="1627" started-at="2019-07-21T05:54:43Z" finished-at="2019-07-21T05:54:45Z">
+  <suite name="Default suite" duration-ms="5" started-at="2019-08-02T02:56:34Z" finished-at="2019-08-02T02:56:34Z">
     <groups>
     </groups>
-    <test name="MainStart2" duration-ms="1627" started-at="2019-07-21T05:54:43Z" finished-at="2019-07-21T05:54:45Z">
-      <class name="com.domoyun.testCase.MainStart">
-        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:com.domoyun.testCase.MainStart@2344fc66]" name="BeforeSuite" is-config="true" duration-ms="859" started-at="2019-07-21T13:54:42Z" finished-at="2019-07-21T13:54:43Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeSuite -->
-        <test-method status="SKIP" signature="CancelLale(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)[pri:0, instance:com.domoyun.testCase.MainStart@2344fc66]" name="CancelLale" duration-ms="0" started-at="2019-07-21T13:54:45Z" data-provider="CancelLale" finished-at="2019-07-21T13:54:45Z">
-          <exception class="java.lang.RuntimeException">
-            <message>
-              <![CDATA[org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.RuntimeException: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
-	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:162)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:441)
-	at org.testng.internal.Invoker.handleParameters(Invoker.java:1300)
-	at org.testng.internal.Invoker.createParameters(Invoker.java:1015)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1104)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:244)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:208)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:189)
-	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:217)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.handleTypes(MetadataBuildingProcess.java:352)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:111)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:83)
-	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:418)
-	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:87)
-	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:692)
-	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724)
-	at com.domoyun.hibernate.LabelrequestRecord.SelectSQL.demo9(SelectSQL.java:30)
-	at com.domoyun.dataprovider.DataProviderClass.CancelLale(DataProviderClass.java:79)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:136)
-	... 20 more
-Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: HHH010003: JDBC Driver class not found: com.microsoft.sqlserver.jdbc.SQLServerDriver
-	at org.hibernate.c3p0.internal.C3P0ConnectionProvider.configure(C3P0ConnectionProvider.java:131)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:217)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:189)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:234)
-	... 41 more
-Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [com.microsoft.sqlserver.jdbc.SQLServerDriver]
-	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:229)
-	at org.hibernate.c3p0.internal.C3P0ConnectionProvider.configure(C3P0ConnectionProvider.java:128)
-	... 49 more
-Caused by: java.lang.ClassNotFoundException: Could not load requested class : com.microsoft.sqlserver.jdbc.SQLServerDriver
-	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl$AggregatedClassLoader.findClass(ClassLoaderServiceImpl.java:217)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Unknown Source)
-	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:226)
-	... 50 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.RuntimeException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CancelLale -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.domoyun.testCase.MainStart@2344fc66]" name="afterSuite" is-config="true" duration-ms="360" started-at="2019-07-21T13:54:45Z" finished-at="2019-07-21T13:54:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterSuite -->
-      </class> <!-- com.domoyun.testCase.MainStart -->
-    </test> <!-- MainStart2 -->
-  </suite> <!-- Suite -->
+    <test name="Default test" duration-ms="5" started-at="2019-08-02T02:56:34Z" finished-at="2019-08-02T02:56:34Z">
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

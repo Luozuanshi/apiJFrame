@@ -1,17 +1,15 @@
 package com.domoyun.hibernate.LabelrequestRecord;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.testng.annotations.Test;
 
+import com.domoyun.hibernate.utils.HibernateUtils;
 /**
  * HQL的查询方式的测试类
  * 
@@ -21,10 +19,7 @@ import org.testng.annotations.Test;
 public class SelectSQL {
 	@Test
 	public static List<LabelRequestRecord> demo9() {
-		Configuration configure = new Configuration().configure();
-		SessionFactory sf = configure.buildSessionFactory();
-
-		Session session = sf.openSession();
+		Session session = HibernateUtils.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 //		LabelRequestRecord labelRequestRecord = new LabelRequestRecord();
 //		labelRequestRecord_copy2.setChannelName("FEDEX");
@@ -61,6 +56,11 @@ public class SelectSQL {
 			String smon=sm.format(date);   
 			String sday=sd.format(date);   
 			System.out.println(syear+"-"+smon+"-"+sday);
+
 			return syear+"-"+smon+"-"+sday+" 00:00:00";
+		}
+		public static void main(String[] args) {
+			System.out.println(domo10());
+			
 		}
 }

@@ -7,11 +7,11 @@ import org.apache.http.client.ClientProtocolException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.domoyun.InterfaceAbstract.WriteCollection;
 import com.domoyun.base.Base;
-import com.domoyun.base.WriteCollection;
 import com.domoyun.dataprovider.Configure;
 import com.domoyun.dataprovider.DataProviderClass;
-import com.domoyun.pojo.CellData;
+import com.domoyun.pojo.bean.PrintLabelBean;
 import com.domoyun.routine.FastJson;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.HttpUtils;
@@ -23,9 +23,9 @@ import com.domoyun.util.HttpUtils;
  * @desc 测试类
  * @email
  */
-public class MainStart4 extends Base{
+public class PrintLabel extends Base{
 	//数据收集器
-	WriteCollection WriteCollecter =new CellData();
+	WriteCollection WriteCollecter =new PrintLabelBean();
 	
 	@Test(dataProvider="getCountry",dataProviderClass=DataProviderClass.class)//dataProvider="datas"
 	public void getCountry(String caseId,String apiId,String requestData,String expectedReponseData,
@@ -52,8 +52,7 @@ public class MainStart4 extends Base{
 		  
 		//4：要写的数据的收集
 		int[] cell={7,8,9};
-		
-//		WriteCollecter.addCellData(new CellData(sheetname,caseId, cell, actualResult,assertstString,filepath,filename));
+		WriteCollecter.addData(new PrintLabelBean(caseId, cell, actualResult, assertstString));
 		/*
 		 * url =
 		 * "http://192.168.109.224:8000/V4/Api/LabelPrintService/CancelLabel?type=json";

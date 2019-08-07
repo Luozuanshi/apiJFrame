@@ -69,8 +69,6 @@ public class LabelRequestRecord {
 	String ShipToPhoneExtension;
 	String WarehouseCode;
 	
-	
-	
 	/**
 	 * @return the id
 	 */

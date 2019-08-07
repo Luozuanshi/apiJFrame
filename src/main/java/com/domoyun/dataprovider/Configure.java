@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.domoyun.pojo.ApiInfo;
-import com.domoyun.pojo.CellData;
 import com.domoyun.pojo.InterfaceT.ApiDetail;
+import com.domoyun.pojo.bean.PrintLabelBean;
 import com.domoyun.util.ExcelUtils;
 /**
  * 	 配置信息Sheet 表关联
@@ -69,7 +69,7 @@ public class Configure {
 	 * @param caseId
 	 * @return
 	 */
-	public static int getRowNumByCaseId(CellData obj){
+	public static int getRowNumByCaseId(PrintLabelBean obj){
 		return Integer.valueOf(obj.getCaseId());
 	}
 

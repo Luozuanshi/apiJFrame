@@ -6,8 +6,7 @@ import java.util.Map;
 
 import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.ApiInfo;
-import com.domoyun.pojo.CellData;
-import com.domoyun.pojo.ExcelObject;
+import com.domoyun.pojo.bean.PrintLabelBean;
 /**
  * 	表关联
  *	 项目名称：apiFrame
@@ -79,7 +78,7 @@ public class ApiUtils {
 		return apiDetailMap.get(caseId).getRowNum();
 	}
 
-	public static int getRowNumByCaseId(CellData obj){
+	public static int getRowNumByCaseId(PrintLabelBean obj){
 		return Integer.valueOf(obj.getCaseId());
 	}
 

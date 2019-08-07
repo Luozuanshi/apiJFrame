@@ -12,7 +12,7 @@ import com.domoyun.InterfaceAbstract.ExcelObject;
 import com.domoyun.hibernate.LabelrequestRecord.LabelRequestRecord;
 import com.domoyun.hibernate.LabelrequestRecord.SelectSQL;
 import com.domoyun.pojo.InterfaceT.ApiDetail;
-import com.domoyun.routine.dingdingtalk;
+import com.domoyun.routine.DingdingMessage;
 import com.domoyun.util.ExcelUtils;
 
 
@@ -25,6 +25,7 @@ import com.domoyun.util.ExcelUtils;
  * 	类描述：每个sheet数据提供者
  */
 public class DataProviderClass {
+	static DingdingMessage message = new DingdingMessage(0);
 	
 	@DataProvider(name="getCountry")
 	public static Object[][] getCountry(Method m){
@@ -81,10 +82,8 @@ public class DataProviderClass {
 		System.out.println(size);
 		if (size==0) {
 			
-			dingdingtalk.dingdingtalk("当天取消单", "# **当天测试单** @所有人\r\n\n\n" + 
-					"- 预报订单数量: `"+size+"` \r\n" + 
-					
-					"![测试](http://img03.sogoucdn.com/app/a/100520021/4064a5d087583c058a69f9635e02b6b8)");
+			message.RobotMarkdown("当天取消单", "### **当天测试单**  `@所有人`\r\n\n\n" + 
+					"- 预报订单数量: `"+size+"` \r\n" );
 		}
 		System.out.println(objectList);
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可

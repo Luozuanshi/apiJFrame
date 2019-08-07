@@ -7,9 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -22,10 +20,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
-import com.domoyun.base.WriteCollection;
-import com.domoyun.dataprovider.Configure;
-import com.domoyun.pojo.CellData;
-import com.domoyun.routine.dingdingtalk;
+import com.domoyun.InterfaceAbstract.WriteCollection;
+import com.domoyun.pojo.bean.CancelLabelBean;
 
 
 /**
@@ -68,105 +64,8 @@ public class ExcelUtils {
         return cellvalue;
     }
 	
-	
-	/**
-	 * 读取excel
-	 * @param excelPath 路径
-	 * @param sheetNum  sheet的编号
-	 * @param clazz     pojo类的字节码对象
-	 * @return
-	 */
-	public static List<? extends ExcelObject> readExcel(String excelPath, String sheetName,
-			Class<? extends ExcelObject> clazz) {
-		// 容器创建出来
-		List<ExcelObject> objList = new ArrayList<>();
-
-		try {
-			InputStream inp = ExcelUtils.class.getResourceAsStream(("/"+excelPath));
-			// 获得工作簿对象
-			Workbook workbook = WorkbookFactory.create(inp);
-			
-			// 获得第一个sheet
-			Sheet sheet = workbook.getSheet(sheetName);
-			
-			// 遍历--》思路应该怎么样？？
-			// 通过遍历拿到所有的行--》通过遍历拿到每一行的列
-			// 获得最后的行号(行的索引，从0开始)
-			int lastRowNum = sheet.getLastRowNum();
-			// 获得最大的列号
-			Row firstRow = sheet.getRow(0);
-			// 获得最大的列数
-			int lastCellNum = firstRow.getLastCellNum();
-
-			// 创建一个数组，保存表头
-			String[] columnNameArray = new String[lastCellNum];
-
-			// 获得表头--遍历第一行的每一列
-			for (int k = 0; k < lastCellNum; k++) {
-				// 获得当前行的每一列
-				Cell cell = firstRow.getCell(k, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-				// 设置列的类型
-				cell.setCellType(CellType.STRING);
-				// 获得该列的值
-				String columnName =cell.getStringCellValue();
-				// 放到容器中去
-				columnNameArray[k] = columnName;
-			}
-			
-			// 遍历每一行(i相当于行索引,第一行不要)
-			for (int i = 1; i <= lastRowNum; i++) {
-				// 通过字节码对象实例化一个对象：
-				ExcelObject obj = clazz.newInstance();
-				// 设置行号
-				obj.setRowNum(i + 1);
-				// 获得索引对应的行
-				Row row = sheet.getRow(i);
-				// 遍历每一列（j相当于列号）
-				for (int j = 0; j < lastCellNum; j++) {
-					
-					// 获得当前行的每一列
-					Cell cell = row.getCell(j, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-					// 设置列的类型
-					cell.setCellType(CellType.STRING);
-					// 获得该列的值
-					String cellValue = StringUtils.replace(cell.getStringCellValue());
-					// 给apiinfo的各个属性进行设值
-					// 获得此列的表头
-					String columnName = columnNameArray[j];
-					// 得到setter方法的名称
-					String setterMethodName = "set" + columnName.substring(0, columnName.indexOf("("));
-					// 得到setter方法
-					Method setterMethod = clazz.getMethod(setterMethodName, String.class);
-					
-					// 原始字符串的参数的替换
-					String commonStr = ParameterUtils.getCommonStr(cellValue);
- 
-					// 反射调用该方法
-					
-//					setterMethod.invoke(obj, cellValue);
-					setterMethod.invoke(obj, commonStr);
-					
-					// 获得第一个sheet
-					
-					
-				}
-//				System.out.println(apiInfo);
-				// 添加到容器
-				obj.setSheetName(sheet.getSheetName());
-				obj.setFileName(sheetName);
-				obj.setFilePath(ExcelUtils.class.getResource("/"+excelPath).toString());
-				obj.setMaxRowNum(lastRowNum);
-				obj.setMaxCellNum(lastCellNum);
-				objList.add(obj);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return objList;
-	}
-
-
-
+    
+    
 	/**
 	 * 
 	 * @param excelPath excel的路径
@@ -272,6 +171,102 @@ public class ExcelUtils {
 	 */
 
 	/**
+	 * 读取excel
+	 * @param excelPath 路径
+	 * @param sheetNum  sheet的编号
+	 * @param clazz     pojo类的字节码对象
+	 * @return
+	 */
+	public static List<? extends ExcelObject> readExcel(String excelPath, String sheetName,
+		Class<? extends ExcelObject> clazz) {
+		// 容器创建出来
+		List<ExcelObject> objList = new ArrayList<>();
+
+		try {
+			InputStream inp = ExcelUtils.class.getResourceAsStream(("/"+excelPath));
+			// 获得工作簿对象
+			Workbook workbook = WorkbookFactory.create(inp);
+			
+			// 获得第一个sheet
+			Sheet sheet = workbook.getSheet(sheetName);
+			
+			// 遍历
+			// 通过遍历拿到所有的行--》通过遍历拿到每一行的列
+			// 获得最后的行号(行的索引，从0开始)
+			int lastRowNum = sheet.getLastRowNum();
+			// 获得最大的列号
+			Row firstRow = sheet.getRow(0);
+			// 获得最大的列数
+			int lastCellNum = firstRow.getLastCellNum();
+
+			// 创建一个数组，保存表头
+			String[] columnNameArray = new String[lastCellNum];
+
+			// 获得表头--遍历第一行的每一列
+			for (int k = 0; k < lastCellNum; k++) {
+				// 获得当前行的每一列
+				Cell cell = firstRow.getCell(k, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+				// 设置列的类型
+				cell.setCellType(CellType.STRING);
+				// 获得该列的值
+				String columnName =cell.getStringCellValue();
+				// 放到容器中去
+				columnNameArray[k] = columnName;
+			}
+			
+			// 遍历每一行(i相当于行索引,第一行不要)
+			for (int i = 1; i <= lastRowNum; i++) {
+				// 通过字节码对象实例化一个对象：
+				ExcelObject obj = clazz.newInstance();
+				// 设置行号
+				obj.setRowNum(i + 1);
+				// 获得索引对应的行
+				Row row = sheet.getRow(i);
+				// 遍历每一列（j相当于列号）
+				for (int j = 0; j < lastCellNum; j++) {
+					// 获得当前行的每一列
+					
+					Cell cell = row.getCell(j, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+					// 设置列的类型
+					cell.setCellType(CellType.STRING);
+					// 获得该列的值
+					String cellValue = StringUtils.replace(cell.getStringCellValue());
+					// 给apiinfo的各个属性进行设值
+					// 获得此列的表头
+					String columnName = columnNameArray[j];
+					// 得到setter方法的名称
+					String setterMethodName = "set" + columnName.substring(0, columnName.indexOf("("));
+					// 得到setter方法
+					Method setterMethod = clazz.getMethod(setterMethodName, String.class);
+					
+					// 原始字符串的参数的替换
+					String commonStr = ParameterUtils.getCommonStr(cellValue);
+ 
+					// 反射调用该方法
+					
+//					setterMethod.invoke(obj, cellValue);
+					setterMethod.invoke(obj, commonStr);
+					
+					// 获得第一个sheet
+					
+					
+				}
+//				System.out.println(apiInfo);
+				// 添加到容器
+				obj.setSheetName(sheet.getSheetName());
+				obj.setFileName(sheetName);
+				obj.setFilePath(ExcelUtils.class.getResource("/"+excelPath).toString());
+				obj.setMaxRowNum(lastRowNum);
+				obj.setMaxCellNum(lastCellNum);
+				objList.add(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return objList;
+	}
+	
+	/**
 	 *	 批量回写
 	 * 
 	 * @param string
@@ -295,16 +290,16 @@ public class ExcelUtils {
 					int lastRowNum = sheet.getLastRowNum();
 
 					// 拿出所有要回写的数据
-					List<CellData> cellDataToWriteMapCellDatas = WriteCollection.cellDatasToWriteMap.get(sheeName);
+					List<CancelLabelBean> cellDataToWriteMapCellDatas =  (List<CancelLabelBean>) WriteCollection.cellDatasToWriteMap.get(sheeName);
 //					System.out.println(cellDataToWriteList);
 					int MaxDataLength = cellDataToWriteMapCellDatas.size();
 					for (int i = 0; i < MaxDataLength; i++) {
 						Row row = sheet.getRow(i+1);
 						for (int j = i; j == i; j++) {
-							
+							if (cellDataToWriteMapCellDatas.get(i).getCellNum().length!=0) {
 								Cell WarehouseCode  = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 								WarehouseCode.setCellType(CellType.STRING);
-								WarehouseCode.setCellValue(cellDataToWriteMapCellDatas.get(i).getWarehouseCode());
+								WarehouseCode.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
 								
 								Cell WayBillNumber = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 								WayBillNumber.setCellType(CellType.STRING);
@@ -317,6 +312,8 @@ public class ExcelUtils {
 								Cell ChannelName = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[3] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 								ChannelName.setCellType(CellType.STRING);
 								ChannelName.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
+							}
+								
 								
 						}
 						
@@ -324,66 +321,8 @@ public class ExcelUtils {
 					}
 					
 					
-//					for (CellData cellData : cellDataToWriteMapCellDatas) {
-//						int rowNum = Configure.getRowNumByCaseId(cellData);
-//						
-//						System.out.println(rowNum);
-						
-//						Cell cellToWrite6 = row.getCell(cellData.getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-//						cellToWrite6.setCellType(CellType.STRING);
-//						cellToWrite6.setCellValue(cellData.getResult());
-//						
-//						Cell cellToWrite7 = row.getCell(cellData.getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-//						cellToWrite7.setCellType(CellType.STRING);
-//						cellToWrite7.setCellValue(cellData.getAssertresult());
-//
-//						
-//						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-//						cellToWrite8.setCellType(CellType.FORMULA);
-//						cellToWrite8.setCellFormula("HYPERLINK(\"" +cellData.getFilepath()+ "\",\"" + cellData.getFileName() + "\")");
-						
-						
-						
-//						Cell cellToWrite8 = row.getCell(cellData.getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-//						cellToWrite8.setCellType(CellType.FORMULA);
-//						cellToWrite8.setCellFormula("HYPERLINK(\"" +cellData.getFilepath()+ "\",\"" + cellData.getFileName() + "\")");
-						
-//					}
-				
 				}
-				
-				/*
-				 * HSSFPatriarch patriarch = (HSSFPatriarch) sheet.createDrawingPatriarch();
-				 * HSSFClientAnchor anchor = new HSSFClientAnchor(0, 0, 255, 255,(short) 1, 1,
-				 * (short) 5, 8); // 图片字节流 ByteArrayOutputStream byteArrayOut = new
-				 * ByteArrayOutputStream(); BufferedImage bufferImg = ImageIO.read(new
-				 * File("D:\\Users\\Jarvan\\Pictures\\Camera Roll\\941498c7300d458c8db53a2664ce49f6.jpg"
-				 * )); ImageIO.write(bufferImg, "jpg", byteArrayOut); byte[] imgtypes =
-				 * byteArrayOut.toByteArray();
-				 * 
-				 * 在工作簿中添加一张图片，返回图片的索引，base 1
-				 * 
-				 * @param pictureType 图片类型 PICTURE_TYPE_JPEG|PICTURE_TYPE_PNG
-				 * 
-				 * int puctureIndex = workbook.addPicture(byteArrayOut.toByteArray(),
-				 * HSSFWorkbook.PICTURE_TYPE_JPEG); // 创建图片 patriarch.createPicture(anchor,
-				 * puctureIndex);
-				 */
 
-			// 第一种方式：遍历每一行
-			/*
-			 * for(int i=1;i<=lastRowNum;i++){ //拿到当前的行 Row row = sheet.getRow(i);
-			 * //拿到当前行的第一列 Cell cell = row.getCell(0,
-			 * MissingCellPolicy.CREATE_NULL_AS_BLANK); cell.setCellType(CellType.STRING);
-			 * //获得当前列的数据 String firstCellValue = cell.getStringCellValue();
-			 * //判断第一列的数据是不是caseId //如果caseId等于第一列数据--》就是这一行 if
-			 * (caseId.equals(firstCellValue)) { Cell cellToWrite = row.getCell(cellNum - 1,
-			 * MissingCellPolicy.CREATE_NULL_AS_BLANK);
-			 * cellToWrite.setCellType(CellType.STRING); cellToWrite.setCellValue(result);
-			 * //已经匹配上了，跳出循环 break; } }
-			 */
-
-				
 			outputStream = new FileOutputStream(new File(targetExcelPath));
 			workbook.write(outputStream);
 		} catch (Exception e) {

@@ -1,5 +1,7 @@
 package com.domoyun.pojo;
 
+import com.domoyun.InterfaceAbstract.ExcelObject;
+
 /**
  * 	描述第二张sheet
  * @author pangluo

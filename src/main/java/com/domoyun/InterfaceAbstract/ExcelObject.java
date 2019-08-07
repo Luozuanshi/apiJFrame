@@ -1,5 +1,12 @@
 package com.domoyun.InterfaceAbstract;
 
+import java.lang.reflect.Method;
+
+import com.domoyun.pojo.bean.CancelLabelBean;
+import com.domoyun.pojo.bean.PrintLabelBean;
+import com.domoyun.testCase.PrintLabel;
+import com.domoyun.util.ParameterUtils;
+
 /**
  * excel所有描述sheet的基类
  * @author pangluo
@@ -10,7 +17,7 @@ package com.domoyun.InterfaceAbstract;
 public abstract class ExcelObject {
 	private String sheetName;
 	private int rowNum;
-	private int cellNum;
+	private int[] cellNum;
 	private String fileName;
 	private String filePath;
 	private int maxRowNum;
@@ -42,13 +49,13 @@ public abstract class ExcelObject {
 	/**
 	 * @return the cellNum
 	 */
-	public int getCellNum() {
+	public int[] getCellNum() {
 		return cellNum;
 	}
 	/**
 	 * @param cellNum the cellNum to set
 	 */
-	public void setCellNum(int cellNum) {
+	public void setCellNum(int[] cellNum) {
 		this.cellNum = cellNum;
 	}
 	/**
@@ -99,6 +106,27 @@ public abstract class ExcelObject {
 	public void setMaxCellNum(int maxCellNum) {
 		this.maxCellNum = maxCellNum;
 	}
+
+	public void getMethod(Class<?> clazz) {
+		Method[] Methods = clazz.getDeclaredMethods();
+//		for (Method method : Methods) {
+//			String columnName = columnNameArray[j];
+//			String setterMethodName = "get" + columnName.substring(0, columnName.indexOf("("));
+//			Method setterMethod = clazz.getMethod(setterMethodName, String.class);
+//			
+//			String commonStr = ParameterUtils.getCommonStr(cellValue);
+//			
+//			setterMethod.invoke(clazz, commonStr);
+//			
+//			System.out.println(method.toString());
+//			method.invoke(null, null)
+//		}
+	}
 	
-	
+	public static void main(String[] args) {
+		PrintLabelBean printLabelBean = new PrintLabelBean();
+		
+		printLabelBean.getMethod(CancelLabelBean.class);
+		
+	}
 }
