@@ -2,14 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="false" preserve-order="true">
 
-<!-- 	<test name="CancelLabel" >
- 	<classes>
-			<class name="com.domoyun.testCase.CancelLabel" />
-	</classes>
-	</test>  -->
-	<test name="PrintLabel">
+<!-- 	<test name="PrintLabel" >
  	<classes>
 			<class name="com.domoyun.testCase.PrintLabel" />
+	</classes>
+	</test>-->
+	<test name="CancelLabel">
+ 	<classes>
+			<class name="com.domoyun.testCase.CancelLabel" />
 	</classes>
 	</test>
 	

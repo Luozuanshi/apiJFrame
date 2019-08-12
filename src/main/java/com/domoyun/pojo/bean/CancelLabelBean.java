@@ -18,13 +18,14 @@ import com.domoyun.util.ExcelUtils;
  * @email
  */
 public class CancelLabelBean extends ExcelObject implements WriteCollection{
- 
 	private String caseId;
+	private String ApiId;
 	private String OrderID;
 	private String TrackingNumber;
 	private String WayBillNumber;
 	private String ChannelName;
 	private String WarehouseCode;
+	private String CancelResult;
 	
 	/**
 	 * 
@@ -33,7 +34,7 @@ public class CancelLabelBean extends ExcelObject implements WriteCollection{
 	}
 
 	public CancelLabelBean(String caseId, int[] cellNum, String orderID, String trackingNumber, String wayBillNumber,
-			String channelName, String warehouseCode) {
+			String channelName, String warehouseCode,String cancelResult) {
 		super.setCellNum(cellNum);
 		this.caseId = caseId;
 		this.OrderID = orderID;
@@ -41,13 +42,14 @@ public class CancelLabelBean extends ExcelObject implements WriteCollection{
 		this.WayBillNumber = wayBillNumber;
 		this.ChannelName = channelName;
 		this.WarehouseCode = warehouseCode;
+		this.CancelResult= cancelResult;
 	}
 
 	@Override
 	public void addData(WriteCollection WriteCollection) {
 		cellDatasToWriteList.add(WriteCollection);
 	}
-	
+
 	@Override
 	public List<CancelLabelBean> getData() {
 		List<CancelLabelBean> tempCellDatas = new ArrayList<>();
@@ -63,7 +65,7 @@ public class CancelLabelBean extends ExcelObject implements WriteCollection{
 		cellDatasToWriteMap.put(sheetName, getData());
 		clearlist();
 	}
-	
+
 	@Override
 	public List<CancelLabelBean> getDatasToWriteList(String sheetName) {
 		return (List<CancelLabelBean>) cellDatasToWriteMap.get(sheetName);
@@ -71,7 +73,7 @@ public class CancelLabelBean extends ExcelObject implements WriteCollection{
 
 	@Override
 	public void clearlist() {
-		cellDatasToWriteList.clear();		
+		cellDatasToWriteList.clear();
 	}
 
 	@Override
@@ -84,65 +86,82 @@ public class CancelLabelBean extends ExcelObject implements WriteCollection{
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public String getCaseId() {
 		return caseId;
 	}
 
-	public void setCaseId(String caseId) {
-		this.caseId = caseId;
+	public String getApiId() {
+		return ApiId;
 	}
 
 	public String getOrderID() {
 		return OrderID;
 	}
 
-	public void setOrderID(String orderID) {
-		OrderID = orderID;
-	}
-
 	public String getTrackingNumber() {
 		return TrackingNumber;
-	}
-
-	public void setTrackingNumber(String trackingNumber) {
-		TrackingNumber = trackingNumber;
 	}
 
 	public String getWayBillNumber() {
 		return WayBillNumber;
 	}
 
-	public void setWayBillNumber(String wayBillNumber) {
-		WayBillNumber = wayBillNumber;
-	}
-
 	public String getChannelName() {
 		return ChannelName;
-	}
-
-	public void setChannelName(String channelName) {
-		ChannelName = channelName;
 	}
 
 	public String getWarehouseCode() {
 		return WarehouseCode;
 	}
 
+	public String getCancelResult() {
+		return CancelResult;
+	}
+
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
+	}
+
+	public void setApiId(String apiId) {
+		ApiId = apiId;
+	}
+
+	public void setOrderID(String orderID) {
+		OrderID = orderID;
+	}
+
+	public void setTrackingNumber(String trackingNumber) {
+		TrackingNumber = trackingNumber;
+	}
+
+	public void setWayBillNumber(String wayBillNumber) {
+		WayBillNumber = wayBillNumber;
+	}
+
+	public void setChannelName(String channelName) {
+		ChannelName = channelName;
+	}
+
 	public void setWarehouseCode(String warehouseCode) {
 		WarehouseCode = warehouseCode;
 	}
 
-	@Override
-	public String toString() {
-		return "CancelLabelBean [caseId=" + caseId + ", OrderID=" + OrderID + ", TrackingNumber=" + TrackingNumber
-				+ ", WayBillNumber=" + WayBillNumber + ", ChannelName=" + ChannelName + ", WarehouseCode="
-				+ WarehouseCode + ", getCellNum()=" + Arrays.toString(getCellNum()) + "]";
+	public void setCancelResult(String cancelResult) {
+		CancelResult = cancelResult;
 	}
 
-
-
-
-	
+	@Override
+	public String toString() {
+		return "CancelLabelBean{" +
+				"caseId='" + caseId + '\'' +
+				", ApiId='" + ApiId + '\'' +
+				", OrderID='" + OrderID + '\'' +
+				", TrackingNumber='" + TrackingNumber + '\'' +
+				", WayBillNumber='" + WayBillNumber + '\'' +
+				", ChannelName='" + ChannelName + '\'' +
+				", WarehouseCode='" + WarehouseCode + '\'' +
+				", CancelResult='" + CancelResult + '\'' +
+				"} " + super.toString();
+	}
 }

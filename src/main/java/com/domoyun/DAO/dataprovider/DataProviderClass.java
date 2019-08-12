@@ -1,16 +1,18 @@
 /**
  * 
  */
-package com.domoyun.dataprovider;
+package com.domoyun.DAO.dataprovider;
 
 import java.lang.reflect.Method;
 import java.util.List;
 
+import com.domoyun.pojo.bean.CancelLabelBean;
+import com.domoyun.pojo.bean.PrintLabelBean;
 import org.testng.annotations.DataProvider;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
-import com.domoyun.hibernate.LabelrequestRecord.LabelRequestRecord;
-import com.domoyun.hibernate.LabelrequestRecord.SelectSQL;
+import com.domoyun.DAO.hibernate.LabelrequestRecord.LabelRequestRecord;
+import com.domoyun.DAO.hibernate.LabelrequestRecord.SelectSQL;
 import com.domoyun.pojo.InterfaceT.ApiDetail;
 import com.domoyun.routine.DingdingMessage;
 import com.domoyun.util.ExcelUtils;
@@ -29,7 +31,7 @@ public class DataProviderClass {
 	
 	@DataProvider(name="getCountry")
 	public static Object[][] getCountry(Method m){
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","getCountry", ApiDetail.class);
+		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","getCountry", PrintLabelBean.class);
 		int size = objectList.size();
 		System.out.println(size);
 		System.out.println(objectList);
@@ -37,23 +39,23 @@ public class DataProviderClass {
 		Object[][] datas = new Object[size][9];
 		
 		for(int i=0;i<size;i++){
-			ApiDetail apiDetail = (ApiDetail) objectList.get(i);
-			datas[i][0] = apiDetail.getCaseId();
-			datas[i][1] = apiDetail.getApiId();
-			datas[i][2] = apiDetail.getRequestData();
-			datas[i][3] = apiDetail.getExpectedReponseData();
-			datas[i][4] = apiDetail.getPreCheckSQL();
-			datas[i][5] = apiDetail.getAfterCheckSQL();
+			PrintLabelBean printLabelBean = (PrintLabelBean) objectList.get(i);
+			datas[i][0] = printLabelBean.getCaseId();
+			datas[i][1] = printLabelBean.getApiId();
+			datas[i][2] = printLabelBean.getRequestData();
+			datas[i][3] = printLabelBean.getExpectedReponseData();
+			datas[i][4] = printLabelBean.getPreCheckSQL();
+			datas[i][5] = printLabelBean.getAfterCheckSQL();
 			datas[i][6] = m.getName();
 			datas[i][7] = size;
-			datas[i][8]=apiDetail.getUseCaseTitle();
+			datas[i][8] =  printLabelBean.getUseCaseTitle();
 		}
 		return datas;
 	}
 	
 	@DataProvider(name="getRegion")
 	public static Object[][] getRegion(Method m){
-		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","getRegion", ApiDetail.class);
+		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","getRegion", PrintLabelBean.class);
 		int size = objectList.size();
 		System.out.println(size);
 		System.out.println(objectList);
@@ -74,30 +76,38 @@ public class DataProviderClass {
 		return datas;
 	}
 	
-	@DataProvider(name="CancelLale")
-	public static Object[][] CancelLale(Method m){
-		List<LabelRequestRecord> objectList = SelectSQL.demo9();
-		System.out.println(objectList);
-		int size = objectList.size();
+	@DataProvider(name="CancelLabel")
+	public static Object[][] CancelLabel(Method m){
+		List<LabelRequestRecord> DatebaseObjectList = SelectSQL.demo9();
+		List<ExcelObject> objectsList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","CancelLabel", CancelLabelBean.class);
+		System.out.println(DatebaseObjectList);
+		int size = DatebaseObjectList.size();
 		System.out.println(size);
 		if (size==0) {
 			
 			message.RobotMarkdown("当天取消单", "### **当天测试单**  `@所有人`\r\n\n\n" + 
 					"- 预报订单数量: `"+size+"` \r\n" );
 		}
-		System.out.println(objectList);
+
+		System.out.println(DatebaseObjectList);
+
 		//创建一个容器--》数据提供者需要的二维数组--》只要获得需要的信息即可
-		Object[][] datas = new Object[size][7];
-		
+		Object[][] datas = new Object[size][10];
+
 		for(int i=0;i<size;i++){
-			LabelRequestRecord LabelRequestRecord = (LabelRequestRecord) objectList.get(i);
+			LabelRequestRecord LabelRequestRecord = (LabelRequestRecord) DatebaseObjectList.get(i);
+			CancelLabelBean cancelLabelBean =(CancelLabelBean)  objectsList.get(i);
+
 			datas[i][0] = LabelRequestRecord.getOrderID();
 			datas[i][1] = LabelRequestRecord.getTrackingNumber();
 			datas[i][2] = LabelRequestRecord.getWayBillNumber();
 			datas[i][3] = LabelRequestRecord.getChannelName();
 			datas[i][4] = LabelRequestRecord.getWarehouseCode();
-			datas[i][5] = m.getName();
-			datas[i][6] = size;
+			datas[i][5]=  String.valueOf(LabelRequestRecord.getCreated());
+			datas[i][6] = m.getName();
+			datas[i][7] = size;
+			datas[i][8] = cancelLabelBean.getCaseId();
+			datas[i][9] = cancelLabelBean.getApiId();
 		}
 		return datas;
 		

@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.domoyun.hibernate.LabelrequestRecord.LabelRequestRecord">
+	<class name="com.domoyun.DAO.hibernate.LabelrequestRecord.LabelRequestRecord">
 		<!-- 建立OID与主键映射 -->
 		<id name="id" column="id">
 			<generator class="native"/>

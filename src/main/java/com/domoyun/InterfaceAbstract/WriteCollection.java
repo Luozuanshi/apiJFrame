@@ -3,11 +3,13 @@
  */
 package com.domoyun.InterfaceAbstract;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.domoyun.pojo.bean.CancelLabelBean;
 import com.domoyun.pojo.bean.PrintLabelBean;
 import com.domoyun.util.ExcelUtils;
 
@@ -62,6 +64,3 @@ public interface WriteCollection {
 }
 
 
-interface ApplePredicateb{
-	public boolean test(String a);
-}

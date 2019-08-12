@@ -41,7 +41,6 @@ public class DingdingMessage implements DingdingMessageInterface {
 			 this.client= new DefaultDingTalkClient(FILEACCESS_TOKEN);
 			 this.mediaUploadrequest = new OapiMediaUploadRequest();
 		}
-		
 	}
 
 
@@ -94,8 +93,6 @@ public class DingdingMessage implements DingdingMessageInterface {
 			e.printStackTrace();
 		}
 	}
-
-
 
 	@Override
 	public void UploadRequest(String path) {

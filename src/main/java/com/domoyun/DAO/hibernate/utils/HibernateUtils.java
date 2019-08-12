@@ -1,4 +1,4 @@
-package com.domoyun.hibernate.utils;
+package com.domoyun.DAO.hibernate.utils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

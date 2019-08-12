@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.domoyun.hibernate.LabelrequestRecord;
+package com.domoyun.DAO.hibernate.LabelrequestRecord;
 
 import java.util.Date;
 

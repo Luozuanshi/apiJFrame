@@ -39,6 +39,6 @@
 		<property name="hibernate.current_session_context_class">thread</property>  
 		
 		<!-- 引入映射 -->
-		<mapping resource="com/domoyun/hibernate/LabelrequestRecord/LabelRequestRecord.hbm.xml"/>
+		<mapping resource="com/domoyun/DAO/hibernate/LabelrequestRecord/LabelRequestRecord.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

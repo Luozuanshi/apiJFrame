@@ -30,12 +30,10 @@ import com.domoyun.pojo.bean.CancelLabelBean;
  * @author Test
  * @version 1.0 创建时间2019年4月10日下午2:55:25 类描述：
  */
-public class ExcelUtils {
-
-
+public class ExcelUtils  {
 
 	//单元格读取
-    public String readExcelCell(int rowIndex, int cellIndex){
+    public String readxcelCell(int rowIndex, int cellIndex){
     	rowIndex-=1;
     	cellIndex-=1;
     	InputStream inp = ExcelUtils.class.getResourceAsStream("/apibatch.xlsx");
@@ -48,7 +46,7 @@ public class ExcelUtils {
 		}
 		// 获得第一个sheet
 		Sheet sheet = workbook.getSheetAt(0);
-		
+
     	Row row = sheet.getRow(rowIndex);
         if (row == null) {
             System.out.println("第"+rowIndex+"行不存在");
@@ -64,7 +62,6 @@ public class ExcelUtils {
         return cellvalue;
     }
 	
-    
     
 	/**
 	 * 
@@ -134,11 +131,11 @@ public class ExcelUtils {
 		 */
 
 		ExcelUtils reader = new ExcelUtils();
-		System.out.println(reader.readExcelCell(2, 6)); 
-		
+		System.out.println(reader.readxcelCell(2, 6));
+
 		/*
 		 * String jsonStr =
-		 * "{\"mobilephone\":\"13517315669\",\"pwd\":\"123456\",\"regname\":\"柠檬班\"}";
+		 * "{\"mobilephone\":\"13517315669\",\"pwd\":\"123456\",\"regname\":\"PANGLUO\"}";
 		 * Map<String, String> dataMap = (Map<String, String>)
 		 * JSONObject.parse(jsonStr); Set<String> keySet = dataMap.keySet(); for (String
 		 * key : keySet) { System.out.println(key+":" + dataMap.get(key)); }
@@ -285,44 +282,45 @@ public class ExcelUtils {
 			System.out.println(WriteCollection.cellDatasToWriteMap.toString());
 				for (String sheeName : WriteCollection.cellDatasToWriteMap.keySet()) {
 //					System.out.println(sheeName+cellDatasToWriteMap.get(sheeName));
-					Sheet sheet = workbook.getSheet(sheeName);
+					    Sheet sheet = workbook.getSheet(sheeName);
 					// 获得最大的行号
 					int lastRowNum = sheet.getLastRowNum();
 
 					// 拿出所有要回写的数据
-					List<CancelLabelBean> cellDataToWriteMapCellDatas =  (List<CancelLabelBean>) WriteCollection.cellDatasToWriteMap.get(sheeName);
+                    List<CancelLabelBean> cellDataToWriteMapCellDatas =  (List<CancelLabelBean>) WriteCollection.cellDatasToWriteMap.get(sheeName);
 //					System.out.println(cellDataToWriteList);
-					int MaxDataLength = cellDataToWriteMapCellDatas.size();
+                    int MaxDataLength = cellDataToWriteMapCellDatas.size();
 					for (int i = 0; i < MaxDataLength; i++) {
-						Row row = sheet.getRow(i+1);
-						for (int j = i; j == i; j++) {
-							if (cellDataToWriteMapCellDatas.get(i).getCellNum().length!=0) {
-								Cell WarehouseCode  = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-								WarehouseCode.setCellType(CellType.STRING);
-								WarehouseCode.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
-								
-								Cell WayBillNumber = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-								WayBillNumber.setCellType(CellType.STRING);
-								WayBillNumber.setCellValue(cellDataToWriteMapCellDatas.get(i).getChannelName());
-								
-								Cell OrderID = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-								OrderID.setCellType(CellType.STRING);
-								OrderID.setCellValue(cellDataToWriteMapCellDatas.get(i).getOrderID());
-								
-								Cell ChannelName = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[3] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-								ChannelName.setCellType(CellType.STRING);
-								ChannelName.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
-							}
-								
-								
-						}
-						
 
+					    Row row = sheet.getRow(i+1);
+					    if(row!=null) {
+
+                            for (int j = i; j == i; j++) {
+                                Cell WarehouseCode = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                                WarehouseCode.setCellType(CellType.STRING);
+                                WarehouseCode.setCellValue(cellDataToWriteMapCellDatas.get(i).getWarehouseCode());
+
+                                Cell WayBillNumber = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                                WayBillNumber.setCellType(CellType.STRING);
+                                WayBillNumber.setCellValue(cellDataToWriteMapCellDatas.get(i).getChannelName());
+
+                                Cell OrderID = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                                OrderID.setCellType(CellType.STRING);
+                                OrderID.setCellValue(cellDataToWriteMapCellDatas.get(i).getOrderID());
+
+                                Cell ChannelName = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[3] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                                ChannelName.setCellType(CellType.STRING);
+                                ChannelName.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
+
+                                Cell CancelResult = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[4] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                                CancelResult.setCellType(CellType.STRING);
+                                CancelResult.setCellValue(cellDataToWriteMapCellDatas.get(i).getCancelResult());
+
+                            }
+                        }
 					}
 					
-					
 				}
-
 			outputStream = new FileOutputStream(new File(targetExcelPath));
 			workbook.write(outputStream);
 		} catch (Exception e) {

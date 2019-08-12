@@ -1,4 +1,4 @@
-package com.domoyun.hibernate.LabelrequestRecord;
+package com.domoyun.DAO.hibernate.LabelrequestRecord;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,11 +9,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 
-import com.domoyun.hibernate.utils.HibernateUtils;
+import com.domoyun.DAO.hibernate.utils.HibernateUtils;
 /**
  * HQL的查询方式的测试类
  * 
- * @author jt
+ * @author pangluo
  *
  */
 public class SelectSQL {
@@ -21,46 +21,30 @@ public class SelectSQL {
 	public static List<LabelRequestRecord> demo9() {
 		Session session = HibernateUtils.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-//		LabelRequestRecord labelRequestRecord = new LabelRequestRecord();
-//		labelRequestRecord_copy2.setChannelName("FEDEX");
-//		session.save(labelRequestRecord_copy2);
-		//--select * from LableRequestRecord where LabelStatus<>3 and Created=7103 order by id desc
-//		LableRequestRecord obj1 = session.get(LableRequestRecord.class, 1L);
-//		System.out.println(obj1);
 
-		//select * from LabelRequestRecord where LabelStatus<>3 and Created=7103 and CreateDate>'2019-7-14 00:00:00' order by id desc
-//		SQLQuery createSQL = session.createSQLQuery("select * from LabelRequestRecord where LabelStatus<>3 and Created=7103 and CreateDate>'2019-7-14 00:00:00' order by id desc");
-//		List<Object[]> list2 = createSQL.list();
-//		for (Object[] lableRequestRecord3 : list2) {
-//			System.out.println(Arrays.toString(lableRequestRecord3));
-//		}
-		
-		
-		Query createQuery = session.createQuery("from LabelRequestRecord where LabelStatus<>3 and CreateDate>'"+domo10()+"' order by id desc"); //
+		Query createQuery = session.createQuery("from LabelRequestRecord where CreateDate>'"+domo10()+"' order by id desc"); //
 		List<LabelRequestRecord> list = createQuery.list(); 
 		for(LabelRequestRecord lableRequestRecord2 : list) { 
 		System.out.println(lableRequestRecord2.toString());  }
 		tx.commit();
-		session.close();
 		return list;
 	}
 		@Test
 		public static String domo10() {
 			Date date = new Date();
 			SimpleDateFormat sy=new SimpleDateFormat("yyyy");   
-			  
 			SimpleDateFormat sm=new SimpleDateFormat("MM");   
-			  
 			SimpleDateFormat sd=new SimpleDateFormat("dd");   
 			String syear=sy.format(date);   
 			String smon=sm.format(date);   
 			String sday=sd.format(date);   
 			System.out.println(syear+"-"+smon+"-"+sday);
-
+			System.out.println(date);
 			return syear+"-"+smon+"-"+sday+" 00:00:00";
 		}
 		public static void main(String[] args) {
 			System.out.println(domo10());
-			
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+			System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
 		}
 }

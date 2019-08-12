@@ -1,4 +1,4 @@
-package com.domoyun.dataprovider;
+package com.domoyun.DAO.dataprovider;
 
 import java.util.HashMap;
 import java.util.List;

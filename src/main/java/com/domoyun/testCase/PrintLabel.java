@@ -9,11 +9,10 @@ import org.testng.annotations.Test;
 
 import com.domoyun.InterfaceAbstract.WriteCollection;
 import com.domoyun.base.Base;
-import com.domoyun.dataprovider.Configure;
-import com.domoyun.dataprovider.DataProviderClass;
+import com.domoyun.DAO.dataprovider.Configure;
+import com.domoyun.DAO.dataprovider.DataProviderClass;
 import com.domoyun.pojo.bean.PrintLabelBean;
 import com.domoyun.routine.FastJson;
-import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.HttpUtils;
 
 /**
@@ -33,7 +32,7 @@ public class PrintLabel extends Base{
 		//1：准备url
 		String url = Configure.getUrlByApiId(apiId);
 		//2：发包,得到响应结果
-		String actualResult = HttpUtils.request(apiId,url,requestData,sheetname);
+		String actualResult = HttpUtils.request(apiId,url,requestData,sheetname,"");
 //		System.out.println(actualResult);
 		//3.请求数据断言
 		String assertstString =null;

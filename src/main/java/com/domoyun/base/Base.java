@@ -3,7 +3,6 @@ package com.domoyun.base;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import com.domoyun.InterfaceAbstract.WriteCollection;
 import com.domoyun.util.ExcelUtils;
 import com.domoyun.util.ParameterUtils;
 /**
@@ -21,16 +20,16 @@ public class Base {
 		
 		//静态数据准备
 		ExcelUtils reader = new ExcelUtils();
-		ParameterUtils.addGlobalData("appToken", reader.readExcelCell(3, 6));
+		ParameterUtils.addGlobalData("appToken", reader.readxcelCell(3, 6));
 		System.out.println(ParameterUtils.getGlobalData("appToken"));
-		ParameterUtils.addGlobalData("appKey", reader.readExcelCell(4, 6));
+		ParameterUtils.addGlobalData("appKey", reader.readxcelCell(4, 6));
 		System.out.println(ParameterUtils.getGlobalData("appKey"));
 	}
 	
 	@AfterSuite
 	public static void afterSuite() {
 		//一次性数据回写	
-		ExcelUtils.batchWrite("apibatch.xlsx","target/classes/result.xlsx");
+		ExcelUtils.batchWrite("apibatch.xlsx","target/classes/apibatch.xlsx");
 	}
 	
 }

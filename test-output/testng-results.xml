@@ -1,11 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5" started-at="2019-08-02T02:56:34Z" finished-at="2019-08-02T02:56:34Z">
+  <suite name="Suite" duration-ms="11738" started-at="2019-08-12T09:20:23Z" finished-at="2019-08-12T09:20:35Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5" started-at="2019-08-02T02:56:34Z" finished-at="2019-08-02T02:56:34Z">
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    <test name="CancelLabel" duration-ms="11738" started-at="2019-08-12T09:20:23Z" finished-at="2019-08-12T09:20:35Z">
+      <class name="com.domoyun.testCase.CancelLabel">
+        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:com.domoyun.testCase.CancelLabel@b684286]" name="BeforeSuite" is-config="true" duration-ms="1867" started-at="2019-08-12T17:20:21Z" finished-at="2019-08-12T17:20:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeSuite -->
+        <test-method status="PASS" signature="CancelLabel(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)[pri:0, instance:com.domoyun.testCase.CancelLabel@b684286]" name="CancelLabel" duration-ms="1107" started-at="2019-08-12T17:20:33Z" data-provider="CancelLabel" finished-at="2019-08-12T17:20:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TestGround081202]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[61299991206440658266]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[YDCN1908120001001]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[FEDEX]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[CA]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[5087]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[CancelLabel]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CancelLabel -->
+        <test-method status="PASS" signature="CancelLabel(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)[pri:0, instance:com.domoyun.testCase.CancelLabel@b684286]" name="CancelLabel" duration-ms="374" started-at="2019-08-12T17:20:35Z" data-provider="CancelLabel" finished-at="2019-08-12T17:20:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TestGround081201]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[61299991206440658259]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[YDCN1908120000001]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[FEDEX]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[CA]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[5087]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[CancelLabel]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CancelLabel -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.domoyun.testCase.CancelLabel@b684286]" name="afterSuite" is-config="true" duration-ms="1289" started-at="2019-08-12T17:20:35Z" finished-at="2019-08-12T17:20:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- com.domoyun.testCase.CancelLabel -->
+    </test> <!-- CancelLabel -->
+  </suite> <!-- Suite -->
 </testng-results>

@@ -22,7 +22,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.domoyun.dataprovider.Configure;
+import com.domoyun.DAO.dataprovider.Configure;
 
 public class HttpUtils {
 
@@ -218,12 +218,12 @@ public class HttpUtils {
 	 * @param paramsMap
 	 * @return
 	 */
-	public static String request(String apiId, String url, String requestData,String sheetname) {
+	public static String request(String apiId, String url, String requestData,String sheetname,String created) {
 		String result = "";
 		String method = Configure.getRequestMethodByApiId(apiId);
 //		System.out.println(method);
 		 if ("postJson".equalsIgnoreCase(method)) {
-			result = HttpPostWithJson(url, requestData);
+			result = HttpPostWithJson(url, requestData,created);
 		}else if ("postXml".equalsIgnoreCase(method)) {
 			result = HttpPostWithXml(url, requestData,sheetname);
 		} 
@@ -236,7 +236,7 @@ public class HttpUtils {
 	 * @param json String类型的json格式数据
 	 * @return String类型json格式数据
 	 */
-	public static String HttpPostWithJson(String url, String json) {
+	public static String HttpPostWithJson(String url, String json,String authorization) {
 		String returnValue = "请求数据格式Json,这是默认返回值，接口调用失败";
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -249,9 +249,9 @@ public class HttpUtils {
 	        
 	        //第三步：给httpPost设置JSON格式的参数
 	        StringEntity requestEntity = new StringEntity(json,"utf-8");
-	        
-	        httpPost.addHeader("Authorization", "Basic cGFuZ2x1bzpjNHlWJEAkZE5R");
-	        requestEntity.setContentEncoding("UTF-8");    	        
+
+	        httpPost.addHeader("Authorization", "Basic "+authorization);
+	        requestEntity.setContentEncoding("UTF-8");
 	        httpPost.setHeader("Content-type", "application/json");
 	        httpPost.setEntity(requestEntity);
 	       

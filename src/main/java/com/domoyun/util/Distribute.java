@@ -4,23 +4,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.domoyun.pojo.ApiDetail;
 import com.domoyun.pojo.ApiInfo;
 import com.domoyun.pojo.bean.PrintLabelBean;
+
 /**
  * 	表关联
  *	 项目名称：apiFrame
- *	类名称：ApiUtils
+ *	类名称：Distribute
  * @author Test
  * @version 1.0
  * 	创建时间2019年4月12日下午3:23:21
  * 	类描述：
  */
-public class ApiUtils {
+public class Distribute {
 
 	static Map<String, ApiInfo> apiInfoMap = new HashMap<String, ApiInfo>();
 	
-	static Map<String, ApiDetail> apiDetailMap = new HashMap<>();
+	static Map<String, PrintLabelBean> apiDetailMap = new HashMap<>();
 
 	static {
 		//重新把apiinfo信息封装成map
@@ -57,14 +57,13 @@ public class ApiUtils {
 	 * @return
 	 */
 	public static String getRequestMethodByApiId(String apiId) {
-
 		return apiInfoMap.get(apiId).getType();
 	}
-	
-	public static int getRequestMethodByApiId(ApiDetail obj){
+
+	public static int getRequestMethodByApiId(PrintLabelBean obj){
 		return Integer.valueOf(obj.getApiId());
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(apiDetailMap.get("10086").getRowNum());
 	}
