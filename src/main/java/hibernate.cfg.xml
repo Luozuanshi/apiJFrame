@@ -20,7 +20,7 @@
 		<property name="hibernate.format_sql">true</property>
 		<!-- 自动创建表 -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		
+
 		<!-- 配置C3P0连接池 -->
 		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<!--在连接池中可用的数据库连接的最少数目 -->

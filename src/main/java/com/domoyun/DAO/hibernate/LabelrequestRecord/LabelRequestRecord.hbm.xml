@@ -57,7 +57,7 @@
 		 <property name="MainID"/>
 		 <property name="BoxNum"/>
 		 <property name="LabelType"/>
-		<property name="timestamp"/>
+		 <property name="timestamp"/>
 		 <property name="LabelAccountId"/>
 		 <property name="WayBillNumber"/>
 		 <property name="ShipToPhoneExtension"/>

@@ -5,12 +5,18 @@ import com.domoyun.util.ExcelUtils;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public abstract class WriteCollectionImp implements WriteCollection{
-	Object obj;
 
-	WriteCollectionImp(Object obj){
+public abstract class WriteCollectionImp extends ExcelObject implements WriteCollection{
+	Object obj;
+	private int[] cellNum;
+
+	public WriteCollectionImp(){
+	}
+
+	public WriteCollectionImp(Object obj){
 		this.obj =obj;
 	}
 
@@ -23,15 +29,15 @@ public abstract class WriteCollectionImp implements WriteCollection{
 	}
 
 	@Override
-	public void addData(WriteCollection WriteCollection) {
-		cellDatasToWriteList.add(WriteCollection);
+	public void addData(WriteCollection writeCollection) {
+		cellDatasToWriteList.add(writeCollection);
 	}
 
 	@Override
-	public List<CancelLabelBean> getData() {
-		List<CancelLabelBean> tempCellDatas = new ArrayList<>();
+	public List<WriteCollection> getData() {
+		List<WriteCollection> tempCellDatas = new ArrayList<>();
 		for(int i=0;i<cellDatasToWriteList.size();i++){
-			CancelLabelBean example = (CancelLabelBean) cellDatasToWriteList.get(i);
+			WriteCollection example = (WriteCollection) cellDatasToWriteList.get(i);
 			tempCellDatas.add(example);
 		}
 		return tempCellDatas;
@@ -44,8 +50,8 @@ public abstract class WriteCollectionImp implements WriteCollection{
 	}
 
 	@Override
-	public List<CancelLabelBean> getDatasToWriteList(String sheetName) {
-		return (List<CancelLabelBean>) cellDatasToWriteMap.get(sheetName);
+	public List<WriteCollection> getDatasToWriteList(String sheetName) {
+		return (List<WriteCollection>) cellDatasToWriteMap.get(sheetName);
 	}
 
 	@Override
@@ -62,5 +68,21 @@ public abstract class WriteCollectionImp implements WriteCollection{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int[] getCellNum() {
+		return cellNum;
+	}
+
+	public void setCellNum(int[] cellNum) {
+		this.cellNum = cellNum;
+	}
+
+	@Override
+	public String toString() {
+		return "WriteCollectionImp{" +
+				"obj=" + obj +
+				", cellNum=" + Arrays.toString(cellNum) +
+				'}';
 	}
 }

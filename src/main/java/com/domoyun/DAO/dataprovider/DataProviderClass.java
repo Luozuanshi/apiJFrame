@@ -95,7 +95,7 @@ public class DataProviderClass {
 		Object[][] datas = new Object[size][10];
 
 		for(int i=0;i<size;i++){
-			LabelRequestRecord LabelRequestRecord = (LabelRequestRecord) DatebaseObjectList.get(i);
+            LabelRequestRecord LabelRequestRecord = (LabelRequestRecord) DatebaseObjectList.get(i);
 			CancelLabelBean cancelLabelBean =(CancelLabelBean)  objectsList.get(i);
 
 			datas[i][0] = LabelRequestRecord.getOrderID();
@@ -103,7 +103,7 @@ public class DataProviderClass {
 			datas[i][2] = LabelRequestRecord.getWayBillNumber();
 			datas[i][3] = LabelRequestRecord.getChannelName();
 			datas[i][4] = LabelRequestRecord.getWarehouseCode();
-			datas[i][5]=  String.valueOf(LabelRequestRecord.getCreated());
+			datas[i][5] = String.valueOf(LabelRequestRecord.getCreated());
 			datas[i][6] = m.getName();
 			datas[i][7] = size;
 			datas[i][8] = cancelLabelBean.getCaseId();

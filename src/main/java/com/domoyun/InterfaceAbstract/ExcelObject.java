@@ -123,10 +123,10 @@ public abstract class ExcelObject {
 //		}
 	}
 	
-	public static void main(String[] args) {
-		PrintLabelBean printLabelBean = new PrintLabelBean();
-		
-		printLabelBean.getMethod(CancelLabelBean.class);
-		
-	}
+//	public static void main(String[] args) {
+//		PrintLabelBean printLabelBean = new PrintLabelBean();
+//
+//		printLabelBean.getMethod(CancelLabelBean.class);
+//
+//	}
 }

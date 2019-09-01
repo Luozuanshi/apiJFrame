@@ -60,10 +60,7 @@ public class CancelLabel extends Base{
 
 
 		  
-		//4：要写的数据的收集
-		int[] cell={3,4,5,6,7};
-		
-		WriteCollecter.addData(new CancelLabelBean("", cell, OrderID, TrackingNumber, WayBillNumber, ChannelName, WarehouseCode,assertstString));
+		WriteCollecter.addData(new CancelLabelBean("", "",OrderID, TrackingNumber, WayBillNumber, ChannelName, WarehouseCode,assertstString));
 		++ExcuteCount;
 
 		//5.数据写出 全局静态变量 cellDatasToWriteMap 发送钉钉消息

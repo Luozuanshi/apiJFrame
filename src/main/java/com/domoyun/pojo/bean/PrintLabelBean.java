@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
 import com.domoyun.InterfaceAbstract.WriteCollection;
+import com.domoyun.InterfaceAbstract.WriteCollectionImp;
 
 /**
  * 	要写回excel数据描述
@@ -14,7 +15,7 @@ import com.domoyun.InterfaceAbstract.WriteCollection;
  * @desc 
  * @email
  */
-public class PrintLabelBean extends ExcelObject implements WriteCollection{
+public class PrintLabelBean extends WriteCollectionImp {
 	//	CaseId(用例编号)
 	private String caseId;
 	//	ApiId(接口编号)
@@ -27,12 +28,13 @@ public class PrintLabelBean extends ExcelObject implements WriteCollection{
 	private String requestData;
 	//	ExpectedReponseData(期望响应数据)
 	private String expectedReponseData;
-	//ActualReponseData(实际响应数据)
-	private String actualReponseData;
-	//assertResult(断言结果)
-	private String assertResult;
 
-	private String base64img;
+	//ActualReponseData(实际响应数据)
+	private String WTactualReponseData;
+	//assertResult(断言结果)
+	private String WTassertResult;
+	//assertResult(BASE64圖片)
+	private String WTbase64img;
 
 	//	PreCheckSQL(前置验证SQL)
 	private String preCheckSQL;
@@ -44,63 +46,16 @@ public class PrintLabelBean extends ExcelObject implements WriteCollection{
 	private String afterCheckResult;
 
 	public PrintLabelBean() {
-		
+
 	}
 	
 	public PrintLabelBean(String caseId, int[] cellNum, String result, String assertresult) {
 		super.setCellNum(cellNum);;
 		this.caseId = caseId;
-		this.actualReponseData = result;
-		this.assertResult = assertresult;
-	}
-	
-
-
-
-	@Override
-	public void addData(WriteCollection WriteCollection) {
-		cellDatasToWriteList.add(WriteCollection);
-	}
-	
-	@Override
-	public List<PrintLabelBean> getData() {
-		List<PrintLabelBean> tempCellDatas = new ArrayList<>();
-		for(int i=0;i<cellDatasToWriteList.size();i++){
-			PrintLabelBean example = (PrintLabelBean) cellDatasToWriteList.get(i);
-			tempCellDatas.add(example);
-	    }
-		return tempCellDatas;
+		this.WTactualReponseData = result;
+		this.WTassertResult = assertresult;
 	}
 
-	@Override
-	public void putmap(String sheetName) {
-		cellDatasToWriteMap.put(sheetName, getData());
-		clearlist();
-	}
-	
-	@Override
-	public List<PrintLabelBean> getDatasToWriteList(String sheetName) {
-		return (List<PrintLabelBean>) cellDatasToWriteMap.get(sheetName);
-	}
-
-	@Override
-	public void clearlist() {
-		cellDatasToWriteList.clear();		
-	}
-
-	@Override
-	public void batchWrite(String sourceExcelPath, String targetExcelPath) {
-		
-	}
-
-	public static void main(String[] args) {
-		int[] arry0=new int[]{1,2,3,4,5};
-		int[] arry1=new int[]{1,2,3,4};
-		PrintLabelBean printLabelBean = new PrintLabelBean("1",arry0, "ture", "pass");
-		CancelLabelBean cancelLabelBean = new CancelLabelBean("2",arry1, "fedex123", "123456", "ydcn123456", "fedex", "ca","取消成功");
-		System.out.println(printLabelBean);
-		System.out.println(cancelLabelBean);
-	}
 	public String getCaseId() {
 		return caseId;
 	}
@@ -149,28 +104,28 @@ public class PrintLabelBean extends ExcelObject implements WriteCollection{
 		this.expectedReponseData = expectedReponseData;
 	}
 
-	public String getActualReponseData() {
-		return actualReponseData;
+	public String getWTactualReponseData() {
+		return WTactualReponseData;
 	}
 
-	public void setActualReponseData(String actualReponseData) {
-		this.actualReponseData = actualReponseData;
+	public void setWTactualReponseData(String WTactualReponseData) {
+		this.WTactualReponseData = WTactualReponseData;
 	}
 
-	public String getAssertResult() {
-		return assertResult;
+	public String getWTassertResult() {
+		return WTassertResult;
 	}
 
-	public void setAssertResult(String assertResult) {
-		this.assertResult = assertResult;
+	public void setWTassertResult(String WTassertResult) {
+		this.WTassertResult = WTassertResult;
 	}
 
-	public String getBase64img() {
-		return base64img;
+	public String getWTbase64img() {
+		return WTbase64img;
 	}
 
-	public void setBase64img(String base64img) {
-		this.base64img = base64img;
+	public void setWTbase64img(String WTbase64img) {
+		this.WTbase64img = WTbase64img;
 	}
 
 	public String getPreCheckSQL() {
@@ -205,6 +160,16 @@ public class PrintLabelBean extends ExcelObject implements WriteCollection{
 		this.afterCheckResult = afterCheckResult;
 	}
 
+	public static void main(String[] args) {
+		int[] arry0=new int[]{1,2,3,4,5};
+		int[] arry1=new int[]{1,2,3,4};
+		PrintLabelBean printLabelBean = new PrintLabelBean("1",arry0, "ture", "pass");
+//		CancelLabelBean cancelLabelBean = new CancelLabelBean("2",arry1, "fedex123", "123456", "ydcn123456", "fedex", "ca","取消成功");
+		System.out.println(printLabelBean);
+//		System.out.println(cancelLabelBean);
+	}
+
+
 	@Override
 	public String toString() {
 		return "PrintLabelBean{" +
@@ -214,9 +179,9 @@ public class PrintLabelBean extends ExcelObject implements WriteCollection{
 				", useCaseTitle='" + useCaseTitle + '\'' +
 				", requestData='" + requestData + '\'' +
 				", expectedReponseData='" + expectedReponseData + '\'' +
-				", actualReponseData='" + actualReponseData + '\'' +
-				", assertResult='" + assertResult + '\'' +
-				", base64img='" + base64img + '\'' +
+				", actualReponseData='" + WTactualReponseData + '\'' +
+				", assertResult='" + WTassertResult + '\'' +
+				", base64img='" + WTbase64img + '\'' +
 				", preCheckSQL='" + preCheckSQL + '\'' +
 				", preCheckResult='" + preCheckResult + '\'' +
 				", afterCheckSQL='" + afterCheckSQL + '\'' +

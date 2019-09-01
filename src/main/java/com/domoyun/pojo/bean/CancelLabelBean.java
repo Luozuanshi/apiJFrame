@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
 import com.domoyun.InterfaceAbstract.WriteCollection;
+import com.domoyun.InterfaceAbstract.WriteCollectionImp;
 import com.domoyun.base.Base;
 import com.domoyun.util.ExcelUtils;
 
@@ -17,151 +18,108 @@ import com.domoyun.util.ExcelUtils;
  * @desc 
  * @email
  */
-public class CancelLabelBean extends ExcelObject implements WriteCollection{
+public class CancelLabelBean extends WriteCollectionImp {
 	private String caseId;
 	private String ApiId;
-	private String OrderID;
-	private String TrackingNumber;
-	private String WayBillNumber;
-	private String ChannelName;
-	private String WarehouseCode;
-	private String CancelResult;
-	
-	/**
-	 * 
-	 */
+	private String WTOrderID;
+	private String WTTrackingNumber;
+	private String WTWayBillNumber;
+	private String WTChannelName;
+	private String WTWarehouseCode;
+	private String WTCancelResult;
+
 	public CancelLabelBean() {
+		super();
 	}
 
-	public CancelLabelBean(String caseId, int[] cellNum, String orderID, String trackingNumber, String wayBillNumber,
-			String channelName, String warehouseCode,String cancelResult) {
-		super.setCellNum(cellNum);
-		this.caseId = caseId;
-		this.OrderID = orderID;
-		this.TrackingNumber = trackingNumber;
-		this.WayBillNumber = wayBillNumber;
-		this.ChannelName = channelName;
-		this.WarehouseCode = warehouseCode;
-		this.CancelResult= cancelResult;
-	}
-
-	@Override
-	public void addData(WriteCollection WriteCollection) {
-		cellDatasToWriteList.add(WriteCollection);
-	}
-
-	@Override
-	public List<CancelLabelBean> getData() {
-		List<CancelLabelBean> tempCellDatas = new ArrayList<>();
-		for(int i=0;i<cellDatasToWriteList.size();i++){
-			CancelLabelBean example = (CancelLabelBean) cellDatasToWriteList.get(i);
-			tempCellDatas.add(example);
-	    }
-		return tempCellDatas;
-	}
-
-	@Override
-	public void putmap(String sheetName) {
-		cellDatasToWriteMap.put(sheetName, getData());
-		clearlist();
-	}
-
-	@Override
-	public List<CancelLabelBean> getDatasToWriteList(String sheetName) {
-		return (List<CancelLabelBean>) cellDatasToWriteMap.get(sheetName);
-	}
-
-	@Override
-	public void clearlist() {
-		cellDatasToWriteList.clear();
-	}
-
-	@Override
-	public void batchWrite(String sourceExcelPath, String targetExcelPath) {
-		Class<ExcelUtils> ExcelUtils = ExcelUtils.class;
-		try {
-			Method method = ExcelUtils.getDeclaredMethod("batchWrite", String.class,String.class);
-			method.invoke(sourceExcelPath, targetExcelPath);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	public String getCaseId() {
 		return caseId;
-	}
-
-	public String getApiId() {
-		return ApiId;
-	}
-
-	public String getOrderID() {
-		return OrderID;
-	}
-
-	public String getTrackingNumber() {
-		return TrackingNumber;
-	}
-
-	public String getWayBillNumber() {
-		return WayBillNumber;
-	}
-
-	public String getChannelName() {
-		return ChannelName;
-	}
-
-	public String getWarehouseCode() {
-		return WarehouseCode;
-	}
-
-	public String getCancelResult() {
-		return CancelResult;
 	}
 
 	public void setCaseId(String caseId) {
 		this.caseId = caseId;
 	}
 
+	public String getApiId() {
+		return ApiId;
+	}
+
 	public void setApiId(String apiId) {
 		ApiId = apiId;
 	}
 
-	public void setOrderID(String orderID) {
-		OrderID = orderID;
+	public String getWTOrderID() {
+		return WTOrderID;
 	}
 
-	public void setTrackingNumber(String trackingNumber) {
-		TrackingNumber = trackingNumber;
+	public void setWTOrderID(String WTOrderID) {
+		this.WTOrderID = WTOrderID;
 	}
 
-	public void setWayBillNumber(String wayBillNumber) {
-		WayBillNumber = wayBillNumber;
+	public String getWTTrackingNumber() {
+		return WTTrackingNumber;
 	}
 
-	public void setChannelName(String channelName) {
-		ChannelName = channelName;
+	public void setWTTrackingNumber(String WTTrackingNumber) {
+		this.WTTrackingNumber = WTTrackingNumber;
 	}
 
-	public void setWarehouseCode(String warehouseCode) {
-		WarehouseCode = warehouseCode;
+	public String getWTWayBillNumber() {
+		return WTWayBillNumber;
 	}
 
-	public void setCancelResult(String cancelResult) {
-		CancelResult = cancelResult;
+	public void setWTWayBillNumber(String WTWayBillNumber) {
+		this.WTWayBillNumber = WTWayBillNumber;
 	}
+
+	public String getWTChannelName() {
+		return WTChannelName;
+	}
+
+	public void setWTChannelName(String WTChannelName) {
+		this.WTChannelName = WTChannelName;
+	}
+
+	public String getWTWarehouseCode() {
+		return WTWarehouseCode;
+	}
+
+	public void setWTWarehouseCode(String WTWarehouseCode) {
+		this.WTWarehouseCode = WTWarehouseCode;
+	}
+
+	public String getWTCancelResult() {
+		return WTCancelResult;
+	}
+
+	public void setWTCancelResult(String WTCancelResult) {
+		this.WTCancelResult = WTCancelResult;
+	}
+
+	public CancelLabelBean(String caseId, String apiId, String orderID, String WTTrackingNumber, String WTWayBillNumber, String WTChannelName, String WTWarehouseCode, String WTCancelResult) {
+		this.caseId = caseId;
+		this.ApiId = apiId;
+		this.WTOrderID = orderID;
+		this.WTTrackingNumber = WTTrackingNumber;
+		this.WTWayBillNumber = WTWayBillNumber;
+		this.WTChannelName = WTChannelName;
+		this.WTWarehouseCode = WTWarehouseCode;
+		this.WTCancelResult = WTCancelResult;
+	}
+
 
 	@Override
 	public String toString() {
 		return "CancelLabelBean{" +
 				"caseId='" + caseId + '\'' +
 				", ApiId='" + ApiId + '\'' +
-				", OrderID='" + OrderID + '\'' +
-				", TrackingNumber='" + TrackingNumber + '\'' +
-				", WayBillNumber='" + WayBillNumber + '\'' +
-				", ChannelName='" + ChannelName + '\'' +
-				", WarehouseCode='" + WarehouseCode + '\'' +
-				", CancelResult='" + CancelResult + '\'' +
+				", OrderID='" + WTOrderID + '\'' +
+				", TrackingNumber='" + WTTrackingNumber + '\'' +
+				", WayBillNumber='" + WTWayBillNumber + '\'' +
+				", ChannelName='" + WTChannelName + '\'' +
+				", WarehouseCode='" + WTWarehouseCode + '\'' +
+				", CancelResult='" + WTCancelResult + '\'' +
 				"} " + super.toString();
 	}
 }

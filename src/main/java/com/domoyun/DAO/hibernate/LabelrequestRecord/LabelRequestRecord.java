@@ -6,7 +6,7 @@ package com.domoyun.DAO.hibernate.LabelrequestRecord;
 import java.util.Date;
 
 /**
-   * 项目名称：hibernate_day04
+   * 项目名称：apiFrame
    *类名称：LableRequestRecord
  * @author Administrator
  * @version 1.0

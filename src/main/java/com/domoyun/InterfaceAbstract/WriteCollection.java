@@ -41,7 +41,7 @@ public interface WriteCollection {
 	 * 	取出所有收集的数据
 	 * @return
 	 */
-	List<? extends WriteCollection> getData();
+	List<WriteCollection> getData();
 	
 	/**
 	 *  通过getData()取出所有收集的对象集合，put进cellDatasToWriteMap
@@ -53,7 +53,7 @@ public interface WriteCollection {
 	 *  获得不同sheetName要写的celldata数据
 	 * @return
 	 */
-	List<? extends WriteCollection> getDatasToWriteList(String sheetName);
+	List<WriteCollection> getDatasToWriteList(String sheetName);
 	
 	/**
 	 * 清空数据收集器

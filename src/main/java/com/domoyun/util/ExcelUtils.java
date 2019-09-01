@@ -5,9 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -152,7 +153,9 @@ public class ExcelUtils  {
 
 		// 测试写回
 //		writeExcel("/api.xlsx", 2, "1", 5, "");
+
 	}
+
 
 	/**
 	  *   写回数据到excel 性能问题： 1：如果写1000次数据，就要io操作1000次
@@ -168,10 +171,10 @@ public class ExcelUtils  {
 	 */
 
 	/**
-	 * 读取excel
-	 * @param excelPath 路径
-	 * @param sheetNum  sheet的编号
-	 * @param clazz     pojo类的字节码对象
+	 *
+	 * @param excelPath
+	 * @param sheetName
+	 * @param clazz
 	 * @return
 	 */
 	public static List<? extends ExcelObject> readExcel(String excelPath, String sheetName,
@@ -222,7 +225,6 @@ public class ExcelUtils  {
 				// 遍历每一列（j相当于列号）
 				for (int j = 0; j < lastCellNum; j++) {
 					// 获得当前行的每一列
-					
 					Cell cell = row.getCell(j, MissingCellPolicy.CREATE_NULL_AS_BLANK);
 					// 设置列的类型
 					cell.setCellType(CellType.STRING);
@@ -235,7 +237,6 @@ public class ExcelUtils  {
 					String setterMethodName = "set" + columnName.substring(0, columnName.indexOf("("));
 					// 得到setter方法
 					Method setterMethod = clazz.getMethod(setterMethodName, String.class);
-					
 					// 原始字符串的参数的替换
 					String commonStr = ParameterUtils.getCommonStr(cellValue);
  
@@ -262,62 +263,45 @@ public class ExcelUtils  {
 		}
 		return objList;
 	}
-	
+
+
 	/**
 	 *	 批量回写
 	 * 
-	 * @param string
-	 * @param i
 	 */
 	public static void batchWrite(String sourceExcelPath, String targetExcelPath) {
 		InputStream inp = null;
 		Workbook workbook = null;
 		OutputStream outputStream = null;
+		List<WriteCollection> objlist = new ArrayList<>();
 		try {
-
 			inp = ExcelUtils.class.getResourceAsStream("/"+sourceExcelPath);
 			// 获得工作簿对象
 			workbook = WorkbookFactory.create(inp);
 			// 获得对应编号的sheet
 			System.out.println(WriteCollection.cellDatasToWriteMap.toString());
+
+
 				for (String sheeName : WriteCollection.cellDatasToWriteMap.keySet()) {
 //					System.out.println(sheeName+cellDatasToWriteMap.get(sheeName));
-					    Sheet sheet = workbook.getSheet(sheeName);
-					// 获得最大的行号
-					int lastRowNum = sheet.getLastRowNum();
+                    Sheet sheet = workbook.getSheet(sheeName);
 
 					// 拿出所有要回写的数据
-                    List<CancelLabelBean> cellDataToWriteMapCellDatas =  (List<CancelLabelBean>) WriteCollection.cellDatasToWriteMap.get(sheeName);
+                    List<WriteCollection> ListObj =  (List<WriteCollection>) WriteCollection.cellDatasToWriteMap.get(sheeName);
 //					System.out.println(cellDataToWriteList);
-                    int MaxDataLength = cellDataToWriteMapCellDatas.size();
+                    int MaxDataLength = ListObj.size();
+
 					for (int i = 0; i < MaxDataLength; i++) {
 
 					    Row row = sheet.getRow(i+1);
-					    if(row!=null) {
+					    List<Integer> writeindex = CData(workbook,sheeName);
+                        Map<Integer, Object> ok = ok(ListObj.get(0));
+                        for (int index : writeindex) {
+							Cell cell = row.getCell(index, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+							cell.setCellType(CellType.STRING);
+							cell.setCellValue((String) ok.get(index));
+						}
 
-                            for (int j = i; j == i; j++) {
-                                Cell WarehouseCode = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[0] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-                                WarehouseCode.setCellType(CellType.STRING);
-                                WarehouseCode.setCellValue(cellDataToWriteMapCellDatas.get(i).getWarehouseCode());
-
-                                Cell WayBillNumber = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[1] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-                                WayBillNumber.setCellType(CellType.STRING);
-                                WayBillNumber.setCellValue(cellDataToWriteMapCellDatas.get(i).getChannelName());
-
-                                Cell OrderID = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[2] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-                                OrderID.setCellType(CellType.STRING);
-                                OrderID.setCellValue(cellDataToWriteMapCellDatas.get(i).getOrderID());
-
-                                Cell ChannelName = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[3] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-                                ChannelName.setCellType(CellType.STRING);
-                                ChannelName.setCellValue(cellDataToWriteMapCellDatas.get(i).getTrackingNumber());
-
-                                Cell CancelResult = row.getCell(cellDataToWriteMapCellDatas.get(i).getCellNum()[4] - 1, MissingCellPolicy.CREATE_NULL_AS_BLANK);
-                                CancelResult.setCellType(CellType.STRING);
-                                CancelResult.setCellValue(cellDataToWriteMapCellDatas.get(i).getCancelResult());
-
-                            }
-                        }
 					}
 					
 				}
@@ -352,8 +336,53 @@ public class ExcelUtils  {
 		}
 		
 	}
-	
-	
-	
+
+
+	public static List<Integer> CData(Workbook workbook,String sheetName){
+
+        Sheet sheet = workbook.getSheet(sheetName);
+		// 获得最大的行号
+		int lastRowNum = sheet.getLastRowNum();
+		// 获得最大的列号
+		Row firstRow = sheet.getRow(0);
+		// 获得最大的列数
+		int lastCellNum = firstRow.getLastCellNum();
+
+		// 创建一个数组，保存表头
+		List<Integer> columnIndexArray=new ArrayList<Integer>();
+		// 获得表头--遍历第一行的每一列
+		for (int k = 0; k < lastCellNum; k++) {
+			// 获得当前行的每一列
+			Cell cell = firstRow.getCell(k, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+			// 设置列的类型
+			cell.setCellType(CellType.STRING);
+			// 获得该列的值
+			String columnName =cell.getStringCellValue();
+			if (columnName.contains("WT")){
+				columnIndexArray.add(k);
+			}
+
+		}
+		return columnIndexArray;
+
+    }
+
+    public static Map<Integer,Object> ok(WriteCollection cla) throws Exception {
+        Class<? extends WriteCollection> clazz = cla.getClass();
+        Map<Integer, Object> map = new HashMap<Integer, Object>();
+        Field[] fields = clazz.getDeclaredFields();
+        List<String> setMethodName=new ArrayList<String>();
+        List<String> getMethodName=new ArrayList<String>();
+        for (int i = 0; i < fields.length; i++) {
+            Field f = fields[i] ;
+            f.setAccessible(true);
+            Object val = new Object();
+            val = f.get(cla);
+            // 得到此属性的值
+            map.put(i, val);// 设置键值
+            System.out.println("单个对象的所有键值==反射==" + map.toString());
+        }
+        return map;
+    }
 	
 }
