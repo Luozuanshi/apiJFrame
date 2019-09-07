@@ -123,37 +123,9 @@ public class ExcelUtils  {
 	
 	
 	
-	// example :一定要在工具类写一个main方法--》方便调试和后期的维护
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
-		/*
-		 * Object[][] datas = readExcel("/api.xlsx", 2); for (Object[] cellValueArray :
-		 * datas) { for (Object cellValue : cellValueArray) {
-		 * System.out.print("["+cellValue + "]    "); } System.out.println(); }
-		 */
-
 		ExcelUtils reader = new ExcelUtils();
 		System.out.println(reader.readxcelCell(2, 6));
-
-		/*
-		 * String jsonStr =
-		 * "{\"mobilephone\":\"13517315669\",\"pwd\":\"123456\",\"regname\":\"PANGLUO\"}";
-		 * Map<String, String> dataMap = (Map<String, String>)
-		 * JSONObject.parse(jsonStr); Set<String> keySet = dataMap.keySet(); for (String
-		 * key : keySet) { System.out.println(key+":" + dataMap.get(key)); }
-		 */
-
-//		 readExcel2("/api.xlsx", 1);
-
-//		 readExcel3("/api.xlsx", 2);
-
-//		List<ApiDetail> objList = (List<ApiDetail>) readExcel("/api.xlsx", "request_data", ApiDetail.class);
-//		for (Object obj : objList) {
-//			System.out.println(obj);
-//		}
-
-		// 测试写回
-//		writeExcel("/api.xlsx", 2, "1", 5, "");
-
 	}
 
 
