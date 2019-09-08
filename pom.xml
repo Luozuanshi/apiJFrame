@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"> 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.domoyun.com</groupId>
-	<artifactId>apiFrame</artifactId>
+	<artifactId>apiFrameDomo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<dependencies>
@@ -95,7 +95,7 @@
 		    <version>3.18.1-GA</version>
 		</dependency>
 
-		<!-- hibernate 数据库驱动 -->
+
 
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
@@ -105,14 +105,14 @@
 
 
 
-    <!-- 钉钉SDK   -->
-	<dependency>  
-	  	<groupId>com.alibaba.dingding</groupId>
-  		<artifactId>dingdingtalk</artifactId>
-      	<version>1.0</version>
-	</dependency>  
-	
-	<dependency>
+
+		<dependency>
+			<groupId>com.alibaba.dingding</groupId>
+			<artifactId>dingdingtalk</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
     <groupId>com.relevantcodes</groupId>
     <artifactId>extentreports</artifactId>
     <version>2.41.1</version>
