@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed50130-a29a-432c-8cff-1b4fc0a73bbb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/git" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qq123456" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qq123456.pub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/svn/trunk/apiFrame/src" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15722656" />
@@ -148,7 +145,9 @@
       <workItem from="1567913829444" duration="2080000" />
       <workItem from="1567917662612" duration="992000" />
       <workItem from="1567919477746" duration="3199000" />
-      <workItem from="1567922867710" duration="4372000" />
+      <workItem from="1567922867710" duration="5179000" />
+      <workItem from="1567940821677" duration="32000" />
+      <workItem from="1568594113836" duration="699000" />
     </task>
     <servers />
   </component>
