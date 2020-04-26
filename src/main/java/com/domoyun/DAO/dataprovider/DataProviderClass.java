@@ -6,12 +6,12 @@ package com.domoyun.DAO.dataprovider;
 import java.lang.reflect.Method;
 import java.util.List;
 
+
 import com.domoyun.pojo.bean.PrintLabelBean;
 import org.testng.annotations.DataProvider;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
 
-import com.domoyun.pojo.InterfaceT.ApiDetail;
 import com.domoyun.util.ExcelUtils;
 
 
@@ -72,7 +72,11 @@ public class DataProviderClass {
 		return datas;
 	}
 	
+<<<<<<< HEAD
 	/*@DataProvider(name="CancelLabel")
+=======
+	@DataProvider(name="CancelLabel")
+>>>>>>> cf06e432d150d4db741840ad2fa4c35b6da63fb6
 	public static Object[][] CancelLabel(Method m){
 		List<LabelRequestRecord> DatebaseObjectList = SelectSQL.demo9();
 		List<ExcelObject> objectsList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","CancelLabel", CancelLabelBean.class);
@@ -109,5 +113,9 @@ public class DataProviderClass {
 		
 	
 		
+<<<<<<< HEAD
 	}*/
+=======
+	}
+>>>>>>> cf06e432d150d4db741840ad2fa4c35b6da63fb6
 }
