@@ -7,6 +7,9 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 
+
+import com.domoyun.pojo.InterfaceT.ApiDetail;
+import com.domoyun.pojo.bean.CancelLabelBean;
 import com.domoyun.pojo.bean.PrintLabelBean;
 import org.testng.annotations.DataProvider;
 
@@ -72,11 +75,9 @@ public class DataProviderClass {
 		return datas;
 	}
 	
-<<<<<<< HEAD
-	/*@DataProvider(name="CancelLabel")
-=======
+
+/*
 	@DataProvider(name="CancelLabel")
->>>>>>> cf06e432d150d4db741840ad2fa4c35b6da63fb6
 	public static Object[][] CancelLabel(Method m){
 		List<LabelRequestRecord> DatebaseObjectList = SelectSQL.demo9();
 		List<ExcelObject> objectsList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","CancelLabel", CancelLabelBean.class);
@@ -84,8 +85,8 @@ public class DataProviderClass {
 		int size = DatebaseObjectList.size();
 		System.out.println(size);
 		if (size==0) {
-			
-			message.RobotMarkdown("当天取消单", "### **当天测试单**  `@所有人`\r\n\n\n" + 
+
+			message.RobotMarkdown("当天取消单", "### **当天测试单**  `@所有人`\r\n\n\n" +
 					"- 预报订单数量: `"+size+"` \r\n" );
 		}
 
@@ -110,12 +111,10 @@ public class DataProviderClass {
 			datas[i][9] = cancelLabelBean.getApiId();
 		}
 		return datas;
-		
-	
-		
-<<<<<<< HEAD
+
+
+
+
 	}*/
-=======
-	}
->>>>>>> cf06e432d150d4db741840ad2fa4c35b6da63fb6
+
 }

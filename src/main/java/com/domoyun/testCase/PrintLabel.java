@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.domoyun.InterfaceAbstract.WriteCollection;
 import com.domoyun.base.Base;
 import com.domoyun.DAO.dataprovider.Configure;
-import com.domoyun.DAO.dataprovider.DataProviderClass;
+import com.domoyun.DAO.dataprovider.*;
 import com.domoyun.pojo.bean.PrintLabelBean;
 import com.domoyun.routine.FastJson;
 import com.domoyun.util.HttpUtils;

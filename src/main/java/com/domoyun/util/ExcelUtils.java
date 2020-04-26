@@ -11,18 +11,15 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
 import com.domoyun.InterfaceAbstract.WriteCollection;
 import com.domoyun.pojo.bean.CancelLabelBean;
+import org.apache.poi.xssf.usermodel.*;
 
 
 /**
@@ -124,15 +121,15 @@ public class ExcelUtils  {
 	
 	
 	// example :一定要在工具类写一个main方法--》方便调试和后期的维护
-	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
+//	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
 		/*
 		 * Object[][] datas = readExcel("/api.xlsx", 2); for (Object[] cellValueArray :
 		 * datas) { for (Object cellValue : cellValueArray) {
 		 * System.out.print("["+cellValue + "]    "); } System.out.println(); }
 		 */
 
-		ExcelUtils reader = new ExcelUtils();
-		System.out.println(reader.readxcelCell(2, 6));
+//		ExcelUtils reader = new ExcelUtils();
+//		System.out.println(reader.readxcelCell(2, 6));
 
 		/*
 		 * String jsonStr =
@@ -154,7 +151,7 @@ public class ExcelUtils  {
 		// 测试写回
 //		writeExcel("/api.xlsx", 2, "1", 5, "");
 
-	}
+//	}
 
 
 	/**
@@ -384,5 +381,88 @@ public class ExcelUtils  {
         }
         return map;
     }
-	
+
+	public static void main(String[] args) throws IOException {
+		InputStream inp = null;
+		XSSFWorkbook workbook = null;
+		OutputStream outputStream = null;
+		List<WriteCollection> objlist = new ArrayList<>();
+		try {
+			inp = ExcelUtils.class.getResourceAsStream("/"+"apibatch.xlsx");
+			// 获得工作簿对象
+			workbook = new XSSFWorkbook(inp);
+			// 获得对应编号的sheet
+			System.out.println(WriteCollection.cellDatasToWriteMap.toString());
+			WriteCollection.cellDatasToWriteMap.put("getCountry",null);
+
+			for (String sheeName : WriteCollection.cellDatasToWriteMap.keySet()) {
+				XSSFSheet sheet = workbook.getSheet("getCountry");
+
+
+
+
+
+				for (int i = 0; i < 10; i++) {
+
+					XSSFRow row = sheet.getRow(i+1);
+
+						XSSFCell cell = row.getCell(1,MissingCellPolicy.CREATE_NULL_AS_BLANK);
+						//创建绘图对象
+						XSSFDrawing drawingPatriarch = sheet.createDrawingPatriarch();
+
+						//插入单元格内容
+//						cell.setCellValue(new XSSFRichTextString("批注"));
+						//获取批注对象
+						//(int dx1, int dy1, int dx2, int dy2, short col1, int row1, short col2, int row2)
+						//前四个参数是坐标点,后四个参数是编辑和显示批注时的大小.
+						XSSFComment comment=drawingPatriarch.createCellComment(new XSSFClientAnchor(0, 0, 0, 0, 4, 2, 9, 7));
+						//添加作者,选中B5单元格,看状态栏
+						comment.setString(new XSSFRichTextString("插件批注成功!插件批注成功!"));
+						//输入批注信息
+						comment.setAuthor("pawnluo");
+						//将批注添加到单元格对象中
+						cell.setCellComment(comment);
+
+
+					}
+
+			}
+			outputStream = new FileOutputStream(new File("target/classes/apibatch.xlsx"));
+			workbook.write(outputStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (outputStream != null) {
+				try {
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (workbook != null) {
+				try {
+					workbook.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (inp != null) {
+				try {
+					inp.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
+
+
+
+
+	}
+
+
 }

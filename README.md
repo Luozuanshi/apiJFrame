@@ -43,5 +43,5 @@ apiFrame
 
 2020年4月26日 09:36:28 移除hibernate及sqlserver驱动，移除钉钉机器人，调整工程目录
 
-
+2020年4月27日 00:32:57 新增请求超时 并且默认超时时间为5s  实现poi批量添加批注
                                         power by:pawnluo
