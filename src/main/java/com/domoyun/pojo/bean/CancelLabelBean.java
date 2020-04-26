@@ -18,6 +18,7 @@ import com.domoyun.util.ExcelUtils;
  * @desc 
  * @email
  */
+
 public class CancelLabelBean extends WriteCollectionImp {
 	private String caseId;
 	private String ApiId;

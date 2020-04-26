@@ -29,8 +29,8 @@ apiFrame
 替换为固定文本,并写出为图片保存在本地
 新增字段测试标题
 
-2019年7月12日下午12:35:28 引入hibernate ORM数据库框架
- 
+2019年7月12日下午12:35:28 引入hibernate ORM框架
+
 2019年7月22日下午5:37:10 引入钉钉SDK
 
 2019年8月2日10:28:40 重新设计WriteCollection接口,实现其子类PrintLabelBean,CancelLabelBean
@@ -39,6 +39,7 @@ apiFrame
 
 2019年8月8日21:09:20 完成脚本-当天订单批量取消
 
+2020年4月26日 09:36:28 移除hibernate及sqlserver驱动，移除钉钉机器人，调整工程目录
 
 
-                                        power by:胖罗
+                                        power by:pawnluo

@@ -11,7 +11,6 @@ import com.domoyun.base.Base;
 import com.domoyun.DAO.dataprovider.Configure;
 import com.domoyun.DAO.dataprovider.DataProviderClass;
 import com.domoyun.pojo.bean.CancelLabelBean;
-import com.domoyun.routine.DingdingMessage;
 import com.domoyun.util.HttpUtils;
 
 
@@ -25,7 +24,7 @@ import com.domoyun.util.HttpUtils;
 public class CancelLabel extends Base{
 	//数据收集器
 	WriteCollection WriteCollecter =new CancelLabelBean();
-	DingdingMessage message = new DingdingMessage(0);
+//	DingdingMessage message = new DingdingMessage(0);
 	int ExcuteCount =0;
 
 
@@ -35,53 +34,53 @@ public class CancelLabel extends Base{
 
 		//1：准备url
 		String url = Configure.getUrlByApiId(apiId);
-        //读取用戶配置
-		String Authorization = readproperties(created);
+		//读取用戶配置
+//		String Authorization = readproperties(created);
 
-		String requestData ="{\n" +
+		String requestData = "{\n" +
 				"  \"Data\": {\n" +
-				"    \"orderID\": \""+OrderID+"\",\n" +
-				"    \"trackingNumber\": \""+TrackingNumber+"\"\n" +
+				"    \"orderID\": \"" + OrderID + "\",\n" +
+				"    \"trackingNumber\": \"" + TrackingNumber + "\"\n" +
 				"  },\n" +
 				"  \"RequestTime\": \"2018-06-13T10:35:59.9024253Z\",\n" +
 				"  \"Version\": \"0.0.0.3\"\n" +
 				"}";
-        //发包,得到响应结果
-		String actualResult = HttpUtils.request(apiId,url,requestData,sheetname,Authorization);
+		//发包,得到响应结果
+//		String actualResult = HttpUtils.request(apiId, url, requestData, sheetname, Authorization);
 //		System.out.println(actualResult);
 		//断言
-		String assertstString =null;
+		String assertstString = null;
 
-		if (!(actualResult.isEmpty())) {
-			assertstString = (actualResult.contains("ShortMessage\": \"订单无法取消")?"取消失败":"取消成功");
-		}
-		else {
-			assertstString = "响应结果为空"; }
+//		if (!(actualResult.isEmpty())) {
+//			assertstString = (actualResult.contains("ShortMessage\": \"订单无法取消") ? "取消失败" : "取消成功");
+//		} else {
+//			assertstString = "响应结果为空";
+//		}
 
 
-		  
-		WriteCollecter.addData(new CancelLabelBean("", "",OrderID, TrackingNumber, WayBillNumber, ChannelName, WarehouseCode,assertstString));
+		WriteCollecter.addData(new CancelLabelBean("", "", OrderID, TrackingNumber, WayBillNumber, ChannelName, WarehouseCode, assertstString));
 		++ExcuteCount;
 
 		//5.数据写出 全局静态变量 cellDatasToWriteMap 发送钉钉消息
-        if (sheetNumMaxsize==ExcuteCount) {
+		if (sheetNumMaxsize == ExcuteCount) {
 			WriteCollecter.putmap("CancelLabel");
-			message.RobotMarkdown("当天取消单", "### **当天测试单**  `@所有人`\r\n\n\n" + 
-					"- 预报订单数量: `"+sheetNumMaxsize+"` \r\n" );
-					}
-	} 
-
-	//扩展方法
-	public String readproperties(String x){
-		Properties properties = new Properties();
-		try {
-			properties.load(CancelLabel.class.getResourceAsStream("/config/Created.properties"));
-		} catch (IOException e) {
-			e.printStackTrace();
+////			message.RobotMarkdown("当天取消单", "### **当天测试单**  `@所有人`\r\n\n\n" +
+//					"- 预报订单数量: `"+sheetNumMaxsize+"` \r\n" );
+//					}
 		}
-		String haha = properties.getProperty(x);
-		return haha;
 	}
-
 }
+	//扩展方法
+//	public String readproperties(String x){
+//		Properties properties = new Properties();
+//		try {
+//			properties.load(CancelLabel.class.getResourceAsStream("/config/Created.properties"));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		String haha = properties.getProperty(x);
+//		return haha;
+//	}
+
+
 	

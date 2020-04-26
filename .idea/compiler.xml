@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="apiFrameDomo" />
+        <module name="apiJFrame" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="apiFrameDomo" target="1.8" />
+      <module name="apiJFrame" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

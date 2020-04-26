@@ -6,15 +6,12 @@ package com.domoyun.DAO.dataprovider;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import com.domoyun.pojo.bean.CancelLabelBean;
 import com.domoyun.pojo.bean.PrintLabelBean;
 import org.testng.annotations.DataProvider;
 
 import com.domoyun.InterfaceAbstract.ExcelObject;
-import com.domoyun.DAO.hibernate.LabelrequestRecord.LabelRequestRecord;
-import com.domoyun.DAO.hibernate.LabelrequestRecord.SelectSQL;
+
 import com.domoyun.pojo.InterfaceT.ApiDetail;
-import com.domoyun.routine.DingdingMessage;
 import com.domoyun.util.ExcelUtils;
 
 
@@ -27,8 +24,7 @@ import com.domoyun.util.ExcelUtils;
  * 	类描述：每个sheet数据提供者
  */
 public class DataProviderClass {
-	static DingdingMessage message = new DingdingMessage(0);
-	
+
 	@DataProvider(name="getCountry")
 	public static Object[][] getCountry(Method m){
 		List<ExcelObject> objectList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","getCountry", PrintLabelBean.class);
@@ -76,7 +72,7 @@ public class DataProviderClass {
 		return datas;
 	}
 	
-	@DataProvider(name="CancelLabel")
+	/*@DataProvider(name="CancelLabel")
 	public static Object[][] CancelLabel(Method m){
 		List<LabelRequestRecord> DatebaseObjectList = SelectSQL.demo9();
 		List<ExcelObject> objectsList = (List<ExcelObject>) ExcelUtils.readExcel("apibatch.xlsx","CancelLabel", CancelLabelBean.class);
@@ -113,5 +109,5 @@ public class DataProviderClass {
 		
 	
 		
-	}
+	}*/
 }
